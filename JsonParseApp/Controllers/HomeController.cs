@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace JsonParseApp.Controllers
 {
@@ -13,18 +15,29 @@ namespace JsonParseApp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public JsonResult ProcessJsonFile(HttpPostedFileBase myFile)
         {
-            ViewBag.Message = "Your application description page.";
+            //file type should be 'application/json'
+            string fileName = myFile.FileName;
+            if (myFile != null && myFile.ContentLength > 0)
+            {
+                // get contents to string
+                string str = (new StreamReader(myFile.InputStream)).ReadToEnd();
 
-            return View();
+                // deserializes string into object
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                var d = jss.Deserialize<dynamic>(str);
+
+                // once it's an object, you can use do with it whatever you want
+                //return PartialView("_JsonLoanData", str);
+               // return this.Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                return this.Json(new { success = true, message = $"File: {fileName} successfully parsed"}, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { success = false });
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
     }
 }

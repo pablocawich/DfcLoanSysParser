@@ -3,29 +3,68 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Upload JSON file.</h1>
+    <p class="lead">Select a valid Json file, any other file types will yield an invalid result.</p>
+    
+    <form id="jsonFileForm">
+        <div class="form-group">
+            <div class="custom-file">
+                <!-- the name attribute must match the name of the parameter passed in the controller-->
+                <input type="file" name="myFile" class="btn btn-success custom-file-input" id="fileUpload" required>
+                <label class="custom-file-label" for="fileUpload"><i>Choose file...</i></label>
+                <div class="invalid-feedback">Example invalid custom file feedback</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitJsonFileBtn">Process File</button>
+    </form>
+        
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    @Html.Partial("_JsonLoanData");
 </div>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#fileUpload").on("change",
+                function() {
+                    var fileName = $(this).val();
+                    //replace the "Choose a file" label
+
+                    $(this).next('.custom-file-label').html(fileName);
+                    var formdata = new FormData($('#jsonFileForm').get(0));
+                    console.log(formdata);
+                });
+
+            //submit button 
+            $("#jsonFileForm").on('submit',function(event) {
+               
+                // avoid to execute the actual submit of the form.
+               
+                event.preventDefault();
+                var formData = new FormData($(this).get(0));
+                //var dataF = new FormData($("#jsonFileForm").get(0));
+                //var file = $('#fileUpload')[0].files[0];
+                console.log(formData);
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ProcessJsonFile","Home")',
+                    data: formData,
+                    dataType: 'json',
+                    enctype: "multipart/form-data",
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        alert(response.message);
+                    }
+                });
+                
+                //e.preventDefault();
+            });
+
+            
+
+        });
+    </script>
+}
