@@ -8,33 +8,56 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #66cc65;">
-    <div class="container">
-        @Html.ActionLink("Json Parse App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                
-            </ul>
-            <p class="nav navbar-text"><i class="fas fa-user"></i> Welcome, @User.Identity.Name</p>
-            <!-- <p>//User.IsInRole("WEB_IT")</p>  -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #66cc65;">
+        <div class="container">
+            @Html.ActionLink("Json Parse App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+
+                </ul>
+                <p class="nav navbar-text"><i class="fas fa-user"></i> Welcome, @User.Identity.Name</p>
+                <!-- <p>//User.IsInRole("WEB_IT")</p>  -->
+            </div>
         </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
+        </footer>
     </div>
-</nav>
 
-<div class="container body-content">
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
-    </footer>
-</div>
+    @Scripts.Render("~/bundles/lib")
+    @RenderSection("scripts", required: false)
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    
+   
+    
+    
+   
+   
+    
+    
+    
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src=" https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/1.6.0/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.colVis.min.js"></script>
 </body>
 </html>

@@ -1,69 +1,92 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"/>
+<link href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.bootstrap4.min.css"/>
+
 
 <div class="jumbotron">
     <h1>Upload JSON file.</h1>
     <p class="lead">Select a valid Json file, any other file types will yield an invalid result.</p>
-    
-    <form id="jsonFileForm">
+
+    <form id="jsonFileForm" class="needs-validation" novalidate>
         <div class="form-group">
             <div class="custom-file">
                 <!-- the name attribute must match the name of the parameter passed in the controller-->
                 <input type="file" name="myFile" class="btn btn-success custom-file-input" id="fileUpload" required>
                 <label class="custom-file-label" for="fileUpload"><i>Choose file...</i></label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <!--<div class="valid-tooltip">Looks sexy!</div>-->
+                <span id="spanErr"></span>
+                <div class="invalid-feedback"></div>
+
             </div>
         </div>
         <button type="submit" class="btn btn-primary" id="submitJsonFileBtn">Process File</button>
     </form>
-        
+
 </div>
 
-<div class="row">
-    @Html.Partial("_JsonLoanData");
+<div class="row" id="partialTblRow">
+    
 </div>
 @section scripts
 {
     <script>
         $(document).ready(function() {
+            var studentLoanData;
             $("#fileUpload").on("change",
                 function() {
                     var fileName = $(this).val();
                     //replace the "Choose a file" label
 
                     $(this).next('.custom-file-label').html(fileName);
-                    var formdata = new FormData($('#jsonFileForm').get(0));
-                    console.log(formdata);
-                });
-
-            //submit button 
-            $("#jsonFileForm").on('submit',function(event) {
-               
-                // avoid to execute the actual submit of the form.
-               
-                event.preventDefault();
-                var formData = new FormData($(this).get(0));
-                //var dataF = new FormData($("#jsonFileForm").get(0));
-                //var file = $('#fileUpload')[0].files[0];
-                console.log(formData);
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Action("ProcessJsonFile","Home")',
-                    data: formData,
-                    dataType: 'json',
-                    enctype: "multipart/form-data",
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        alert(response.message);
+                    let file = $('#fileUpload')[0].files[0];
+                    if (file !== null && file.type === 'application/json') {
+                        $("#spanErr").text("");
+                        $(".custom-file-label").css("border-color", "");
                     }
                 });
-                
-                //e.preventDefault();
-            });
 
-            
+            //submit button
+            $("#jsonFileForm").on('submit',
+                function(event) {
+                    event.preventDefault();
+                    let file = $('#fileUpload')[0].files[0];
+
+                    if ($(this)[0].checkValidity() === false) {
+                        event.stopPropagation();
+                        $(this).addClass("was-validated");
+                        $(".invalid-feedback").text("Field is required");
+                        return;
+                        //
+                    } else if (file.type !== 'application/json') {
+                        // $(this).removeClass("was-validated")
+                        $("#spanErr").text("Invalid file type extension. Must be a .json file.");
+                        $("#spanErr").css({ "color": "#dc3545", "font-size": "80%" });
+                        $(".custom-file-label").css("border-color", "#dc3545");
+                        return;
+                    } else {
+                        //event.preventDefault();
+                        var formData = new FormData($(this).get(0));
+                        //var dataF = new FormData($("#jsonFileForm").get(0));
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("ProcessJsonFile", "Home")',
+                            data: formData,
+                            dataType: 'json',
+                            enctype: "multipart/form-data",
+                            contentType: false,
+                            processData: false,
+                            success: function(response) {
+                                
+                                //$("#studentLoanTable").DataTable();
+                            }
+                        });
+                    }
+
+                });
+
 
         });
     </script>

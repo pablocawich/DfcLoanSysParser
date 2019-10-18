@@ -18,3 +18,10 @@ select,
 textarea {
     max-width: 280px;
 }
+#spanErr{
+    background-color: #e9ecef;
+    width: 386px;
+    height: 12px;
+    display: block
+}
+

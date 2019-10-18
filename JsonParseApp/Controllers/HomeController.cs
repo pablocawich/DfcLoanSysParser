@@ -32,12 +32,17 @@ namespace JsonParseApp.Controllers
                 // once it's an object, you can use do with it whatever you want
                 //return PartialView("_JsonLoanData", str);
                // return this.Json(new { success = true }, JsonRequestBehavior.AllowGet);
-                return this.Json(new { success = true, message = $"File: {fileName} successfully parsed"}, JsonRequestBehavior.AllowGet);
+                return this.Json(new { data = d, success = true, message = $"File: {fileName} successfully parsed"}, JsonRequestBehavior.AllowGet);
             }
 
             return Json(new { success = false });
         }
 
-       
+        public ActionResult JsonDataTable()
+        {
+            return PartialView("_JsonLoanData");
+        }
+
+
     }
 }
