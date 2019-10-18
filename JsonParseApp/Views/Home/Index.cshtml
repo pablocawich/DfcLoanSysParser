@@ -79,7 +79,20 @@
                             contentType: false,
                             processData: false,
                             success: function(response) {
-                                
+                                toastr.success(response.message, "Awesome", { positionClass: "toast-bottom-right" });
+                                studentLoanData = response.data;
+                                console.log(studentLoanData);
+                                $("#partialTblRow").load("/Home/JsonDataTable/",
+                                    function() {
+                                        $("#studentLoanTable").dataTable().fnAddData([
+                                            studentLoanData.education_program_data['studentln.duration'],
+                                            studentLoanData.education_program_data['studentln.level'],
+                                            studentLoanData.education_program_data['studentln.pastqual1'],
+                                            studentLoanData.education_program_data['studentln.pastschool1'],
+                                            studentLoanData.education_program_data['studentln.qual1']
+
+                                        ]);
+                                    });
                                 //$("#studentLoanTable").DataTable();
                             }
                         });
