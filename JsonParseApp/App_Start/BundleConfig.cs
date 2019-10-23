@@ -13,7 +13,8 @@ namespace JsonParseApp
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/toastr.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap.js"));
+                        "~/Scripts/DataTables/dataTables.bootstrap.js",
+                        "~/Scripts/JsonFormDataBinder.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

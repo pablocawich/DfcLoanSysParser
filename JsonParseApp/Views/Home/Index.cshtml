@@ -26,15 +26,96 @@
     </form>
 
 </div>
-
+<!------------------------------------Begin form. Loaded after parsing functionality--------------------------------------->
 <div class="row" id="partialTblRow">
-    
+    <div class="card" style="width: 100%">
+        <div class="card-header" style="background-color: #89c38c">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Form</a>
+                </li>
+
+            </ul>
+        </div>
+    <div class="card-body">
+        <h3 class="card-title" style="text-align:center">Student Loan Data</h3>
+        <form>
+            <fieldset disabled>
+                <h4>Education Program Data</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputQual1">Qaul1</label>
+                        <input type="text" class="form-control" id="inputQual1" placeholder="Qual1">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputLevel">Level</label>
+                        <input type="text" class="form-control" id="inputLevel" placeholder="level">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputDuration">Duration</label>
+                        <input type="text" class="form-control" id="inputDuration" placeholder="Duration">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSchool">School</label>
+                        <input type="text" class="form-control" id="inputSchool" placeholder="School">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputCourse">Course</label>
+                        <input type="text" class="form-control" id="inputCourse" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputPastSchool">Past School</label>
+                        <input type="text" class="form-control" id="inputPastSchool" placeholder="Past School">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputQualification">Past Qualification</label>
+                        <input type="text" class="form-control" id="inputQualification" placeholder="Past Qualification">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputSchool">School</label>
+                        <input type="text" class="form-control" id="inputSchool" placeholder="School">
+                    </div>
+                </div>
+
+                <h5>Student Loan Borrow</h5>
+                <div class="form-row">
+                    <div class="form-group col-md-3" id="StuLnBorrowItemVal">
+                        <h6>Item Val</h6>
+                    </div>
+                    <div class="form-group col-md-4" id="StuLnBorrowAidItem">
+                        <h6>Aid Item</h6>
+                    </div>
+                </div>
+
+                <h4 id="minorProfileHeader"></h4>
+                <div class="form-row" id="minorProfileRow">
+
+                </div>
+                <h4 id="loanAppProfileHeader"></h4>
+                <div class="form-row" id="loanApplicantProfileRow">
+
+                </div>
+                <div id="subLoanAppProfileRow" class="form-row">
+                    <div class="form-group col-md-3" id="subLoanAppProfColLabel">
+                    </div>
+                    <div class="form-group col-md-3" id="subLoanAppProfColVal">
+                    </div>
+                </div>
+            </fieldset>
+            
+        </form>
+    </div>
+</div>
 </div>
 @section scripts
 {
     <script>
         $(document).ready(function() {
-            var studentLoanData;
+
             $("#fileUpload").on("change",
                 function() {
                     var fileName = $(this).val();
@@ -60,7 +141,8 @@
                         $(".invalid-feedback").text("Field is required");
                         return;
                         //
-                    } else if (file.type !== 'application/json') {
+                    }
+                    else if (file.type !== 'application/json') {
                         // $(this).removeClass("was-validated")
                         $("#spanErr").text("Invalid file type extension. Must be a .json file.");
                         $("#spanErr").css({ "color": "#dc3545", "font-size": "80%" });
@@ -80,26 +162,15 @@
                             processData: false,
                             success: function(response) {
                                 toastr.success(response.message, "Awesome", { positionClass: "toast-bottom-right" });
-                                studentLoanData = response.data;
-                                console.log(studentLoanData);
-                                $("#partialTblRow").load("/Home/JsonDataTable/",
-                                    function() {
-                                        $("#studentLoanTable").dataTable().fnAddData([
-                                            studentLoanData.education_program_data['studentln.duration'],
-                                            studentLoanData.education_program_data['studentln.level'],
-                                            studentLoanData.education_program_data['studentln.pastqual1'],
-                                            studentLoanData.education_program_data['studentln.pastschool1'],
-                                            studentLoanData.education_program_data['studentln.qual1']
+                                $("#submitJsonFileBtn").attr("disabled",true);   
+                                //function that handles form and json data binding and manipulation
+                                populateFormView($("#partialTblRow"), response.data);
 
-                                        ]);
-                                    });
-                                //$("#studentLoanTable").DataTable();
                             }
                         });
                     }
 
-                });
-
+                });      
 
         });
     </script>
