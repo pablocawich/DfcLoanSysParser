@@ -48,6 +48,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -101,9 +104,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -126,7 +126,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Asset.cs" />
     <Compile Include="Models\EducationProgramData.cs" />
+    <Compile Include="Models\GrossAnnualFamilyIncome.cs" />
+    <Compile Include="Models\Guarantor.cs" />
+    <Compile Include="Models\GuarantorAsset.cs" />
+    <Compile Include="Models\GuarantorFinancial.cs" />
+    <Compile Include="Models\GuarantorGrossAnnualFamilyIncome.cs" />
+    <Compile Include="Models\GuarantorLiability.cs" />
+    <Compile Include="Models\GuarantorPersonal.cs" />
+    <Compile Include="Models\GuarantorSelfEmployed.cs" />
+    <Compile Include="Models\Liability.cs" />
+    <Compile Include="Models\LoanApplicantProfile.cs" />
+    <Compile Include="Models\LoanConfig.cs" />
+    <Compile Include="Models\MinorProfile.cs" />
+    <Compile Include="Models\StudentLnBorr.cs" />
+    <Compile Include="Models\StudentLoanSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

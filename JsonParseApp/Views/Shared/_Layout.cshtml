@@ -27,10 +27,12 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
-        </footer>
+            <button class="btn btn-toolbar btn-group-lg" id="regScrollToTop"></button>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
+            </footer>
+        
     </div>
 
     @Scripts.Render("~/bundles/lib")

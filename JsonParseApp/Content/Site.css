@@ -25,3 +25,47 @@ textarea {
     display: block
 }
 
+label {
+    color: #ea7f23;
+    /* font-style: italic; */
+    font-weight: bold;
+    font-size: 13px;
+}
+/* Scroll to top button design*/
+#regScrollToTop {
+    display: inline-block;
+    background-color: #FF9800;
+    width: 57px;
+    height: 54px;
+    text-align: center;
+    border-radius: 6px;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    transition: background-color .3s, 
+                opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+    #regScrollToTop::after {
+        content: "\f106";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 41px;
+        color: #fff;
+        vertical-align: middle;
+    }
+#regScrollToTop:hover {
+    cursor: pointer;
+    background-color: #333;
+}
+#regScrollToTop:active {
+    background-color: #555;
+}
+#regScrollToTop.show {
+    opacity: 1;
+    visibility: visible;
+}

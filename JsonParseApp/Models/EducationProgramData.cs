@@ -7,22 +7,14 @@ namespace JsonParseApp.Models
 {
     public class EducationProgramData
     {
-        /*public string studentln.qual1 { get; set; }
-        public string studentln.duration { get; set; }
-        public string studentln.level { get; set; }
-        public string studentln.course { get; set; }
-        public string studentln.pastschool1 { get; set; }
-        public string studentln.pastqual1 { get; set; }
-        public string studentln.school { get; set; }
-        public IList<StudentlnBorr> Studentln_borr { get; set; }*/
-
-        /*public string studentln.qual1 { get; set; }
-        public string studentln.duration { get; set; }
-        public string studentln.level { get; set; }
-        public string studentln.course { get; set; }
-        public string studentln.pastschool1 { get; set; }
-        public string studentln.pastqual1 { get; set; }
-        public string studentln.school { get; set; }
-        public IList<StudentlnBorr> Studentln_borr { get; set; }*/
+        public int Id { get; set; }
+        public string Qual1 { get; set; }
+        public byte Duration { get; set; }
+        public string Level { get; set; }
+        public string Course { get; set; }
+        public string PastSchool1 { get; set; }
+        public string PastQual1 { get; set; }
+        public string School { get; set; }
+        public IList<StudentLnBorr> StudentLnBorr { get; set; }
     }
 }

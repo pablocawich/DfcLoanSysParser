@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace JsonParseApp.Controllers
 {
@@ -28,13 +29,15 @@ namespace JsonParseApp.Controllers
                 // deserializes string into object
                 JavaScriptSerializer jss = new JavaScriptSerializer();
                 var d = jss.Deserialize<dynamic>(str);
-
+               // var loanConfig = d["education_program_data"]["studentln.qual1"];
+                         
                 // once it's an object, you can use do with it whatever you want
                 //return PartialView("_JsonLoanData", str);
                // return this.Json(new { success = true }, JsonRequestBehavior.AllowGet);
                 return this.Json(new { data = d, success = true, message = $"File: {fileName} successfully parsed"}, JsonRequestBehavior.AllowGet);
+                
             }
-
+            
             return Json(new { success = false });
         }
 

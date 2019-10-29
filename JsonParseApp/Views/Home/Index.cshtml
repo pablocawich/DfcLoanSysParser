@@ -1,9 +1,9 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"/>
-<link href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.bootstrap4.min.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+<link href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.bootstrap4.min.css" />
 
 
 <div class="jumbotron">
@@ -22,98 +22,150 @@
 
             </div>
         </div>
-        <button type="submit" class="btn btn-primary" id="submitJsonFileBtn">Process File</button>
+        <div id="submitControl">
+            <button type="submit" class="btn btn-primary" id="submitJsonFileBtn">Process File</button>
+
+        </div>
+        <button type="button" class="btn btn-danger" id="resetBtn" hidden>Revert</button>
     </form>
 
 </div>
 <!------------------------------------Begin form. Loaded after parsing functionality--------------------------------------->
-<div class="row" id="partialTblRow">
-    <div class="card" style="width: 100%">
-        <div class="card-header" style="background-color: #89c38c">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Form</a>
-                </li>
+<h3>Student Loan Data</h3>
+<div class="container">
+    <div class="row" id="partialTblRow">
+        <div class="card" style="width: 100%">
+            <div class="card-header" style="background-color: #89c38c">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" role="tab" href="#eduProgram" aria-selected="false" aria-controls="form">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Minor Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Loan Applicant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="guarantor-tab" data-toggle="tab" href="#guarantor" role="tab" aria-controls="guarantor" aria-selected="false">Guarantor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="loanConfig-tab" data-toggle="tab" href="#loanConfig" role="tab" aria-controls="loanConfig" aria-selected="false">Loan Configuration</a>
+                    </li>
 
-            </ul>
+                </ul>
+            </div>
+
+            <div class="card-body">
+                <!--<h3 class="card-title" style="text-align: center">Student Loan Data</h3>-->
+                <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane fade show active" id="eduProgram" role="tabpanel" aria-labelledby="home-tab">
+                        <form>
+                            <fieldset disabled>
+                                <h4 style="text-align: center">Education Program Data</h4><hr />
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="inputQual1">Qaul1</label>
+                                        <input type="text" class="form-control" id="inputQual1" placeholder="Qual1">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputLevel">Level</label>
+                                        <input type="text" class="form-control" id="inputLevel" placeholder="level">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputDuration">Duration</label>
+                                        <input type="text" class="form-control" id="inputDuration" placeholder="Duration">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputCourse">Course</label>
+                                        <input type="text" class="form-control" id="inputCourse" placeholder="Email">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputPastSchool">Past School</label>
+                                        <input type="text" class="form-control" id="inputPastSchool" placeholder="Past School">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputQualification">Past Qualification</label>
+                                        <input type="text" class="form-control" id="inputQualification" placeholder="Past Qualification">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputSchool">School</label>
+                                        <input type="text" class="form-control" id="inputSchool" placeholder="School">
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <h5>Student Loan Borrow</h5>
+                                <hr />
+                                <div class="form-row">
+                                    <div class="form-group col-md-3" id="StuLnBorrowItemVal">
+                                        <h6>Item Val</h6>
+                                    </div>
+                                    <div class="form-group col-md-4" id="StuLnBorrowAidItem">
+                                        <h6>Aid Item</h6>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <form>
+                            <fieldset disabled>
+                                <h4 style="text-align: center" id="minorProfileHeader"></h4><hr />
+                                <div class="form-row" id="minorProfileRow">
+
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <form>
+                            <fieldset disabled>
+                                <h4 style="text-align: center" id="loanAppProfileHeader"></h4><hr />
+                                <div class="form-row" id="loanApplicantProfileRow">
+
+                                </div>
+
+                                <hr />
+                                <div id="subLoanAppProfileRow" class="form-row">
+
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
+                        <h4 style="text-align: center" id="guarantorHeader"></h4><hr />
+                        <form>
+                            <fieldset id="guarantorProfileRow" disabled></fieldset>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="loanConfig" role="tabpanel" aria-labelledby="loanConfig-tab">
+                        <form>
+                            <fieldset disabled>
+                                <h4 style="text-align: center">Loan Config Data</h4><hr />
+                                <div class="form-row" id="loanConfigRow">
+
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-    <div class="card-body">
-        <h3 class="card-title" style="text-align:center">Student Loan Data</h3>
-        <form>
-            <fieldset disabled>
-                <h4>Education Program Data</h4>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputQual1">Qaul1</label>
-                        <input type="text" class="form-control" id="inputQual1" placeholder="Qual1">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputLevel">Level</label>
-                        <input type="text" class="form-control" id="inputLevel" placeholder="level">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputDuration">Duration</label>
-                        <input type="text" class="form-control" id="inputDuration" placeholder="Duration">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputSchool">School</label>
-                        <input type="text" class="form-control" id="inputSchool" placeholder="School">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputCourse">Course</label>
-                        <input type="text" class="form-control" id="inputCourse" placeholder="Email">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputPastSchool">Past School</label>
-                        <input type="text" class="form-control" id="inputPastSchool" placeholder="Past School">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputQualification">Past Qualification</label>
-                        <input type="text" class="form-control" id="inputQualification" placeholder="Past Qualification">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputSchool">School</label>
-                        <input type="text" class="form-control" id="inputSchool" placeholder="School">
-                    </div>
-                </div>
-
-                <h5>Student Loan Borrow</h5>
-                <div class="form-row">
-                    <div class="form-group col-md-3" id="StuLnBorrowItemVal">
-                        <h6>Item Val</h6>
-                    </div>
-                    <div class="form-group col-md-4" id="StuLnBorrowAidItem">
-                        <h6>Aid Item</h6>
-                    </div>
-                </div>
-
-                <h4 id="minorProfileHeader"></h4>
-                <div class="form-row" id="minorProfileRow">
-
-                </div>
-                <h4 id="loanAppProfileHeader"></h4>
-                <div class="form-row" id="loanApplicantProfileRow">
-
-                </div>
-                <div id="subLoanAppProfileRow" class="form-row">
-                    <div class="form-group col-md-3" id="subLoanAppProfColLabel">
-                    </div>
-                    <div class="form-group col-md-3" id="subLoanAppProfColVal">
-                    </div>
-                </div>
-            </fieldset>
-            
-        </form>
     </div>
 </div>
-</div>
+
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval");
+
     <script>
+
+
         $(document).ready(function() {
 
             $("#fileUpload").on("change",
@@ -141,8 +193,7 @@
                         $(".invalid-feedback").text("Field is required");
                         return;
                         //
-                    }
-                    else if (file.type !== 'application/json') {
+                    } else if (file.type !== 'application/json') {
                         // $(this).removeClass("was-validated")
                         $("#spanErr").text("Invalid file type extension. Must be a .json file.");
                         $("#spanErr").css({ "color": "#dc3545", "font-size": "80%" });
@@ -152,26 +203,37 @@
                         //event.preventDefault();
                         var formData = new FormData($(this).get(0));
                         //var dataF = new FormData($("#jsonFileForm").get(0));
+
                         $.ajax({
                             type: 'POST',
                             url: '@Url.Action("ProcessJsonFile", "Home")',
                             data: formData,
                             dataType: 'json',
                             enctype: "multipart/form-data",
+                            beforeSend: function() {
+                                $("#submitControl").html("<i class='fas fa-cog fa-spin'></i> Ajax Request is Processing!");
+                            },
                             contentType: false,
                             processData: false,
-                            success: function(response) {
-                                toastr.success(response.message, "Awesome", { positionClass: "toast-bottom-right" });
-                                $("#submitJsonFileBtn").attr("disabled",true);   
-                                //function that handles form and json data binding and manipulation
-                                populateFormView($("#partialTblRow"), response.data);
-
+                            success: function (response) {
+                                setInterval(function () { $('#submitControl').html("Form submitted Successfully!") }, 1000);
+                                $("#resetBtn").removeAttr("hidden");
+                                if (response.success) {
+                                    toastr.success(response.message,
+                                        "Awesome",
+                                        { positionClass: "toast-bottom-right" });
+                                    // $("#submitJsonFileBtn").attr("disabled", true);
+                                    //function that handles form and json data binding and manipulation
+                                    populateFormView($("#partialTblRow"), response.data);
+                                } else {
+                                    toastr.error("Something went wrong while processing the file. Try reloading.",
+                                        "Sorry",
+                                        { positionClass: "toast-bottom-right" });
+                                }
                             }
                         });
                     }
-
-                });      
-
+                });
         });
     </script>
 }
