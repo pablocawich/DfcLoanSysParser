@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using JsonParseApp.Models;
 using Newtonsoft.Json;
 
 namespace JsonParseApp.Controllers
@@ -19,6 +20,9 @@ namespace JsonParseApp.Controllers
         [HttpPost]
         public JsonResult ProcessJsonFile(HttpPostedFileBase myFile)
         {
+            //student loan object that will  be mapped to the json client data
+            StudentLoan Loan = new StudentLoan();
+            
             //file type should be 'application/json'
             string fileName = myFile.FileName;
             if (myFile != null && myFile.ContentLength > 0)
@@ -28,14 +32,16 @@ namespace JsonParseApp.Controllers
 
                 // deserializes string into object
                 JavaScriptSerializer jss = new JavaScriptSerializer();
+                Loan = JsonConvert.DeserializeObject<StudentLoan>(str);
                 var d = jss.Deserialize<dynamic>(str);
-               // var loanConfig = d["education_program_data"]["studentln.qual1"];
-                         
+
+
                 // once it's an object, you can use do with it whatever you want
                 //return PartialView("_JsonLoanData", str);
-               // return this.Json(new { success = true }, JsonRequestBehavior.AllowGet);
-                return this.Json(new { data = d, success = true, message = $"File: {fileName} successfully parsed"}, JsonRequestBehavior.AllowGet);
+                // return this.Json(new { success = true }, JsonRequestBehavior.AllowGet);
                 
+                return this.Json(new { data = d , success = true, message = $"File: {fileName} successfully parsed"}, JsonRequestBehavior.AllowGet);
+
             }
             
             return Json(new { success = false });

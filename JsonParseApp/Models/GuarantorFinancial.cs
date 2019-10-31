@@ -2,20 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace JsonParseApp.Models
 {
+    [JsonObject("guarantor_financial")]
     public class GuarantorFinancial
     {
-        public string IndusGrp { get; set; }
-        public string Depends { get; set; }
-        public string EmpStatus { get; set; }
-        public string HomeStatus { get; set; }
-        public string NumInHouse { get; set; }
-        public string YearsAddr { get; set; }
-        public IList<GuarantorAsset> GuarantorAssets { get; set; }
-        public IList<GuarantorLiability> GuarantorLiabilities { get; set; }
-        public IList<GuarantorSelfEmployed> GuarantorSelfEmployed { get; set; }
-        public IList<GuarantorGrossAnnualFamilyIncome> GrossAnnualFamilyIncome { get; set; }
+        [JsonProperty("customers.indusgrp")]
+        public string CustomersIndusgrp { get; set; }
+
+        [JsonProperty("customers.depends")]
+        public string CustomersDepends { get; set; }
+
+        [JsonProperty("customers.empstatus")]
+        public string CustomersEmpstatus { get; set; }
+
+        [JsonProperty("customers.home_status")]
+        public string CustomersHomeStatus { get; set; }
+
+        [JsonProperty("customers.num_inhouse")]
+        public string CustomersNumInhouse { get; set; }
+
+        [JsonProperty("customers.yearsaddr")]
+        public string CustomersYearsaddr { get; set; }
+
+        [JsonProperty("asset")]
+        public IList<Asset> Asset { get; set; }
+
+        [JsonProperty("liabilities")]
+        public IList<Liability> Liabilities { get; set; }
+
+        [JsonProperty("selfemployed")]
+        public IList<SelfEmployed> Selfemployed { get; set; }
+
+        [JsonProperty("grossannualfamilyincome")]
+        public IList<GrossAnnualFamilyIncome> GrossAnnualFamilyIncome { get; set; }
     }
 }

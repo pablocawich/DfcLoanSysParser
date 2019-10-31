@@ -6,11 +6,14 @@ using Newtonsoft.Json;
 
 namespace JsonParseApp.Models
 {
-    [JsonObject("liabilities")]
-    public class Liability
+    [JsonObject("selfemployed")]
+    public class SelfEmployed
     {
         [JsonProperty("individual_financials.amount")]
         public string IndividualFinancialsAmount { get; set; }
+
+        [JsonProperty("individual_financials.code")]
+        public string IndividualFinancialsCode { get; set; }
 
         [JsonProperty("individual_financials.description")]
         public string IndividualFinancialsDescription { get; set; }
