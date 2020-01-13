@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 
 namespace JsonParseApp.Models
 {
+    
     [JsonObject("education_program_data")]
     public class EducationProgramData
     {

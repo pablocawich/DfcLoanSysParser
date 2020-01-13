@@ -31,6 +31,12 @@ label {
     font-weight: bold;
     font-size: 13px;
 }
+th {
+    color: #ea7f23;
+    /* font-style: italic; */
+    font-weight: bold;
+    font-size: 13px;
+}
 /* Scroll to top button design*/
 #regScrollToTop {
     display: inline-block;

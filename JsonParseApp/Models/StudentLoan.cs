@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ using Newtonsoft.Json;
 namespace JsonParseApp.Models
 {
     //[JsonObject("object")]
+    [NotMapped]
     public class StudentLoan
     {
         [JsonProperty("education_program_data")]

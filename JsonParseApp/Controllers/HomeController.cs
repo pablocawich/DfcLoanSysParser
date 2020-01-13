@@ -12,17 +12,30 @@ namespace JsonParseApp.Controllers
 {
     public class HomeController : Controller
     {
+        private MyDbContext _context;
+
+        public HomeController()
+        {
+            _context = new MyDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
+        //this should be modal/partial
         [HttpPost]
-        public JsonResult ProcessJsonFile(HttpPostedFileBase myFile)
+        public ActionResult JsonFileData(HttpPostedFileBase myFile)
         {
-            //student loan object that will  be mapped to the json client data
-            StudentLoan Loan = new StudentLoan();
-            
+            //return this.Json(new { data = 21, success = true, message = $"" }, JsonRequestBehavior.AllowGet);
+            var loan = new StudentLoan();
+
             //file type should be 'application/json'
             string fileName = myFile.FileName;
             if (myFile != null && myFile.ContentLength > 0)
@@ -31,25 +44,27 @@ namespace JsonParseApp.Controllers
                 string str = (new StreamReader(myFile.InputStream)).ReadToEnd();
 
                 // deserializes string into object
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                Loan = JsonConvert.DeserializeObject<StudentLoan>(str);
-                var d = jss.Deserialize<dynamic>(str);
-
-
-                // once it's an object, you can use do with it whatever you want
-                //return PartialView("_JsonLoanData", str);
-                // return this.Json(new { success = true }, JsonRequestBehavior.AllowGet);
-                
-                return this.Json(new { data = d , success = true, message = $"File: {fileName} successfully parsed"}, JsonRequestBehavior.AllowGet);
+                try
+                {
+                    loan = JsonConvert.DeserializeObject<StudentLoan>(str);                  
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    //return Json(new { success = false, message = $"Error thrown in DB: {e.Message}" });
+                    //Console.WriteLine(e);
+                }
 
             }
-            
-            return Json(new { success = false });
+            //return Json(new { success = true, partialStuff = PartialView("_JsonLoanData", loan), message = $"Edsf" });
+            return PartialView("_JsonLoanData", loan);
         }
 
-        public ActionResult JsonDataTable()
+        [HttpPost]
+        public ActionResult MapAndInsertValue(StudentLoan loan)
         {
-            return PartialView("_JsonLoanData");
+
+            return View("");
         }
 
 

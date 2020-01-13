@@ -11,6 +11,8 @@ namespace JsonParseApp.ViewModel
     {
         [JsonProperty("education_program_data")]
         public EducationProgramData EducationProgramData { get; set; }
+        
+       
 
         [JsonProperty("minor_profile")]
         public MinorProfile MinorProfile { get; set; }

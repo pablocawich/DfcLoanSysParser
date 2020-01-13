@@ -9,6 +9,11 @@ namespace JsonParseApp.Models
     [JsonObject("selfemployed")]
     public class SelfEmployed
     {
+        public int Id { get; set; }
+
+        public GuarantorFinancial GuarantorFinancial { get; set; }
+        public int? GuarantorFinancialId { get; set; }
+
         [JsonProperty("individual_financials.amount")]
         public string IndividualFinancialsAmount { get; set; }
 

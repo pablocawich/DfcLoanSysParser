@@ -1,0 +1,31 @@
+﻿@model IEnumerable<JsonParseApp.Models.GrossAnnualFamilyIncome>
+
+
+<div class="col-md-8">
+    <h6>Gross Family Income</h6>
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Income 2</th>
+                <th scope="col">Income 3</th>
+                <th scope="col">Income 4</th>
+                <th scope="col">Second Occupation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var grossFamIncome in Model)
+            {
+                <tr>
+
+                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomersFinancialIncome2, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomersFinancialIncome3, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomersFinancialIncome4, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomerSecondoccupation, new { @class = "form-control" })</td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>

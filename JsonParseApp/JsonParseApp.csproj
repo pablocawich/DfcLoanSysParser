@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -126,6 +132,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910312259395_InitialModel.cs" />
+    <Compile Include="Migrations\201910312259395_InitialModel.Designer.cs">
+      <DependentUpon>201910312259395_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911012101065_AddAllTables.cs" />
+    <Compile Include="Migrations\201911012101065_AddAllTables.Designer.cs">
+      <DependentUpon>201911012101065_AddAllTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Asset.cs" />
     <Compile Include="Models\EducationProgramData.cs" />
     <Compile Include="Models\GrossAnnualFamilyIncome.cs" />
@@ -139,7 +154,9 @@
     <Compile Include="Models\SelfEmployed.cs" />
     <Compile Include="Models\StudentlnBorr.cs" />
     <Compile Include="Models\StudentLoan.cs" />
+    <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\LoanItemsViewModel.cs" />
     <Compile Include="ViewModel\StudentLoanViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -500,12 +517,21 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
-    <Content Include="Views\ParsedJson\JsonData.cshtml" />
-    <Content Include="Views\Home\JsonData.cshtml" />
     <Content Include="Views\Home\_JsonLoanData.cshtml" />
+    <Content Include="Views\ModelPartials\_MinorProfile.cshtml" />
+    <Content Include="Views\ModelPartials\_LoanApplicantProfile.cshtml" />
+    <Content Include="Views\ModelPartials\_EducationProgramData.cshtml" />
+    <Content Include="Views\Home\_Assets.cshtml" />
+    <Content Include="Views\ModelPartials\_Guarantor.cshtml" />
+    <Content Include="Views\ModelPartials\_GuaranSets.cshtml" />
+    <Content Include="Views\ModelPartials\_Guaranabilities.cshtml" />
+    <Content Include="Views\ModelPartials\_GuaranFamilyIncome.cshtml" />
+    <Content Include="Views\ModelPartials\_LoanConfig.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\DpacDb\" />
+    <Folder Include="Views\ParsedJson\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -517,6 +543,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910312259395_InitialModel.resx">
+      <DependentUpon>201910312259395_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911012101065_AddAllTables.resx">
+      <DependentUpon>201911012101065_AddAllTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

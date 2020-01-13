@@ -1,0 +1,32 @@
+﻿@using JsonParseApp.Models
+@model IEnumerable<JsonParseApp.Models.Asset>
+
+<hr />
+<div class="col-md-6">
+   
+        <h6>Assets</h6>
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var asset in Model)
+            {
+                <tr>
+                    <td>@Html.TextBoxFor(a=>asset.IndividualFinancialsCode, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(a=>asset.IndividualFinancialsAmount, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(a => asset.IndividualFinancialsDescription, new { @class = "form-control" })</td>
+                </tr>
+
+            }
+            </tbody>
+        </table>
+   
+</div>
+      
+    
+

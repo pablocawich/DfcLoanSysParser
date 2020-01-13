@@ -9,6 +9,8 @@ namespace JsonParseApp.Models
     [JsonObject("loan_applicant_profile")]
     public class LoanApplicantProfile
     {
+        public int Id { get; set; }
+
         [JsonProperty("customers.sex")]
         public string CustomersSex { get; set; }
 

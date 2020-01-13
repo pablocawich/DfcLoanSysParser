@@ -1,0 +1,53 @@
+﻿@model JsonParseApp.Models.EducationProgramData
+
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label for="inputQual1">Qaul1</label>
+        <input type="text" class="form-control" id="inputQual1" placeholder="@Model.StudentlnQual1">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="inputLevel">Level</label>
+        <input type="text" class="form-control" id="inputLevel" placeholder="@Model.StudentlnLevel">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="inputDuration">Duration</label>
+        <input type="text" class="form-control" id="inputDuration" placeholder="@Model.StudentlnDuration">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="inputCourse">Course</label>
+        <input type="text" class="form-control" id="inputCourse" placeholder="@Model.StudentlnCourse">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="inputPastSchool">Past School</label>
+        <input type="text" class="form-control" id="inputPastSchool" placeholder="@Model.StudentlnPastschool1">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="inputQualification">Past Qualification</label>
+        <input type="text" class="form-control" id="inputQualification" placeholder="@Model.StudentlnPastqual1">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="inputSchool">School</label>
+        <input type="text" class="form-control" id="inputSchool" placeholder="@Model.StudentlnSchool">
+    </div>
+</div>
+
+<hr />
+<h5>Student Loan Borrow</h5>
+<hr />
+
+<div class="form-row">
+    <div class="form-group col-md-3" id="StuLnBorrowItemVal">
+        <h6>Item Val</h6>
+        @foreach (var item in Model.StudentlnBorr)
+        {
+            <input type="text" class="form-control" value="@item.StudentlnBorrItemval">
+        }
+    </div>
+    <div class="form-group col-md-4" id="StuLnBorrowAidItem">
+        <h6>Aid Item</h6>
+        @foreach (var item in Model.StudentlnBorr)
+        {
+            <input type="text" class="form-control" value="@item.StudentlnBorrAiditem">
+        }
+    </div>
+</div>

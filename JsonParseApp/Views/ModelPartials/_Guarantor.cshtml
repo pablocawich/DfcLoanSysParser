@@ -1,0 +1,156 @@
+﻿@using System.Web.DynamicData
+@model IEnumerable<JsonParseApp.Models.Guarantor>
+@{
+    var i = 0;
+}
+@foreach (var guarantor in Model)
+{
+    <div class="alert alert-primary" role="alert">
+        <h6><strong>Guarantor @(++i)</strong></h6>
+    </div>
+    <h6>Personal Information</h6>
+    <hr/>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersFirstname, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersFirstname, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersMiddlename, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersMiddlename, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersLastname, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersLastname, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersSex, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersSex, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersNationality, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersNationality, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersBirthdate, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersBirthdate, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersMailingAddress1, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersMailingAddress1, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersMailingAddress2, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersMailingAddress2, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersMailingcountry, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersMailingcountry, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersMailingtown, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersMailingtown, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersTypeofid, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersTypeofid, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersIdnumber, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersIdnumber, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersMarriedstatus, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersMarriedstatus, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersNextKin, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersNextKin, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersRelationshipkin, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersRelationshipkin, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersEmailname, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersEmailname, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersHomephone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersHomephone, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersOtherphone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersOtherphone, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersWorkphone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersWorkphone, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorPersonal.CustomersMobilphone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorPersonal.CustomersMobilphone, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <h6>Financial Information</h6>
+    <hr/>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersBusinessplace, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersBusinessplace, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersEmpstatus, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersEmpstatus, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersEmployfrom, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersEmployfrom, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersOccupation, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersOccupation, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersDepends, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersDepends, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersHomeStatus, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersHomeStatus, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersNumInhouse, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersNumInhouse, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => guarantor.GuarantorFinancial.CustomersYearsaddr, new { @class = "control-label" })
+            @Html.TextBoxFor(m => guarantor.GuarantorFinancial.CustomersYearsaddr, new { @class = "form-control" })
+        </div>
+        
+        @if (guarantor.GuarantorFinancial.Asset != null)
+        {
+            @Html.Partial("~/Views/ModelPartials/_GuaranSets.cshtml", guarantor.GuarantorFinancial.Asset)
+        }
+        else
+        {
+            <h6 style="color: red"><i> not contain data in ASSETS</i></h6>
+        }
+
+        <hr/>
+        @if (guarantor.GuarantorFinancial.Liabilities != null)
+        {
+            @Html.Partial("~/Views/ModelPartials/_Guaranabilities.cshtml", guarantor.GuarantorFinancial.Liabilities)
+        }
+        else
+        {
+            <h6 style="color: red"><i> not contain data in LIABILITIES</i></h6>
+        }
+
+        <hr/>
+        @Html.Partial("~/Views/ModelPartials/_GuaranFamilyIncome.cshtml", guarantor.GuarantorFinancial.GrossAnnualFamilyIncome)
+    </div>
+}

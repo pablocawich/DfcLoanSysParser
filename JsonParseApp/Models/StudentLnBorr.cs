@@ -9,6 +9,7 @@ namespace JsonParseApp.Models
     [JsonObject("Studentln_borr")]
     public class StudentlnBorr
     {
+        
         public int Id { get; set; }
 
         public EducationProgramData EducationProgramData { get; set; }
