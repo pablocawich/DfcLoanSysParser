@@ -1,70 +1,87 @@
 ﻿@model JsonParseApp.Models.MinorProfile
 
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersFirstname, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersFirstname, new { @class = "form-control" })
+<div class="alert alert-danger" role="alert">
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="minorProfileIdCheck" value="">
+            <p>Exclude from Import</p>
+        </div>
+    </div>
+    <div class="form-group col-md-3" id="minorIdBox" hidden>
+        <p><i>Ensure a valid user ID is provided.</i></p>
+        @Html.LabelFor(m => m.MinorId, new {@class = "control-label"})
+        @Html.TextBoxFor(m => m.MinorId, new {@class = "form-control"})
+    </div>
 </div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersMiddlename, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersMiddlename, new { @class = "form-control" })
+
+<div class="form-row">
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersFirstname, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersFirstname, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersMiddlename, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersMiddlename, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersLastname, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersLastname, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersFullName, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersFullName, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersBirthdate, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersBirthdate, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersRelationborrower, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersRelationborrower, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersSex, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersSex, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersArea, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersArea, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersCountry, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersCountry, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersCity, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersCity, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersStreet, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersStreet, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersBelizeanresident, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersBelizeanresident, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersIdtype, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersIdtype, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersIdnumber, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersIdnumber, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersUploadidimage, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersUploadidimage, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersEmail, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersEmail, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.CustomersHomephone, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CustomersHomephone, new { @readonly = "readonly", @class = "form-control" })
+    </div>
 </div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersLastname, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersLastname, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersFullName, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersFullName, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersBirthdate, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersBirthdate, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersRelationborrower, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersRelationborrower, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersSex, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersSex, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersArea, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersArea, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersCountry, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersCountry, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersCity, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersCity, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersStreet, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersStreet, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersBelizeanresident, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersBelizeanresident, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersIdtype, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersIdtype, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersIdnumber, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersIdnumber, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersUploadidimage, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersUploadidimage, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersEmail, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersEmail, new { @class = "form-control" })
-</div>
-<div class="form-group col-md-4">
-    @Html.LabelFor(m => m.CustomersHomephone, new { @class = "control-label" })
-    @Html.TextBoxFor(m => m.CustomersHomephone, new { @class = "form-control" })
-</div>
+

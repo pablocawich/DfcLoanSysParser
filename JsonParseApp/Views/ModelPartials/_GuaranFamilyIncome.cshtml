@@ -1,9 +1,9 @@
-﻿@model IEnumerable<JsonParseApp.Models.GrossAnnualFamilyIncome>
+﻿@model IList<JsonParseApp.Models.GrossAnnualFamilyIncome>
 
 
 <div class="col-md-8">
     <h6>Gross Family Income</h6>
-    <table class="table table-borderless">
+    <table class="table table-dark table-borderless">
         <thead>
             <tr>
                 <th scope="col">Income 2</th>
@@ -13,15 +13,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var grossFamIncome in Model)
+            @for (int g = 0; g < Model.Count; g++)
             {
                 <tr>
 
-                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomersFinancialIncome2, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomersFinancialIncome3, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomersFinancialIncome4, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(g=>grossFamIncome.CustomerSecondoccupation, new { @class = "form-control" })</td>
-
+                    <td>@Html.TextBoxFor(m=>Model[g].CustomersFinancialIncome2, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m=> Model[g].CustomersFinancialIncome3, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m=> Model[g].CustomersFinancialIncome4, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m=> Model[g].CustomerSecondoccupation, new { @class = "form-control" })</td>
+                    @Html.HiddenFor(m=> Model[g].CustomersFinancialIncome1)
+                    @Html.HiddenFor(m=> Model[g].CustomerSecondoccupation)
+                    @Html.HiddenFor(m=> Model[g].GuarantorFinancialId)
+                    @Html.HiddenFor(m=> Model[g].LoanApplicantProfileId)
                 </tr>
 
             }

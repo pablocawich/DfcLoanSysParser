@@ -10,7 +10,7 @@ namespace JsonParseApp.Models
     [JsonObject("grossannualfamilyincome")]
     public class GrossAnnualFamilyIncome
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public LoanApplicantProfile LoanApplicantProfile { get; set; }
         public int? LoanApplicantProfileId { get; set; }

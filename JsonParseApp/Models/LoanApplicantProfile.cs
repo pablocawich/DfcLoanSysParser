@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
@@ -9,9 +11,12 @@ namespace JsonParseApp.Models
     [JsonObject("loan_applicant_profile")]
     public class LoanApplicantProfile
     {
-        public int Id { get; set; }
+        // public int Id { get; set; }
+        [StringLength(10)]
+        [DisplayName("Loan Applicant Id")]
+       public string ApplicantId { get; set; }
 
-        [JsonProperty("customers.sex")]
+       [JsonProperty("customers.sex")]
         public string CustomersSex { get; set; }
 
         [JsonProperty("customers.mailing_address2")]

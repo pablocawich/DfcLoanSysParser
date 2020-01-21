@@ -10,7 +10,7 @@ namespace JsonParseApp.Models
     public class StudentlnBorr
     {
         
-        public int Id { get; set; }
+      //  public int Id { get; set; }
 
         public EducationProgramData EducationProgramData { get; set; }
         public int EducationProgramDataId { get; set; }

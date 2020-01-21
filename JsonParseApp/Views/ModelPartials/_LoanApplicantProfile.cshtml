@@ -1,216 +1,237 @@
 ﻿@model JsonParseApp.Models.LoanApplicantProfile
 
 <!--------------Directly readable properties------------------------------------->
-<div class="form-row">
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersFirstname, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersFirstname, new { @class = "form-control" })
+<div class="alert alert-danger" role="alert">
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="applicantIdCheckBox" value="">
+            <p>Exclude from Import</p>
+        </div>
     </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersMiddlename, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersMiddlename, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersLastname, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersLastname, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersSex, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersSex, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersNationality, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersNationality, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersTypeofid, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersTypeofid, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersIdnumber, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersIdnumber, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersMailingAddress1, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersMailingAddress1, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersMailingAddress2, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersMailingAddress2, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersMailingcountry, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersMailingcountry, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersBusinessplace, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersBusinessplace, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersEmployfrom, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersEmployfrom, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersOccupation, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersOccupation, new { @class = "form-control" })
-    </div>
-
-    <!---->
-
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersDepends, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersDepends, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersEmpstatus, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersEmpstatus, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersHomeStatus, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersHomeStatus, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersNumInhouse, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersNumInhouse, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersYearsaddr, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersYearsaddr, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersNextKin, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersNextKin, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersRelationshipkin, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersRelationshipkin, new { @class = "form-control" })
-    </div>
-
-    <!--contact stuff-->
-
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersEmailname, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersEmailname, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersHomephone, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersHomephone, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersOtherphone, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersOtherphone, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersWorkphone, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersWorkphone, new { @class = "form-control" })
-    </div>
-    <div class="form-group col-md-3">
-        @Html.LabelFor(m => m.CustomersMobilphone, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.CustomersMobilphone, new { @class = "form-control" })
+    <div class="form-group col-md-12" id="applicantIdBox" hidden>
+        <p><i>Ensure a valid user ID is provided. Should an invalid id be provided the entire operation will be discarded. Also by submitting a valid id, the data in the current section of the form, save for the provided id, will be disregarded.</i></p>
+        @Html.LabelFor(m => m.ApplicantId, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.ApplicantId, new { @class = "form-control" })
     </div>
 </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersFirstname, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersFirstname, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersMiddlename, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersMiddlename, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersLastname, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersLastname, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersSex, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersSex, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersNationality, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersNationality, new { @readonly = "readonly", @class = "form-control" })
+        </div>
 
-<hr />
-<h5>Applicant Assets</h5>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersTypeofid, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersTypeofid, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersIdnumber, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersIdnumber, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersMailingAddress1, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersMailingAddress1, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersMailingAddress2, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersMailingAddress2, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersMailingcountry, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersMailingcountry, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersBusinessplace, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersBusinessplace, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersEmployfrom, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersEmployfrom, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersOccupation, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersOccupation, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+
+        <!---->
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersDepends, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersDepends, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersEmpstatus, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersEmpstatus, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersHomeStatus, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersHomeStatus, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersNumInhouse, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersNumInhouse, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersYearsaddr, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersYearsaddr, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersNextKin, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersNextKin, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersRelationshipkin, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersRelationshipkin, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+
+        <!--contact stuff-->
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersEmailname, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersEmailname, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersHomephone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersHomephone, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersOtherphone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersOtherphone, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersWorkphone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersWorkphone, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CustomersMobilphone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CustomersMobilphone, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        @Html.HiddenFor(m=>m.CustomersFinancialIncome1)
+    </div>
+
+    <hr />
+    <h5>Applicant Assets</h5>
 
 
-<div class="form-row">
-    @if (Model.Asset != null)
-    {
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">Code</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var asset in Model.Asset)
-            {
-                <tr>
-                    <td>@asset.IndividualFinancialsCode</td>
-                    <td>@asset.IndividualFinancialsAmount</td>
-
-                    <td>@asset.IndividualFinancialsDescription</td>
-                </tr>
-
-            }
-            </tbody>
-        </table>
-       
-    }
-    else
-    {
-        <p style="color: red">No data found for ASSETS</p>
-    }
-</div>
-
-<hr />
-<h5>Applicant Liabilities</h5>
-
-<div class="form-row">
-    @if (Model.Liabilities != null)
-    {
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var lia in Model.Liabilities)
-                {
+    <div class="form-row">
+        @if (Model.Asset != null)
+        {
+            <table class="table table-dark table-borderless">
+                <thead>
                     <tr>
-                        <td>@lia.IndividualFinancialsAmount</td>
-
-                        <td>@lia.IndividualFinancialsDescription</td>
+                        <th scope="col">Code</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Description</th>
                     </tr>
+                </thead>
+                <tbody>
+                    @for(int i = 0;i< Model.Asset.Count;i++)
+                    {
+                        <tr>
+                            <td>@Html.TextBoxFor(a => Model.Asset[i].IndividualFinancialsCode, new { @readonly = "readonly", @class = "form-control" })</td>
+                            <td>@Html.TextBoxFor(a => Model.Asset[i].IndividualFinancialsAmount, new { @readonly = "readonly", @class = "form-control" })</td>
+                            <td>@Html.TextBoxFor(a => Model.Asset[i].IndividualFinancialsDescription, new { @readonly = "readonly", @class = "form-control" })</td>
+                            @Html.HiddenFor(a=> Model.Asset[i].GuarantorFinancialId)
+                            @Html.HiddenFor(a=> Model.Asset[i].LoanApplicantProfileId)
+                        </tr>
 
-                }
-            </tbody>
-        </table>
-       
-    }
-    else
-    {
-        <p style="color: red">No data found for Liabilities</p>
-    }
-</div>
+                    }
+                </tbody>
+            </table>
 
-<hr />
-<h5>Applicant Gross Annual Family Income</h5>
+        }
+        else
+        {
+            <p style="color: red">No data found for ASSETS</p>
+        }
+    </div>
 
-<div class="form-row">
-    @if (Model.GrossAnnualFamilyIncome != null)
-    {
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">Income 2</th>
-                <th scope="col">Income 3</th>
-                <th scope="col">Income 4</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var gFamIncome in Model.GrossAnnualFamilyIncome)
-            {
-                <tr>
-                    <td>@gFamIncome.CustomersFinancialIncome2</td>
-                    <td>@gFamIncome.CustomersFinancialIncome3</td>
-                    <td>@gFamIncome.CustomersFinancialIncome4</td>
-                </tr>
+    <hr />
+    <h5>Applicant Liabilities</h5>
 
-            }
-            </tbody>
-        </table>
-        
-    }
-    else
-    {
-             <p style="color: red">No data found for Liabilities</p>
-    }
+    <div class="form-row">
+        @if (Model.Liabilities != null)
+        {
+            <table class="table table-dark table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int j = 0;j< Model.Liabilities.Count;j++)
+                    {
+                        <tr>
+                            <td>@Html.TextBoxFor(l => Model.Liabilities[j].IndividualFinancialsAmount, new { @readonly = "readonly", @class = "form-control" })</td>
 
-</div>
+                            <td>@Html.TextBoxFor(l => Model.Liabilities[j].IndividualFinancialsDescription, new { @readonly = "readonly", @class = "form-control" })</td>
+                            @Html.HiddenFor(a=> Model.Liabilities[j].GuarantorFinancialId)
+                            @Html.HiddenFor(a=> Model.Liabilities[j].LoanApplicantProfileId)
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        }
+        else
+        {
+            <p style="color: red">No data found for Liabilities</p>
+        }
+    </div>
+
+    <hr />
+    <h5>Applicant Gross Annual Family Income</h5>
+
+    <div class="form-row">
+        @if (Model.GrossAnnualFamilyIncome != null)
+        {
+            <table class="table table-dark table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Income 2</th>
+                        <th scope="col">Income 3</th>
+                        <th scope="col">Income 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int k = 0; k < Model.GrossAnnualFamilyIncome.Count;k++)
+                    {
+                        <tr>
+                            <td>@Html.TextBoxFor(g => Model.GrossAnnualFamilyIncome[k].CustomersFinancialIncome2, new { @readonly = "readonly", @class = "form-control" })</td>
+                            <td>@Html.TextBoxFor(g => Model.GrossAnnualFamilyIncome[k].CustomersFinancialIncome3, new { @readonly = "readonly", @class = "form-control" })</td>
+                            <td>@Html.TextBoxFor(g => Model.GrossAnnualFamilyIncome[k].CustomersFinancialIncome4, new { @readonly = "readonly", @class = "form-control" })</td>
+                            @Html.HiddenFor(a=> Model.GrossAnnualFamilyIncome[k].CustomerSecondoccupation)
+                            @Html.HiddenFor(a=> Model.GrossAnnualFamilyIncome[k].GuarantorFinancialId)
+                            @Html.HiddenFor(a=> Model.GrossAnnualFamilyIncome[k].CustomersFinancialIncome1)
+                            @Html.HiddenFor(a=> Model.GrossAnnualFamilyIncome[k].LoanApplicantProfileId)
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        }
+        else
+        {
+            <p style="color: red">No data found for Liabilities</p>
+        }
+
+    </div>

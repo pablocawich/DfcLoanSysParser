@@ -2,32 +2,32 @@
 
 <div class="form-row">
     <div class="form-group col-md-3">
-        <label for="inputQual1">Qaul1</label>
-        <input type="text" class="form-control" id="inputQual1" placeholder="@Model.StudentlnQual1">
+        @Html.LabelFor(m => m.StudentlnQual1, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.StudentlnQual1, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group col-md-3">
-        <label for="inputLevel">Level</label>
-        <input type="text" class="form-control" id="inputLevel" placeholder="@Model.StudentlnLevel">
+        @Html.LabelFor(m => m.StudentlnLevel, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.StudentlnLevel, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group col-md-3">
-        <label for="inputDuration">Duration</label>
-        <input type="text" class="form-control" id="inputDuration" placeholder="@Model.StudentlnDuration">
+        @Html.LabelFor(m => m.StudentlnDuration, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.StudentlnDuration, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group col-md-3">
-        <label for="inputCourse">Course</label>
-        <input type="text" class="form-control" id="inputCourse" placeholder="@Model.StudentlnCourse">
+        @Html.LabelFor(m => m.StudentlnCourse, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.StudentlnCourse, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group col-md-3">
-        <label for="inputPastSchool">Past School</label>
-        <input type="text" class="form-control" id="inputPastSchool" placeholder="@Model.StudentlnPastschool1">
+        @Html.LabelFor(m => m.StudentlnPastschool1, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.StudentlnPastschool1, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group col-md-3">
-        <label for="inputQualification">Past Qualification</label>
-        <input type="text" class="form-control" id="inputQualification" placeholder="@Model.StudentlnPastqual1">
+        @Html.LabelFor(m => m.StudentlnPastqual1, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.StudentlnPastqual1, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group col-md-3">
-        <label for="inputSchool">School</label>
-        <input type="text" class="form-control" id="inputSchool" placeholder="@Model.StudentlnSchool">
+        @Html.LabelFor(m => m.StudentlnSchool, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.StudentlnSchool, new { @readonly = "readonly", @class = "form-control" })
     </div>
 </div>
 
@@ -38,16 +38,18 @@
 <div class="form-row">
     <div class="form-group col-md-3" id="StuLnBorrowItemVal">
         <h6>Item Val</h6>
-        @foreach (var item in Model.StudentlnBorr)
+        @for (int i = 0; i < Model.StudentlnBorr.Count; i++)
         {
-            <input type="text" class="form-control" value="@item.StudentlnBorrItemval">
+           
+            @Html.TextBoxFor(m => Model.StudentlnBorr[i].StudentlnBorrItemval, new { @readonly = "readonly", @class = "form-control" })
         }
     </div>
     <div class="form-group col-md-4" id="StuLnBorrowAidItem">
         <h6>Aid Item</h6>
-        @foreach (var item in Model.StudentlnBorr)
+        @for (int j = 0; j < Model.StudentlnBorr.Count;j++)
         {
-            <input type="text" class="form-control" value="@item.StudentlnBorrAiditem">
+            @Html.TextBoxFor(m => Model.StudentlnBorr[j].StudentlnBorrAiditem, new { @readonly = "readonly", @class = "form-control" })
+
         }
     </div>
 </div>

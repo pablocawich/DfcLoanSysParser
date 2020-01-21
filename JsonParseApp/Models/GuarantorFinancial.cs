@@ -10,10 +10,10 @@ namespace JsonParseApp.Models
     [JsonObject("guarantor_financial")]
     public class GuarantorFinancial
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
-        [JsonProperty("customers.indusgrp")]
-        public string CustomersIndusgrp { get; set; }
+       // [JsonProperty("customers.indusgrp")]
+       // public string CustomersIndusgrp { get; set; }
 
         [Display(Name = "Depends")]
         [JsonProperty("customers.depends")]

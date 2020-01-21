@@ -1,11 +1,11 @@
 ﻿@using JsonParseApp.Models
-@model IEnumerable<JsonParseApp.Models.Asset>
+@model IList<JsonParseApp.Models.Asset>
 
 <hr />
 <div class="col-md-6">
    
         <h6>Assets</h6>
-        <table class="table table-borderless">
+        <table class="table table-dark table-borderless">
             <thead>
             <tr>
                 <th scope="col">Code</th>
@@ -14,12 +14,14 @@
             </tr>
             </thead>
             <tbody>
-            @foreach (var asset in Model)
+            @for (int i = 0;i < Model.Count;i++)
             {
                 <tr>
-                    <td>@Html.TextBoxFor(a=>asset.IndividualFinancialsCode, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(a=>asset.IndividualFinancialsAmount, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(a => asset.IndividualFinancialsDescription, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(a=>Model[i].IndividualFinancialsCode, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(a=> Model[i].IndividualFinancialsAmount, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(a => Model[i].IndividualFinancialsDescription, new { @class = "form-control" })</td>
+                    @Html.HiddenFor(m=> Model[i].GuarantorFinancialId)
+                    @Html.HiddenFor(m=> Model[i].LoanApplicantProfileId)
                 </tr>
 
             }

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using JsonParseApp.Models;
+using JsonParseApp.ViewModel;
 using Newtonsoft.Json;
 
 namespace JsonParseApp.Controllers
@@ -36,6 +37,7 @@ namespace JsonParseApp.Controllers
             //return this.Json(new { data = 21, success = true, message = $"" }, JsonRequestBehavior.AllowGet);
             var loan = new StudentLoan();
 
+            
             //file type should be 'application/json'
             string fileName = myFile.FileName;
             if (myFile != null && myFile.ContentLength > 0)
@@ -56,17 +58,45 @@ namespace JsonParseApp.Controllers
                 }
 
             }
+
+            /*var viewModel = new StudentLoanViewModel()
+            {
+                StudentLoan = loan
+            };*/
             //return Json(new { success = true, partialStuff = PartialView("_JsonLoanData", loan), message = $"Edsf" });
             return PartialView("_JsonLoanData", loan);
         }
 
         [HttpPost]
-        public ActionResult MapAndInsertValue(StudentLoan loan)
+        public ActionResult SaveLoanValues(StudentLoan studentLoan)
         {
+            //capturing posted data from client (controller/server)
+            var education = studentLoan.EducationProgramData;
+            var minorProfile = studentLoan.MinorProfile;
+            var guarantors = studentLoan.Guarantors;
+            var applicant = studentLoan.LoanApplicantProfile;
+            var loanConfig = studentLoan.LoanConfig;
 
-            return View("");
+
+            //validate values with respect to constraints on the mapped DPAC fields
+            //As discussed prior to development, validation should not be thorough as this was to supposedly be done by the student portal development team 
+            ValidateEducationData(education);
+
+            //Throw an exception should validation fail and alert client
+
+            //commence mapping should validity not be compromised
+
+            //save data via db context
+
+            //Notify client of successful operation
+
+
+            return null;
         }
 
-
+        public void ValidateEducationData(EducationProgramData edu)
+        {
+            return;
+        }
     }
 }

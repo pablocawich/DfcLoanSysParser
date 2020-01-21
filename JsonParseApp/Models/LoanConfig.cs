@@ -9,7 +9,7 @@ namespace JsonParseApp.Models
     [JsonObject("loan_config")]
     public class LoanConfig
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         [JsonProperty("loans.app_type")]
         public string LoansAppType { get; set; }
