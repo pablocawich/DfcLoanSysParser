@@ -8,10 +8,10 @@ using System.Data.Entity.Infrastructure;
 
 namespace JsonParseApp.Models
 {
-    public class MyDbContext: DbContext
+   public class MyDbContext
     {
 
-        public MyDbContext()
+       /* public MyDbContext()
         {
         }
 
@@ -24,7 +24,7 @@ namespace JsonParseApp.Models
         public DbSet<SelfEmployed> SelfEmployed { get; set; }
         public DbSet<MinorProfile> MinorProfiles { get; set; }
         public DbSet<LoanConfig> LoanConfigs { get; set; }
-        public DbSet<Guarantor> Guarantors { get; set; }
+        public DbSet<Guarantor> Guarantors { get; set; }*/
 
 
 

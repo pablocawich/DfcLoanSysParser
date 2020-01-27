@@ -60,6 +60,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,16 +134,46 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910312259395_InitialModel.cs" />
-    <Compile Include="Migrations\201910312259395_InitialModel.Designer.cs">
-      <DependentUpon>201910312259395_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911012101065_AddAllTables.cs" />
-    <Compile Include="Migrations\201911012101065_AddAllTables.Designer.cs">
-      <DependentUpon>201911012101065_AddAllTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Asset.cs" />
+    <Compile Include="Models\DpacDb\customer.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\customers_financial.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\DpacDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DpacDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\DpacDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\DpacDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DpacDbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\fxrefbor.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\GetIvorPixabajCustomerCode_Result.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\individual_financials.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\loan.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\studentln.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\studentln_borr.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EducationProgramData.cs" />
     <Compile Include="Models\GrossAnnualFamilyIncome.cs" />
     <Compile Include="Models\Guarantor.cs" />
@@ -342,6 +374,17 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DpacDb\DpacDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DpacDbModel.edmx</DependentUpon>
+      <LastGenOutput>DpacDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DpacDb\DpacDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DpacDbModel.edmx</DependentUpon>
+      <LastGenOutput>DpacDbModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\AfterParseEvents_IP.js" />
     <Content Include="Scripts\bootbox.all.js" />
     <Content Include="Scripts\bootbox.all.min.js" />
     <Content Include="Scripts\bootbox.js" />
@@ -451,6 +494,13 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <EntityDeploy Include="Models\DpacDb\DpacDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DpacDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DpacDb\DpacDbModel.edmx.diagram">
+      <DependentUpon>DpacDbModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\fontawesome\all.min.js" />
@@ -537,7 +587,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DpacDb\" />
     <Folder Include="Views\ParsedJson\" />
   </ItemGroup>
   <ItemGroup>
@@ -550,14 +599,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910312259395_InitialModel.resx">
-      <DependentUpon>201910312259395_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911012101065_AddAllTables.resx">
-      <DependentUpon>201911012101065_AddAllTables.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

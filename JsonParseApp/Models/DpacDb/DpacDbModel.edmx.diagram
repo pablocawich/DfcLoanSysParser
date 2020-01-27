@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50b37b9ac14e40a093f8ec858d7f9c0f" Name="Diagram1">
+        <EntityTypeShape EntityType="DPACModel.customer" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.customers_financial" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.individual_financials" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.loan" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.studentln" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.studentln_borr" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.fxrefbor" Width="1.5" PointX="8.25" PointY="24" IsExpanded="true" />
+        <AssociationConnector Association="DPACModel.FK_cus_fbonumbr" ManuallyRouted="false" />
+        <AssociationConnector Association="DPACModel.FK_customers_financial_fbonumbr" ManuallyRouted="false" />
+        <AssociationConnector Association="DPACModel.FK_indivcustomer_financials_fbonumbr" ManuallyRouted="false" />
+        <AssociationConnector Association="DPACModel.FK_loans_customers" ManuallyRouted="false" />
+        <AssociationConnector Association="DPACModel.FK_fxrefbor" ManuallyRouted="false" />
+        <AssociationConnector Association="DPACModel.FK_student_appnumbr" ManuallyRouted="false" />
+        <AssociationConnector Association="DPACModel.FK_studentbo_appnumbr" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -24,7 +24,7 @@ namespace JsonParseApp.Models
 
         //will be used to store the guarantor's Id should in case it already exist in DPAC
         [StringLength(10)]
-        [DisplayName("Guarantor ID")]
+        [DisplayName("DPAC Customer ID")]
         public string ApplicantId { get; set; }
 
     }

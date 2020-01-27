@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using JsonParseApp.Models;
+using JsonParseApp.Models.DpacDb;
 using JsonParseApp.ViewModel;
 using Newtonsoft.Json;
 
@@ -13,17 +14,17 @@ namespace JsonParseApp.Controllers
 {
     public class HomeController : Controller
     {
-        private MyDbContext _context;
+     /*   private MyDbContext _context;
 
         public HomeController()
         {
             _context = new MyDbContext();
-        }
+        }*/
 
-        protected override void Dispose(bool disposing)
+        /*protected override void Dispose(bool disposing)
         {
             _context.Dispose();
-        }
+        }*/
 
         public ActionResult Index()
         {
@@ -91,12 +92,23 @@ namespace JsonParseApp.Controllers
             //Notify client of successful operation
 
 
-            return null;
+            return Content("Your values have been received by the server where processing will take place and have your data readily inserted into DPAC");
         }
 
         public void ValidateEducationData(EducationProgramData edu)
         {
+
             return;
+        }
+
+        public ActionResult IsCustomerIdInDpac(string id)
+        {
+            //call the stored procedure that will look for the id in dpac 
+            using (var newCont = new DPACEntities())
+            {
+                var customer = newCont.customers.Where(c => c.fbonumbr == id);
+                return Content("should return ");
+            }
         }
     }
 }

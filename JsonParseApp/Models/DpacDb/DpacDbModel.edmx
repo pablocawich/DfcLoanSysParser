@@ -1,0 +1,1544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DPACModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="fbonumbr" />
+          </Key>
+          <Property Name="ctype" Type="char" MaxLength="5" />
+          <Property Name="officerid" Type="char" MaxLength="20" />
+          <Property Name="fbonumbr" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="fbobname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="prefix" Type="char" MaxLength="15" />
+          <Property Name="appldate" Type="datetime" />
+          <Property Name="firstname" Type="char" MaxLength="50" />
+          <Property Name="middlename" Type="char" MaxLength="50" />
+          <Property Name="lastname" Type="char" MaxLength="50" />
+          <Property Name="aliasname" Type="char" MaxLength="30" />
+          <Property Name="marriedstatus" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="next_kin" Type="varchar" MaxLength="50" />
+          <Property Name="relationshipkin" Type="char" MaxLength="20" />
+          <Property Name="sex" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="spousename" Type="char" MaxLength="70" />
+          <Property Name="fbos1bal" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="fbos1lad" Type="date" />
+          <Property Name="fbos2bal" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="fbos2lad" Type="date" />
+          <Property Name="fbos3bal" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="fbos3lad" Type="date" />
+          <Property Name="fbomodid" Type="char" MaxLength="8" />
+          <Property Name="fbomoddt" Type="date" />
+          <Property Name="fbobadr1" Type="char" MaxLength="30" />
+          <Property Name="fbobadr2" Type="char" MaxLength="30" />
+          <Property Name="home_status" Type="char" MaxLength="20" />
+          <Property Name="town" Type="char" MaxLength="5" />
+          <Property Name="district" Type="char" MaxLength="5" />
+          <Property Name="country" Type="char" MaxLength="5" />
+          <Property Name="addresstownbusiness" Type="char" MaxLength="5" />
+          <Property Name="addressdistrictbusiness" Type="char" MaxLength="5" />
+          <Property Name="addresscountrybusiness" Type="char" MaxLength="5" />
+          <Property Name="addressbusiness2town" Type="char" MaxLength="5" />
+          <Property Name="addressbusiness2district" Type="char" MaxLength="5" />
+          <Property Name="addressbusiness2country" Type="char" MaxLength="5" />
+          <Property Name="businessplace" Type="char" MaxLength="60" />
+          <Property Name="besinessplace2" Type="char" MaxLength="60" />
+          <Property Name="employfrom2" Type="datetime" />
+          <Property Name="employfrom" Type="datetime" />
+          <Property Name="employto2" Type="datetime" />
+          <Property Name="employto" Type="datetime" />
+          <Property Name="yearsaddr" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="nationality" Type="char" MaxLength="5" />
+          <Property Name="previousworkphone" Type="char" MaxLength="20" />
+          <Property Name="workphone2" Type="char" MaxLength="20" />
+          <Property Name="workphone" Type="char" MaxLength="20" />
+          <Property Name="fax" Type="char" MaxLength="20" />
+          <Property Name="empstatus" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="homephone" Type="char" MaxLength="20" />
+          <Property Name="otherphone" Type="char" MaxLength="20" />
+          <Property Name="mobilphone" Type="char" MaxLength="20" />
+          <Property Name="otheremail" Type="char" MaxLength="50" />
+          <Property Name="emailname" Type="char" MaxLength="50" />
+          <Property Name="birthdate" Type="datetime" />
+          <Property Name="typeofid" Type="char" MaxLength="5" />
+          <Property Name="healthstatus" Type="text" />
+          <Property Name="pastemployer" Type="char" MaxLength="60" />
+          <Property Name="pastempfrom" Type="datetime" />
+          <Property Name="pastempto" Type="datetime" />
+          <Property Name="note" Type="text" />
+          <Property Name="depends" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="secondoccupation" Type="char" MaxLength="50" />
+          <Property Name="occupation" Type="char" MaxLength="50" />
+          <Property Name="secondoccupgrp" Type="char" MaxLength="5" />
+          <Property Name="occupgrp" Type="char" MaxLength="5" />
+          <Property Name="secondoccup" Type="char" MaxLength="5" />
+          <Property Name="mainoccup" Type="char" MaxLength="5" />
+          <Property Name="indusgrp" Type="char" MaxLength="5" />
+          <Property Name="mainindus" Type="char" MaxLength="5" />
+          <Property Name="fbobkind" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="cphoto" Type="varbinary(max)" />
+          <Property Name="numemploy" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="datestart" Type="datetime" />
+          <Property Name="busdescrip" Type="text" />
+          <Property Name="bus_resp" Type="char" MaxLength="30" />
+          <Property Name="bus_posit" Type="char" MaxLength="25" />
+          <Property Name="bus_type" Type="char" MaxLength="5" />
+          <Property Name="date_lact" Type="datetime" />
+          <Property Name="user_lact" Type="char" MaxLength="25" />
+          <Property Name="secondoccupationobtion" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="isdeleted" Type="bit" />
+          <Property Name="years_emp" Type="int" />
+          <Property Name="address1business" Type="char" MaxLength="60" />
+          <Property Name="address2business" Type="char" MaxLength="60" />
+          <Property Name="address2business2" Type="char" MaxLength="60" />
+          <Property Name="address1business2" Type="char" MaxLength="60" />
+          <Property Name="num_inhouse" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="company_name" Type="char" MaxLength="50" />
+          <Property Name="mailing_address1" Type="char" MaxLength="50" />
+          <Property Name="mailing_address2" Type="char" MaxLength="50" />
+          <Property Name="mailingtown" Type="char" MaxLength="5" />
+          <Property Name="mailingdistrict" Type="char" MaxLength="5" />
+          <Property Name="mailingcountry" Type="char" MaxLength="5" />
+          <Property Name="sec_idtype" Type="char" MaxLength="5" />
+          <Property Name="sec_idnumber" Type="char" MaxLength="20" />
+          <Property Name="sex_bus_resp" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="prefix_bus_resp" Type="char" MaxLength="10" />
+          <Property Name="idnumber" Type="char" MaxLength="20" />
+          <Property Name="othname" Type="varchar" MaxLength="20" />
+          <Property Name="fladelet" Type="bit" />
+          <Property Name="prevcustno" Type="varchar" MaxLength="30" />
+          <Property Name="flauser1_cu" Type="char" MaxLength="6" />
+          <Property Name="flauser2_cu" Type="char" MaxLength="6" />
+          <Property Name="flauser3_cu" Type="char" MaxLength="6" />
+          <Property Name="flauser4_cu" Type="char" MaxLength="6" />
+          <Property Name="flauser5_cu" Type="char" MaxLength="6" />
+          <Property Name="flauser6_cu" Type="char" MaxLength="6" />
+          <Property Name="flauser1date_cu" Type="datetime" />
+          <Property Name="flauser2date_cu" Type="datetime" />
+          <Property Name="flauser3date_cu" Type="datetime" />
+          <Property Name="flauser4date_cu" Type="datetime" />
+          <Property Name="flauser5date_cu" Type="datetime" />
+          <Property Name="flauser6date_cu" Type="datetime" />
+          <Property Name="companydirections" Type="nvarchar(max)" />
+          <Property Name="homedirections" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="customers_financial">
+          <Key>
+            <PropertyRef Name="fbonumbr" />
+          </Key>
+          <Property Name="officerid" Type="char" MaxLength="20" />
+          <Property Name="fbonumbr" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="income1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="income2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="income3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="income4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="income4spec" Type="varchar" MaxLength="300" />
+          <Property Name="finanalyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payfrequency" Type="char" MaxLength="1" />
+          <Property Name="risk_level" Type="char" MaxLength="5" />
+          <Property Name="declarationdate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="fxrefbor">
+          <Key>
+            <PropertyRef Name="fbonumbr" />
+            <PropertyRef Name="fxrbtype" />
+            <PropertyRef Name="idnum" />
+            <PropertyRef Name="appnumber" />
+          </Key>
+          <Property Name="fbonumbr" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="fxrbtype" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fxrmodid" Type="char" MaxLength="8" />
+          <Property Name="fxrmoddt" Type="datetime" />
+          <Property Name="idnum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="flarchive" Type="bit" />
+          <Property Name="appnumber" Type="char" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="individual_financials">
+          <Key>
+            <PropertyRef Name="idnum" />
+          </Key>
+          <Property Name="idnum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fbonumbr" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="amount" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="description" Type="char" MaxLength="100" />
+          <Property Name="code" Type="char" MaxLength="5" />
+          <Property Name="consolidate" Type="bit" />
+        </EntityType>
+        <EntityType Name="loans">
+          <Key>
+            <PropertyRef Name="appnumber" />
+          </Key>
+          <Property Name="appnumber" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="flanumbr" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="fbonumbr" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="officerid" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="appldate" Type="date" />
+          <Property Name="flatloan" Type="numeric" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="flagpval" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="flatermm" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="flaicrat" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="flafxins" Type="numeric" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="loanpurp" Type="nvarchar(max)" />
+          <Property Name="loanstatus" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flaptype" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="date_pend" Type="date" />
+          <Property Name="date_rejec" Type="date" />
+          <Property Name="date_appr" Type="date" />
+          <Property Name="date_reg" Type="date" />
+          <Property Name="decisionby" Type="char" MaxLength="20" />
+          <Property Name="venture" Type="bit" />
+          <Property Name="jventure" Type="bit" />
+          <Property Name="grantname" Type="char" MaxLength="40" />
+          <Property Name="grantamt" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="agency_name" Type="char" MaxLength="5" />
+          <Property Name="fladescr" Type="varchar" MaxLength="200" />
+          <Property Name="flaesins" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="flagptmt" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flaicmet" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flarebat" Type="bit" />
+          <Property Name="flainsud" Type="datetime" />
+          <Property Name="flainsup" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="flalpmet" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flalprat" Type="numeric" Precision="5" Scale="3" />
+          <Property Name="flalpval" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="flaltype" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flapadr1" Type="char" MaxLength="30" />
+          <Property Name="flapadr2" Type="char" MaxLength="30" />
+          <Property Name="flapdesc" Type="text" />
+          <Property Name="flarpmet" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="flalocat" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="flasecto" Type="char" MaxLength="5" />
+          <Property Name="flasubsc" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="flacofee" Type="bit" />
+          <Property Name="flauser1" Type="char" MaxLength="5" />
+          <Property Name="flauser2" Type="char" MaxLength="5" />
+          <Property Name="flauser3" Type="char" MaxLength="5" />
+          <Property Name="flauser4" Type="char" MaxLength="5" />
+          <Property Name="flauser5" Type="char" MaxLength="5" />
+          <Property Name="flauser6" Type="char" MaxLength="5" />
+          <Property Name="flatiers" Type="char" MaxLength="1" />
+          <Property Name="flaictyp" Type="char" MaxLength="1" />
+          <Property Name="flaanvdt" Type="datetime" />
+          <Property Name="flacurncy" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="flrerate" Type="numeric" Precision="6" Scale="3" />
+          <Property Name="fd_fdamt" Type="char" MaxLength="12" />
+          <Property Name="flainher" Type="bit" />
+          <Property Name="flaconso" Type="bit" />
+          <Property Name="user_lact" Type="char" MaxLength="25" />
+          <Property Name="date_lact" Type="datetime" />
+          <Property Name="appr_level" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="flapstep" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="flanstep" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="flamostp" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="flamtcon" Type="money" />
+          <Property Name="flalncons" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="app_type" Type="char" MaxLength="5" />
+          <Property Name="year_length" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="flapaddr3" Type="char" MaxLength="30" />
+          <Property Name="regularpayment" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="skippedpayment" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="skippedmonths" Type="varchar" MaxLength="50" />
+          <Property Name="date_canc" Type="date" />
+          <Property Name="consolidateamt" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="consol_newamtreq" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="branchid" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="repay_cycle" Type="char" MaxLength="1" />
+          <Property Name="fladelet" Type="bit" />
+          <Property Name="prevloannumber" Type="varchar" MaxLength="30" />
+          <Property Name="projectdirections" Type="nvarchar(max)" />
+          <Property Name="inquirydate" Type="date" />
+          <Property Name="refinanceamt" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="activatetype3monthlyseries" Type="bit" />
+        </EntityType>
+        <EntityType Name="studentln">
+          <Key>
+            <PropertyRef Name="appnumber" />
+          </Key>
+          <Property Name="appnumber" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="course" Type="char" MaxLength="5" />
+          <Property Name="school" Type="char" MaxLength="5" />
+          <Property Name="duration" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="approxcost" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="pastschool1" Type="char" MaxLength="50" />
+          <Property Name="pastschool2" Type="char" MaxLength="50" />
+          <Property Name="pastschool3" Type="char" MaxLength="50" />
+          <Property Name="pastqual1" Type="char" MaxLength="50" />
+          <Property Name="pastqual2" Type="char" MaxLength="50" />
+          <Property Name="pastqual3" Type="char" MaxLength="50" />
+          <Property Name="qual1" Type="char" MaxLength="20" />
+          <Property Name="qual2" Type="char" MaxLength="20" />
+          <Property Name="qual3" Type="char" MaxLength="20" />
+          <Property Name="studlevel" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="sub1" Type="char" MaxLength="30" />
+          <Property Name="grade1" Type="char" MaxLength="8" />
+          <Property Name="sub2" Type="char" MaxLength="30" />
+          <Property Name="grade2" Type="char" MaxLength="8" />
+          <Property Name="sub3" Type="char" MaxLength="30" />
+          <Property Name="grade3" Type="char" MaxLength="8" />
+          <Property Name="sub4" Type="char" MaxLength="30" />
+          <Property Name="grade4" Type="char" MaxLength="8" />
+          <Property Name="sub5" Type="char" MaxLength="30" />
+          <Property Name="grade5" Type="char" MaxLength="8" />
+          <Property Name="sub6" Type="char" MaxLength="30" />
+          <Property Name="grade6" Type="char" MaxLength="8" />
+          <Property Name="sub7" Type="char" MaxLength="30" />
+          <Property Name="grade7" Type="char" MaxLength="8" />
+          <Property Name="sub8" Type="char" MaxLength="30" />
+          <Property Name="grade8" Type="char" MaxLength="8" />
+          <Property Name="sub9" Type="char" MaxLength="30" />
+          <Property Name="grade9" Type="char" MaxLength="8" />
+          <Property Name="sub10" Type="char" MaxLength="30" />
+          <Property Name="grade10" Type="char" MaxLength="8" />
+          <Property Name="sub11" Type="char" MaxLength="30" />
+          <Property Name="grade11" Type="char" MaxLength="8" />
+          <Property Name="sub12" Type="char" MaxLength="30" />
+          <Property Name="grade12" Type="char" MaxLength="8" />
+          <Property Name="sub13" Type="char" MaxLength="30" />
+          <Property Name="grade13" Type="char" MaxLength="8" />
+          <Property Name="level" Type="char" MaxLength="25" />
+          <Property Name="date_lact" Type="datetime" />
+          <Property Name="user_lact" Type="char" MaxLength="25" />
+          <Property Name="year1item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year2item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year3item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year4item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year5item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year6item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year7item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year1item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year2item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year3item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year4item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year5item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year6item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year7item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year1item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year2item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year3item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year4item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year5item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year6item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year7item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year1item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year2item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year3item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year4item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year5item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year6item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year7item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year1item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year2item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year3item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year4item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year5item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year6item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year7item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year1item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year2item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year3item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year4item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year5item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year6item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year7item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year8item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year9item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year10item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year11item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year12item1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year8item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year9item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year10item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year11item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year12item2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year8item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year9item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year10item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year11item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year12item3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year8item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year9item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year10item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year11item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year12item4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year8item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year9item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year10item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year11item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year12item5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year8item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year9item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year10item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year11item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="year12item6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="aiditem1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="aiditem2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="aiditem3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="aiditem4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="aiditem5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="aiditem6" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="borritem1" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="borritem2" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="borritem3" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="borritem4" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="borritem5" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="borritem6" Type="numeric" Precision="20" Scale="2" />
+        </EntityType>
+        <EntityType Name="studentln_borr">
+          <Key>
+            <PropertyRef Name="idnum" />
+          </Key>
+          <Property Name="idnum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="appnumber" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="itemval" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="aiditem" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="borritem" Type="numeric" Precision="20" Scale="2" />
+        </EntityType>
+        <Association Name="FK_cus_fbonumbr">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="fxrefbor" Type="Self.fxrefbor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="fxrefbor">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customers_financial_fbonumbr">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="customers_financial" Type="Self.customers_financial" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="customers_financial">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fxrefbor">
+          <End Role="loans" Type="Self.loans" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="fxrefbor" Type="Self.fxrefbor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loans">
+              <PropertyRef Name="appnumber" />
+            </Principal>
+            <Dependent Role="fxrefbor">
+              <PropertyRef Name="appnumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indivcustomer_financials_fbonumbr">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="individual_financials" Type="Self.individual_financials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="individual_financials">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loans_customers">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="loans" Type="Self.loans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="loans">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_appnumbr">
+          <End Role="loans" Type="Self.loans" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="studentln" Type="Self.studentln" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="loans">
+              <PropertyRef Name="appnumber" />
+            </Principal>
+            <Dependent Role="studentln">
+              <PropertyRef Name="appnumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentbo_appnumbr">
+          <End Role="loans" Type="Self.loans" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="studentln_borr" Type="Self.studentln_borr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loans">
+              <PropertyRef Name="appnumber" />
+            </Principal>
+            <Dependent Role="studentln_borr">
+              <PropertyRef Name="appnumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="FMS_InsertIntoFxrefbor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fbonumber" Type="varchar" Mode="In" />
+          <Parameter Name="fxrbtype" Type="varchar" Mode="In" />
+          <Parameter Name="fxrmoddt" Type="datetime" Mode="In" />
+          <Parameter Name="appnumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="FMS_UpdateAppNumberNext" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AppId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetIvorPixabajCustomerCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cust" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="updateCustCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cust" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DPACModelStoreContainer">
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="Loan_app" store:Type="Tables" />
+          <EntitySet Name="customers_financial" EntityType="Self.customers_financial" Schema="Loan_app" store:Type="Tables" />
+          <EntitySet Name="individual_financials" EntityType="Self.individual_financials" Schema="Loan_app" store:Type="Tables" />
+          <EntitySet Name="loans" EntityType="Self.loans" Schema="Loan_app" store:Type="Tables" />
+          <EntitySet Name="studentln" EntityType="Self.studentln" Schema="Loan_app" store:Type="Tables" />
+          <EntitySet Name="studentln_borr" EntityType="Self.studentln_borr" Schema="Loan_app" store:Type="Tables" />
+          <EntitySet Name="fxrefbor" EntityType="Self.fxrefbor" store:Type="Tables" store:Schema="Loan_app">
+            <DefiningQuery>SELECT 
+    [fxrefbor].[fbonumbr] AS [fbonumbr], 
+    [fxrefbor].[fxrbtype] AS [fxrbtype], 
+    [fxrefbor].[fxrmodid] AS [fxrmodid], 
+    [fxrefbor].[fxrmoddt] AS [fxrmoddt], 
+    [fxrefbor].[idnum] AS [idnum], 
+    [fxrefbor].[flarchive] AS [flarchive], 
+    [fxrefbor].[appnumber] AS [appnumber]
+    FROM [Loan_app].[fxrefbor] AS [fxrefbor]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_cus_fbonumbr" Association="Self.FK_cus_fbonumbr">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="fxrefbor" EntitySet="fxrefbor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customers_financial_fbonumbr" Association="Self.FK_customers_financial_fbonumbr">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="customers_financial" EntitySet="customers_financial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fxrefbor" Association="Self.FK_fxrefbor">
+            <End Role="loans" EntitySet="loans" />
+            <End Role="fxrefbor" EntitySet="fxrefbor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indivcustomer_financials_fbonumbr" Association="Self.FK_indivcustomer_financials_fbonumbr">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="individual_financials" EntitySet="individual_financials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loans_customers" Association="Self.FK_loans_customers">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="loans" EntitySet="loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_appnumbr" Association="Self.FK_student_appnumbr">
+            <End Role="loans" EntitySet="loans" />
+            <End Role="studentln" EntitySet="studentln" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentbo_appnumbr" Association="Self.FK_studentbo_appnumbr">
+            <End Role="loans" EntitySet="loans" />
+            <End Role="studentln_borr" EntitySet="studentln_borr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DPACModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="fbonumbr" />
+          </Key>
+          <Property Name="ctype" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="officerid" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="fbonumbr" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fbobname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prefix" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="appldate" Type="DateTime" Precision="3" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="middlename" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="aliasname" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="marriedstatus" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="next_kin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="relationshipkin" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="sex" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="spousename" Type="String" MaxLength="70" FixedLength="true" Unicode="false" />
+          <Property Name="fbos1bal" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="fbos1lad" Type="DateTime" Precision="0" />
+          <Property Name="fbos2bal" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="fbos2lad" Type="DateTime" Precision="0" />
+          <Property Name="fbos3bal" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="fbos3lad" Type="DateTime" Precision="0" />
+          <Property Name="fbomodid" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="fbomoddt" Type="DateTime" Precision="0" />
+          <Property Name="fbobadr1" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="fbobadr2" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="home_status" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="town" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="district" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="addresstownbusiness" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="addressdistrictbusiness" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="addresscountrybusiness" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="addressbusiness2town" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="addressbusiness2district" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="addressbusiness2country" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="businessplace" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="besinessplace2" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="employfrom2" Type="DateTime" Precision="3" />
+          <Property Name="employfrom" Type="DateTime" Precision="3" />
+          <Property Name="employto2" Type="DateTime" Precision="3" />
+          <Property Name="employto" Type="DateTime" Precision="3" />
+          <Property Name="yearsaddr" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="nationality" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="previousworkphone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="workphone2" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="workphone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="empstatus" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="homephone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="otherphone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="mobilphone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="otheremail" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="emailname" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="birthdate" Type="DateTime" Precision="3" />
+          <Property Name="typeofid" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="healthstatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pastemployer" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="pastempfrom" Type="DateTime" Precision="3" />
+          <Property Name="pastempto" Type="DateTime" Precision="3" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="depends" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="secondoccupation" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="occupation" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="secondoccupgrp" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="occupgrp" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="secondoccup" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="mainoccup" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="indusgrp" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="mainindus" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="fbobkind" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cphoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="numemploy" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="datestart" Type="DateTime" Precision="3" />
+          <Property Name="busdescrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bus_resp" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="bus_posit" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="bus_type" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="date_lact" Type="DateTime" Precision="3" />
+          <Property Name="user_lact" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="secondoccupationobtion" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="isdeleted" Type="Boolean" />
+          <Property Name="years_emp" Type="Int32" />
+          <Property Name="address1business" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="address2business" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="address2business2" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="address1business2" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="num_inhouse" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="company_name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="mailing_address1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="mailing_address2" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="mailingtown" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="mailingdistrict" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="mailingcountry" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="sec_idtype" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="sec_idnumber" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="sex_bus_resp" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="prefix_bus_resp" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="idnumber" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="othname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fladelet" Type="Boolean" />
+          <Property Name="prevcustno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="flauser1_cu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="flauser2_cu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="flauser3_cu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="flauser4_cu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="flauser5_cu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="flauser6_cu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="flauser1date_cu" Type="DateTime" Precision="3" />
+          <Property Name="flauser2date_cu" Type="DateTime" Precision="3" />
+          <Property Name="flauser3date_cu" Type="DateTime" Precision="3" />
+          <Property Name="flauser4date_cu" Type="DateTime" Precision="3" />
+          <Property Name="flauser5date_cu" Type="DateTime" Precision="3" />
+          <Property Name="flauser6date_cu" Type="DateTime" Precision="3" />
+          <Property Name="companydirections" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="homedirections" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fxrefbors" Relationship="Self.FK_cus_fbonumbr" FromRole="customers" ToRole="fxrefbor" />
+          <NavigationProperty Name="customers_financial" Relationship="Self.FK_customers_financial_fbonumbr" FromRole="customers" ToRole="customers_financial" />
+          <NavigationProperty Name="individual_financials" Relationship="Self.FK_indivcustomer_financials_fbonumbr" FromRole="customers" ToRole="individual_financials" />
+          <NavigationProperty Name="loans" Relationship="Self.FK_loans_customers" FromRole="customers" ToRole="loans" />
+        </EntityType>
+        <EntityType Name="customers_financial">
+          <Key>
+            <PropertyRef Name="fbonumbr" />
+          </Key>
+          <Property Name="officerid" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="fbonumbr" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="income1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="income2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="income3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="income4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="income4spec" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="finanalyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payfrequency" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="risk_level" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="declarationdate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_customers_financial_fbonumbr" FromRole="customers_financial" ToRole="customers" />
+        </EntityType>
+        <EntityType Name="individual_financials">
+          <Key>
+            <PropertyRef Name="idnum" />
+          </Key>
+          <Property Name="idnum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fbonumbr" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="consolidate" Type="Boolean" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_indivcustomer_financials_fbonumbr" FromRole="individual_financials" ToRole="customers" />
+        </EntityType>
+        <EntityType Name="loan">
+          <Key>
+            <PropertyRef Name="appnumber" />
+          </Key>
+          <Property Name="appnumber" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="flanumbr" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="fbonumbr" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="officerid" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="appldate" Type="DateTime" Precision="0" />
+          <Property Name="flatloan" Type="Decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="flagpval" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="flatermm" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="flaicrat" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="flafxins" Type="Decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="loanpurp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="loanstatus" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flaptype" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="date_pend" Type="DateTime" Precision="0" />
+          <Property Name="date_rejec" Type="DateTime" Precision="0" />
+          <Property Name="date_appr" Type="DateTime" Precision="0" />
+          <Property Name="date_reg" Type="DateTime" Precision="0" />
+          <Property Name="decisionby" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="venture" Type="Boolean" />
+          <Property Name="jventure" Type="Boolean" />
+          <Property Name="grantname" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="grantamt" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="agency_name" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="fladescr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="flaesins" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="flagptmt" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flaicmet" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flarebat" Type="Boolean" />
+          <Property Name="flainsud" Type="DateTime" Precision="3" />
+          <Property Name="flainsup" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="flalpmet" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flalprat" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="flalpval" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="flaltype" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="flapadr1" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="flapadr2" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="flapdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="flarpmet" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="flalocat" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="flasecto" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="flasubsc" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="flacofee" Type="Boolean" />
+          <Property Name="flauser1" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="flauser2" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="flauser3" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="flauser4" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="flauser5" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="flauser6" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="flatiers" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="flaictyp" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="flaanvdt" Type="DateTime" Precision="3" />
+          <Property Name="flacurncy" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="flrerate" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="fd_fdamt" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="flainher" Type="Boolean" />
+          <Property Name="flaconso" Type="Boolean" />
+          <Property Name="user_lact" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="date_lact" Type="DateTime" Precision="3" />
+          <Property Name="appr_level" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="flapstep" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="flanstep" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="flamostp" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="flamtcon" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="flalncons" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="app_type" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="year_length" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="flapaddr3" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="regularpayment" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="skippedpayment" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="skippedmonths" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date_canc" Type="DateTime" Precision="0" />
+          <Property Name="consolidateamt" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="consol_newamtreq" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="branchid" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="repay_cycle" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fladelet" Type="Boolean" />
+          <Property Name="prevloannumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="projectdirections" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="inquirydate" Type="DateTime" Precision="0" />
+          <Property Name="refinanceamt" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="activatetype3monthlyseries" Type="Boolean" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_loans_customers" FromRole="loans" ToRole="customers" />
+          <NavigationProperty Name="fxrefbors" Relationship="Self.FK_fxrefbor" FromRole="loans" ToRole="fxrefbor" />
+          <NavigationProperty Name="studentln" Relationship="Self.FK_student_appnumbr" FromRole="loans" ToRole="studentln" />
+          <NavigationProperty Name="studentln_borr" Relationship="Self.FK_studentbo_appnumbr" FromRole="loans" ToRole="studentln_borr" />
+        </EntityType>
+        <EntityType Name="studentln">
+          <Key>
+            <PropertyRef Name="appnumber" />
+          </Key>
+          <Property Name="appnumber" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="course" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="school" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="duration" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="approxcost" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="pastschool1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="pastschool2" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="pastschool3" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="pastqual1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="pastqual2" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="pastqual3" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="qual1" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="qual2" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="qual3" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="studlevel" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="sub1" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade1" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub2" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade2" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub3" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade3" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub4" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade4" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub5" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade5" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub6" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade6" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub7" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade7" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub8" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade8" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub9" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade9" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub10" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade10" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub11" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade11" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub12" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade12" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="sub13" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="grade13" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="level" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="date_lact" Type="DateTime" Precision="3" />
+          <Property Name="user_lact" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="year1item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year2item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year3item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year4item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year5item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year6item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year7item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year1item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year2item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year3item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year4item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year5item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year6item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year7item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year1item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year2item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year3item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year4item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year5item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year6item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year7item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year1item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year2item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year3item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year4item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year5item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year6item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year7item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year1item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year2item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year3item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year4item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year5item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year6item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year7item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year1item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year2item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year3item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year4item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year5item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year6item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year7item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year8item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year9item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year10item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year11item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year12item1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year8item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year9item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year10item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year11item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year12item2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year8item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year9item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year10item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year11item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year12item3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year8item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year9item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year10item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year11item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year12item4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year8item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year9item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year10item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year11item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year12item5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year8item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year9item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year10item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year11item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="year12item6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="aiditem1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="aiditem2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="aiditem3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="aiditem4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="aiditem5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="aiditem6" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="borritem1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="borritem2" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="borritem3" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="borritem4" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="borritem5" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="borritem6" Type="Decimal" Precision="20" Scale="2" />
+          <NavigationProperty Name="loan" Relationship="Self.FK_student_appnumbr" FromRole="studentln" ToRole="loans" />
+        </EntityType>
+        <EntityType Name="studentln_borr">
+          <Key>
+            <PropertyRef Name="idnum" />
+          </Key>
+          <Property Name="idnum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="appnumber" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="itemval" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="aiditem" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="borritem" Type="Decimal" Precision="20" Scale="2" />
+          <NavigationProperty Name="loan" Relationship="Self.FK_studentbo_appnumbr" FromRole="studentln_borr" ToRole="loans" />
+        </EntityType>
+        <EntityType Name="fxrefbor">
+          <Key>
+            <PropertyRef Name="fbonumbr" />
+            <PropertyRef Name="fxrbtype" />
+            <PropertyRef Name="idnum" />
+            <PropertyRef Name="appnumber" />
+          </Key>
+          <Property Name="fbonumbr" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fxrbtype" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fxrmodid" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="fxrmoddt" Type="DateTime" Precision="3" />
+          <Property Name="idnum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="flarchive" Type="Boolean" />
+          <Property Name="appnumber" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_cus_fbonumbr" FromRole="fxrefbor" ToRole="customers" />
+          <NavigationProperty Name="loan" Relationship="Self.FK_fxrefbor" FromRole="fxrefbor" ToRole="loans" />
+        </EntityType>
+        <Association Name="FK_cus_fbonumbr">
+          <End Role="customers" Type="Self.customer" Multiplicity="1" />
+          <End Role="fxrefbor" Type="Self.fxrefbor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="fxrefbor">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customers_financial_fbonumbr">
+          <End Role="customers" Type="Self.customer" Multiplicity="1" />
+          <End Role="customers_financial" Type="Self.customers_financial" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="customers_financial">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indivcustomer_financials_fbonumbr">
+          <End Role="customers" Type="Self.customer" Multiplicity="1" />
+          <End Role="individual_financials" Type="Self.individual_financials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="individual_financials">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loans_customers">
+          <End Role="customers" Type="Self.customer" Multiplicity="1" />
+          <End Role="loans" Type="Self.loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="fbonumbr" />
+            </Principal>
+            <Dependent Role="loans">
+              <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fxrefbor">
+          <End Role="loans" Type="Self.loan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="fxrefbor" Type="Self.fxrefbor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loans">
+              <PropertyRef Name="appnumber" />
+            </Principal>
+            <Dependent Role="fxrefbor">
+              <PropertyRef Name="appnumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_appnumbr">
+          <End Role="loans" Type="Self.loan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="studentln" Type="Self.studentln" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="loans">
+              <PropertyRef Name="appnumber" />
+            </Principal>
+            <Dependent Role="studentln">
+              <PropertyRef Name="appnumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentbo_appnumbr">
+          <End Role="loans" Type="Self.loan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="studentln_borr" Type="Self.studentln_borr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loans">
+              <PropertyRef Name="appnumber" />
+            </Principal>
+            <Dependent Role="studentln_borr">
+              <PropertyRef Name="appnumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DPACEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="customers_financial" EntityType="Self.customers_financial" />
+          <EntitySet Name="individual_financials" EntityType="Self.individual_financials" />
+          <EntitySet Name="loans" EntityType="Self.loan" />
+          <EntitySet Name="studentlns" EntityType="Self.studentln" />
+          <EntitySet Name="studentln_borr" EntityType="Self.studentln_borr" />
+          <EntitySet Name="fxrefbors" EntityType="Self.fxrefbor" />
+          <AssociationSet Name="FK_cus_fbonumbr" Association="Self.FK_cus_fbonumbr">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="fxrefbor" EntitySet="fxrefbors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customers_financial_fbonumbr" Association="Self.FK_customers_financial_fbonumbr">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="customers_financial" EntitySet="customers_financial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indivcustomer_financials_fbonumbr" Association="Self.FK_indivcustomer_financials_fbonumbr">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="individual_financials" EntitySet="individual_financials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loans_customers" Association="Self.FK_loans_customers">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="loans" EntitySet="loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fxrefbor" Association="Self.FK_fxrefbor">
+            <End Role="loans" EntitySet="loans" />
+            <End Role="fxrefbor" EntitySet="fxrefbors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_appnumbr" Association="Self.FK_student_appnumbr">
+            <End Role="loans" EntitySet="loans" />
+            <End Role="studentln" EntitySet="studentlns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentbo_appnumbr" Association="Self.FK_studentbo_appnumbr">
+            <End Role="loans" EntitySet="loans" />
+            <End Role="studentln_borr" EntitySet="studentln_borr" />
+          </AssociationSet>
+          <FunctionImport Name="FMS_InsertIntoFxrefbor">
+            <Parameter Name="fbonumber" Mode="In" Type="String" />
+            <Parameter Name="fxrbtype" Mode="In" Type="String" />
+            <Parameter Name="fxrmoddt" Mode="In" Type="DateTime" />
+            <Parameter Name="appnumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FMS_UpdateAppNumberNext" ReturnType="Collection(Int32)">
+            <Parameter Name="AppId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetIvorPixabajCustomerCode" ReturnType="Collection(DPACModel.GetIvorPixabajCustomerCode_Result)">
+            <Parameter Name="Cust" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updateCustCode">
+            <Parameter Name="Cust" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetIvorPixabajCustomerCode_Result">
+          <Property Type="String" Name="person" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="NextID" Nullable="true" MaxLength="3" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DPACModelStoreContainer" CdmEntityContainer="DPACEntities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="DPACModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="ctype" ColumnName="ctype" />
+                <ScalarProperty Name="officerid" ColumnName="officerid" />
+                <ScalarProperty Name="fbonumbr" ColumnName="fbonumbr" />
+                <ScalarProperty Name="fbobname" ColumnName="fbobname" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="appldate" ColumnName="appldate" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="middlename" ColumnName="middlename" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="aliasname" ColumnName="aliasname" />
+                <ScalarProperty Name="marriedstatus" ColumnName="marriedstatus" />
+                <ScalarProperty Name="next_kin" ColumnName="next_kin" />
+                <ScalarProperty Name="relationshipkin" ColumnName="relationshipkin" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="spousename" ColumnName="spousename" />
+                <ScalarProperty Name="fbos1bal" ColumnName="fbos1bal" />
+                <ScalarProperty Name="fbos1lad" ColumnName="fbos1lad" />
+                <ScalarProperty Name="fbos2bal" ColumnName="fbos2bal" />
+                <ScalarProperty Name="fbos2lad" ColumnName="fbos2lad" />
+                <ScalarProperty Name="fbos3bal" ColumnName="fbos3bal" />
+                <ScalarProperty Name="fbos3lad" ColumnName="fbos3lad" />
+                <ScalarProperty Name="fbomodid" ColumnName="fbomodid" />
+                <ScalarProperty Name="fbomoddt" ColumnName="fbomoddt" />
+                <ScalarProperty Name="fbobadr1" ColumnName="fbobadr1" />
+                <ScalarProperty Name="fbobadr2" ColumnName="fbobadr2" />
+                <ScalarProperty Name="home_status" ColumnName="home_status" />
+                <ScalarProperty Name="town" ColumnName="town" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="addresstownbusiness" ColumnName="addresstownbusiness" />
+                <ScalarProperty Name="addressdistrictbusiness" ColumnName="addressdistrictbusiness" />
+                <ScalarProperty Name="addresscountrybusiness" ColumnName="addresscountrybusiness" />
+                <ScalarProperty Name="addressbusiness2town" ColumnName="addressbusiness2town" />
+                <ScalarProperty Name="addressbusiness2district" ColumnName="addressbusiness2district" />
+                <ScalarProperty Name="addressbusiness2country" ColumnName="addressbusiness2country" />
+                <ScalarProperty Name="businessplace" ColumnName="businessplace" />
+                <ScalarProperty Name="besinessplace2" ColumnName="besinessplace2" />
+                <ScalarProperty Name="employfrom2" ColumnName="employfrom2" />
+                <ScalarProperty Name="employfrom" ColumnName="employfrom" />
+                <ScalarProperty Name="employto2" ColumnName="employto2" />
+                <ScalarProperty Name="employto" ColumnName="employto" />
+                <ScalarProperty Name="yearsaddr" ColumnName="yearsaddr" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="previousworkphone" ColumnName="previousworkphone" />
+                <ScalarProperty Name="workphone2" ColumnName="workphone2" />
+                <ScalarProperty Name="workphone" ColumnName="workphone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="empstatus" ColumnName="empstatus" />
+                <ScalarProperty Name="homephone" ColumnName="homephone" />
+                <ScalarProperty Name="otherphone" ColumnName="otherphone" />
+                <ScalarProperty Name="mobilphone" ColumnName="mobilphone" />
+                <ScalarProperty Name="otheremail" ColumnName="otheremail" />
+                <ScalarProperty Name="emailname" ColumnName="emailname" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="typeofid" ColumnName="typeofid" />
+                <ScalarProperty Name="healthstatus" ColumnName="healthstatus" />
+                <ScalarProperty Name="pastemployer" ColumnName="pastemployer" />
+                <ScalarProperty Name="pastempfrom" ColumnName="pastempfrom" />
+                <ScalarProperty Name="pastempto" ColumnName="pastempto" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="depends" ColumnName="depends" />
+                <ScalarProperty Name="secondoccupation" ColumnName="secondoccupation" />
+                <ScalarProperty Name="occupation" ColumnName="occupation" />
+                <ScalarProperty Name="secondoccupgrp" ColumnName="secondoccupgrp" />
+                <ScalarProperty Name="occupgrp" ColumnName="occupgrp" />
+                <ScalarProperty Name="secondoccup" ColumnName="secondoccup" />
+                <ScalarProperty Name="mainoccup" ColumnName="mainoccup" />
+                <ScalarProperty Name="indusgrp" ColumnName="indusgrp" />
+                <ScalarProperty Name="mainindus" ColumnName="mainindus" />
+                <ScalarProperty Name="fbobkind" ColumnName="fbobkind" />
+                <ScalarProperty Name="cphoto" ColumnName="cphoto" />
+                <ScalarProperty Name="numemploy" ColumnName="numemploy" />
+                <ScalarProperty Name="datestart" ColumnName="datestart" />
+                <ScalarProperty Name="busdescrip" ColumnName="busdescrip" />
+                <ScalarProperty Name="bus_resp" ColumnName="bus_resp" />
+                <ScalarProperty Name="bus_posit" ColumnName="bus_posit" />
+                <ScalarProperty Name="bus_type" ColumnName="bus_type" />
+                <ScalarProperty Name="date_lact" ColumnName="date_lact" />
+                <ScalarProperty Name="user_lact" ColumnName="user_lact" />
+                <ScalarProperty Name="secondoccupationobtion" ColumnName="secondoccupationobtion" />
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+                <ScalarProperty Name="years_emp" ColumnName="years_emp" />
+                <ScalarProperty Name="address1business" ColumnName="address1business" />
+                <ScalarProperty Name="address2business" ColumnName="address2business" />
+                <ScalarProperty Name="address2business2" ColumnName="address2business2" />
+                <ScalarProperty Name="address1business2" ColumnName="address1business2" />
+                <ScalarProperty Name="num_inhouse" ColumnName="num_inhouse" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="mailing_address1" ColumnName="mailing_address1" />
+                <ScalarProperty Name="mailing_address2" ColumnName="mailing_address2" />
+                <ScalarProperty Name="mailingtown" ColumnName="mailingtown" />
+                <ScalarProperty Name="mailingdistrict" ColumnName="mailingdistrict" />
+                <ScalarProperty Name="mailingcountry" ColumnName="mailingcountry" />
+                <ScalarProperty Name="sec_idtype" ColumnName="sec_idtype" />
+                <ScalarProperty Name="sec_idnumber" ColumnName="sec_idnumber" />
+                <ScalarProperty Name="sex_bus_resp" ColumnName="sex_bus_resp" />
+                <ScalarProperty Name="prefix_bus_resp" ColumnName="prefix_bus_resp" />
+                <ScalarProperty Name="idnumber" ColumnName="idnumber" />
+                <ScalarProperty Name="othname" ColumnName="othname" />
+                <ScalarProperty Name="fladelet" ColumnName="fladelet" />
+                <ScalarProperty Name="prevcustno" ColumnName="prevcustno" />
+                <ScalarProperty Name="flauser1_cu" ColumnName="flauser1_cu" />
+                <ScalarProperty Name="flauser2_cu" ColumnName="flauser2_cu" />
+                <ScalarProperty Name="flauser3_cu" ColumnName="flauser3_cu" />
+                <ScalarProperty Name="flauser4_cu" ColumnName="flauser4_cu" />
+                <ScalarProperty Name="flauser5_cu" ColumnName="flauser5_cu" />
+                <ScalarProperty Name="flauser6_cu" ColumnName="flauser6_cu" />
+                <ScalarProperty Name="flauser1date_cu" ColumnName="flauser1date_cu" />
+                <ScalarProperty Name="flauser2date_cu" ColumnName="flauser2date_cu" />
+                <ScalarProperty Name="flauser3date_cu" ColumnName="flauser3date_cu" />
+                <ScalarProperty Name="flauser4date_cu" ColumnName="flauser4date_cu" />
+                <ScalarProperty Name="flauser5date_cu" ColumnName="flauser5date_cu" />
+                <ScalarProperty Name="flauser6date_cu" ColumnName="flauser6date_cu" />
+                <ScalarProperty Name="companydirections" ColumnName="companydirections" />
+                <ScalarProperty Name="homedirections" ColumnName="homedirections" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers_financial">
+            <EntityTypeMapping TypeName="DPACModel.customers_financial">
+              <MappingFragment StoreEntitySet="customers_financial">
+                <ScalarProperty Name="officerid" ColumnName="officerid" />
+                <ScalarProperty Name="fbonumbr" ColumnName="fbonumbr" />
+                <ScalarProperty Name="income1" ColumnName="income1" />
+                <ScalarProperty Name="income2" ColumnName="income2" />
+                <ScalarProperty Name="income3" ColumnName="income3" />
+                <ScalarProperty Name="income4" ColumnName="income4" />
+                <ScalarProperty Name="income4spec" ColumnName="income4spec" />
+                <ScalarProperty Name="finanalyid" ColumnName="finanalyid" />
+                <ScalarProperty Name="payfrequency" ColumnName="payfrequency" />
+                <ScalarProperty Name="risk_level" ColumnName="risk_level" />
+                <ScalarProperty Name="declarationdate" ColumnName="declarationdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="individual_financials">
+            <EntityTypeMapping TypeName="DPACModel.individual_financials">
+              <MappingFragment StoreEntitySet="individual_financials">
+                <ScalarProperty Name="idnum" ColumnName="idnum" />
+                <ScalarProperty Name="fbonumbr" ColumnName="fbonumbr" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="consolidate" ColumnName="consolidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loans">
+            <EntityTypeMapping TypeName="DPACModel.loan">
+              <MappingFragment StoreEntitySet="loans">
+                <ScalarProperty Name="appnumber" ColumnName="appnumber" />
+                <ScalarProperty Name="flanumbr" ColumnName="flanumbr" />
+                <ScalarProperty Name="fbonumbr" ColumnName="fbonumbr" />
+                <ScalarProperty Name="officerid" ColumnName="officerid" />
+                <ScalarProperty Name="appldate" ColumnName="appldate" />
+                <ScalarProperty Name="flatloan" ColumnName="flatloan" />
+                <ScalarProperty Name="flagpval" ColumnName="flagpval" />
+                <ScalarProperty Name="flatermm" ColumnName="flatermm" />
+                <ScalarProperty Name="flaicrat" ColumnName="flaicrat" />
+                <ScalarProperty Name="flafxins" ColumnName="flafxins" />
+                <ScalarProperty Name="loanpurp" ColumnName="loanpurp" />
+                <ScalarProperty Name="loanstatus" ColumnName="loanstatus" />
+                <ScalarProperty Name="flaptype" ColumnName="flaptype" />
+                <ScalarProperty Name="date_pend" ColumnName="date_pend" />
+                <ScalarProperty Name="date_rejec" ColumnName="date_rejec" />
+                <ScalarProperty Name="date_appr" ColumnName="date_appr" />
+                <ScalarProperty Name="date_reg" ColumnName="date_reg" />
+                <ScalarProperty Name="decisionby" ColumnName="decisionby" />
+                <ScalarProperty Name="venture" ColumnName="venture" />
+                <ScalarProperty Name="jventure" ColumnName="jventure" />
+                <ScalarProperty Name="grantname" ColumnName="grantname" />
+                <ScalarProperty Name="grantamt" ColumnName="grantamt" />
+                <ScalarProperty Name="agency_name" ColumnName="agency_name" />
+                <ScalarProperty Name="fladescr" ColumnName="fladescr" />
+                <ScalarProperty Name="flaesins" ColumnName="flaesins" />
+                <ScalarProperty Name="flagptmt" ColumnName="flagptmt" />
+                <ScalarProperty Name="flaicmet" ColumnName="flaicmet" />
+                <ScalarProperty Name="flarebat" ColumnName="flarebat" />
+                <ScalarProperty Name="flainsud" ColumnName="flainsud" />
+                <ScalarProperty Name="flainsup" ColumnName="flainsup" />
+                <ScalarProperty Name="flalpmet" ColumnName="flalpmet" />
+                <ScalarProperty Name="flalprat" ColumnName="flalprat" />
+                <ScalarProperty Name="flalpval" ColumnName="flalpval" />
+                <ScalarProperty Name="flaltype" ColumnName="flaltype" />
+                <ScalarProperty Name="flapadr1" ColumnName="flapadr1" />
+                <ScalarProperty Name="flapadr2" ColumnName="flapadr2" />
+                <ScalarProperty Name="flapdesc" ColumnName="flapdesc" />
+                <ScalarProperty Name="flarpmet" ColumnName="flarpmet" />
+                <ScalarProperty Name="flalocat" ColumnName="flalocat" />
+                <ScalarProperty Name="flasecto" ColumnName="flasecto" />
+                <ScalarProperty Name="flasubsc" ColumnName="flasubsc" />
+                <ScalarProperty Name="flacofee" ColumnName="flacofee" />
+                <ScalarProperty Name="flauser1" ColumnName="flauser1" />
+                <ScalarProperty Name="flauser2" ColumnName="flauser2" />
+                <ScalarProperty Name="flauser3" ColumnName="flauser3" />
+                <ScalarProperty Name="flauser4" ColumnName="flauser4" />
+                <ScalarProperty Name="flauser5" ColumnName="flauser5" />
+                <ScalarProperty Name="flauser6" ColumnName="flauser6" />
+                <ScalarProperty Name="flatiers" ColumnName="flatiers" />
+                <ScalarProperty Name="flaictyp" ColumnName="flaictyp" />
+                <ScalarProperty Name="flaanvdt" ColumnName="flaanvdt" />
+                <ScalarProperty Name="flacurncy" ColumnName="flacurncy" />
+                <ScalarProperty Name="flrerate" ColumnName="flrerate" />
+                <ScalarProperty Name="fd_fdamt" ColumnName="fd_fdamt" />
+                <ScalarProperty Name="flainher" ColumnName="flainher" />
+                <ScalarProperty Name="flaconso" ColumnName="flaconso" />
+                <ScalarProperty Name="user_lact" ColumnName="user_lact" />
+                <ScalarProperty Name="date_lact" ColumnName="date_lact" />
+                <ScalarProperty Name="appr_level" ColumnName="appr_level" />
+                <ScalarProperty Name="flapstep" ColumnName="flapstep" />
+                <ScalarProperty Name="flanstep" ColumnName="flanstep" />
+                <ScalarProperty Name="flamostp" ColumnName="flamostp" />
+                <ScalarProperty Name="flamtcon" ColumnName="flamtcon" />
+                <ScalarProperty Name="flalncons" ColumnName="flalncons" />
+                <ScalarProperty Name="app_type" ColumnName="app_type" />
+                <ScalarProperty Name="year_length" ColumnName="year_length" />
+                <ScalarProperty Name="flapaddr3" ColumnName="flapaddr3" />
+                <ScalarProperty Name="regularpayment" ColumnName="regularpayment" />
+                <ScalarProperty Name="skippedpayment" ColumnName="skippedpayment" />
+                <ScalarProperty Name="skippedmonths" ColumnName="skippedmonths" />
+                <ScalarProperty Name="date_canc" ColumnName="date_canc" />
+                <ScalarProperty Name="consolidateamt" ColumnName="consolidateamt" />
+                <ScalarProperty Name="consol_newamtreq" ColumnName="consol_newamtreq" />
+                <ScalarProperty Name="branchid" ColumnName="branchid" />
+                <ScalarProperty Name="repay_cycle" ColumnName="repay_cycle" />
+                <ScalarProperty Name="fladelet" ColumnName="fladelet" />
+                <ScalarProperty Name="prevloannumber" ColumnName="prevloannumber" />
+                <ScalarProperty Name="projectdirections" ColumnName="projectdirections" />
+                <ScalarProperty Name="inquirydate" ColumnName="inquirydate" />
+                <ScalarProperty Name="refinanceamt" ColumnName="refinanceamt" />
+                <ScalarProperty Name="activatetype3monthlyseries" ColumnName="activatetype3monthlyseries" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studentlns">
+            <EntityTypeMapping TypeName="DPACModel.studentln">
+              <MappingFragment StoreEntitySet="studentln">
+                <ScalarProperty Name="appnumber" ColumnName="appnumber" />
+                <ScalarProperty Name="course" ColumnName="course" />
+                <ScalarProperty Name="school" ColumnName="school" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="approxcost" ColumnName="approxcost" />
+                <ScalarProperty Name="pastschool1" ColumnName="pastschool1" />
+                <ScalarProperty Name="pastschool2" ColumnName="pastschool2" />
+                <ScalarProperty Name="pastschool3" ColumnName="pastschool3" />
+                <ScalarProperty Name="pastqual1" ColumnName="pastqual1" />
+                <ScalarProperty Name="pastqual2" ColumnName="pastqual2" />
+                <ScalarProperty Name="pastqual3" ColumnName="pastqual3" />
+                <ScalarProperty Name="qual1" ColumnName="qual1" />
+                <ScalarProperty Name="qual2" ColumnName="qual2" />
+                <ScalarProperty Name="qual3" ColumnName="qual3" />
+                <ScalarProperty Name="studlevel" ColumnName="studlevel" />
+                <ScalarProperty Name="sub1" ColumnName="sub1" />
+                <ScalarProperty Name="grade1" ColumnName="grade1" />
+                <ScalarProperty Name="sub2" ColumnName="sub2" />
+                <ScalarProperty Name="grade2" ColumnName="grade2" />
+                <ScalarProperty Name="sub3" ColumnName="sub3" />
+                <ScalarProperty Name="grade3" ColumnName="grade3" />
+                <ScalarProperty Name="sub4" ColumnName="sub4" />
+                <ScalarProperty Name="grade4" ColumnName="grade4" />
+                <ScalarProperty Name="sub5" ColumnName="sub5" />
+                <ScalarProperty Name="grade5" ColumnName="grade5" />
+                <ScalarProperty Name="sub6" ColumnName="sub6" />
+                <ScalarProperty Name="grade6" ColumnName="grade6" />
+                <ScalarProperty Name="sub7" ColumnName="sub7" />
+                <ScalarProperty Name="grade7" ColumnName="grade7" />
+                <ScalarProperty Name="sub8" ColumnName="sub8" />
+                <ScalarProperty Name="grade8" ColumnName="grade8" />
+                <ScalarProperty Name="sub9" ColumnName="sub9" />
+                <ScalarProperty Name="grade9" ColumnName="grade9" />
+                <ScalarProperty Name="sub10" ColumnName="sub10" />
+                <ScalarProperty Name="grade10" ColumnName="grade10" />
+                <ScalarProperty Name="sub11" ColumnName="sub11" />
+                <ScalarProperty Name="grade11" ColumnName="grade11" />
+                <ScalarProperty Name="sub12" ColumnName="sub12" />
+                <ScalarProperty Name="grade12" ColumnName="grade12" />
+                <ScalarProperty Name="sub13" ColumnName="sub13" />
+                <ScalarProperty Name="grade13" ColumnName="grade13" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="date_lact" ColumnName="date_lact" />
+                <ScalarProperty Name="user_lact" ColumnName="user_lact" />
+                <ScalarProperty Name="year1item1" ColumnName="year1item1" />
+                <ScalarProperty Name="year2item1" ColumnName="year2item1" />
+                <ScalarProperty Name="year3item1" ColumnName="year3item1" />
+                <ScalarProperty Name="year4item1" ColumnName="year4item1" />
+                <ScalarProperty Name="year5item1" ColumnName="year5item1" />
+                <ScalarProperty Name="year6item1" ColumnName="year6item1" />
+                <ScalarProperty Name="year7item1" ColumnName="year7item1" />
+                <ScalarProperty Name="year1item2" ColumnName="year1item2" />
+                <ScalarProperty Name="year2item2" ColumnName="year2item2" />
+                <ScalarProperty Name="year3item2" ColumnName="year3item2" />
+                <ScalarProperty Name="year4item2" ColumnName="year4item2" />
+                <ScalarProperty Name="year5item2" ColumnName="year5item2" />
+                <ScalarProperty Name="year6item2" ColumnName="year6item2" />
+                <ScalarProperty Name="year7item2" ColumnName="year7item2" />
+                <ScalarProperty Name="year1item3" ColumnName="year1item3" />
+                <ScalarProperty Name="year2item3" ColumnName="year2item3" />
+                <ScalarProperty Name="year3item3" ColumnName="year3item3" />
+                <ScalarProperty Name="year4item3" ColumnName="year4item3" />
+                <ScalarProperty Name="year5item3" ColumnName="year5item3" />
+                <ScalarProperty Name="year6item3" ColumnName="year6item3" />
+                <ScalarProperty Name="year7item3" ColumnName="year7item3" />
+                <ScalarProperty Name="year1item4" ColumnName="year1item4" />
+                <ScalarProperty Name="year2item4" ColumnName="year2item4" />
+                <ScalarProperty Name="year3item4" ColumnName="year3item4" />
+                <ScalarProperty Name="year4item4" ColumnName="year4item4" />
+                <ScalarProperty Name="year5item4" ColumnName="year5item4" />
+                <ScalarProperty Name="year6item4" ColumnName="year6item4" />
+                <ScalarProperty Name="year7item4" ColumnName="year7item4" />
+                <ScalarProperty Name="year1item5" ColumnName="year1item5" />
+                <ScalarProperty Name="year2item5" ColumnName="year2item5" />
+                <ScalarProperty Name="year3item5" ColumnName="year3item5" />
+                <ScalarProperty Name="year4item5" ColumnName="year4item5" />
+                <ScalarProperty Name="year5item5" ColumnName="year5item5" />
+                <ScalarProperty Name="year6item5" ColumnName="year6item5" />
+                <ScalarProperty Name="year7item5" ColumnName="year7item5" />
+                <ScalarProperty Name="year1item6" ColumnName="year1item6" />
+                <ScalarProperty Name="year2item6" ColumnName="year2item6" />
+                <ScalarProperty Name="year3item6" ColumnName="year3item6" />
+                <ScalarProperty Name="year4item6" ColumnName="year4item6" />
+                <ScalarProperty Name="year5item6" ColumnName="year5item6" />
+                <ScalarProperty Name="year6item6" ColumnName="year6item6" />
+                <ScalarProperty Name="year7item6" ColumnName="year7item6" />
+                <ScalarProperty Name="year8item1" ColumnName="year8item1" />
+                <ScalarProperty Name="year9item1" ColumnName="year9item1" />
+                <ScalarProperty Name="year10item1" ColumnName="year10item1" />
+                <ScalarProperty Name="year11item1" ColumnName="year11item1" />
+                <ScalarProperty Name="year12item1" ColumnName="year12item1" />
+                <ScalarProperty Name="year8item2" ColumnName="year8item2" />
+                <ScalarProperty Name="year9item2" ColumnName="year9item2" />
+                <ScalarProperty Name="year10item2" ColumnName="year10item2" />
+                <ScalarProperty Name="year11item2" ColumnName="year11item2" />
+                <ScalarProperty Name="year12item2" ColumnName="year12item2" />
+                <ScalarProperty Name="year8item3" ColumnName="year8item3" />
+                <ScalarProperty Name="year9item3" ColumnName="year9item3" />
+                <ScalarProperty Name="year10item3" ColumnName="year10item3" />
+                <ScalarProperty Name="year11item3" ColumnName="year11item3" />
+                <ScalarProperty Name="year12item3" ColumnName="year12item3" />
+                <ScalarProperty Name="year8item4" ColumnName="year8item4" />
+                <ScalarProperty Name="year9item4" ColumnName="year9item4" />
+                <ScalarProperty Name="year10item4" ColumnName="year10item4" />
+                <ScalarProperty Name="year11item4" ColumnName="year11item4" />
+                <ScalarProperty Name="year12item4" ColumnName="year12item4" />
+                <ScalarProperty Name="year8item5" ColumnName="year8item5" />
+                <ScalarProperty Name="year9item5" ColumnName="year9item5" />
+                <ScalarProperty Name="year10item5" ColumnName="year10item5" />
+                <ScalarProperty Name="year11item5" ColumnName="year11item5" />
+                <ScalarProperty Name="year12item5" ColumnName="year12item5" />
+                <ScalarProperty Name="year8item6" ColumnName="year8item6" />
+                <ScalarProperty Name="year9item6" ColumnName="year9item6" />
+                <ScalarProperty Name="year10item6" ColumnName="year10item6" />
+                <ScalarProperty Name="year11item6" ColumnName="year11item6" />
+                <ScalarProperty Name="year12item6" ColumnName="year12item6" />
+                <ScalarProperty Name="aiditem1" ColumnName="aiditem1" />
+                <ScalarProperty Name="aiditem2" ColumnName="aiditem2" />
+                <ScalarProperty Name="aiditem3" ColumnName="aiditem3" />
+                <ScalarProperty Name="aiditem4" ColumnName="aiditem4" />
+                <ScalarProperty Name="aiditem5" ColumnName="aiditem5" />
+                <ScalarProperty Name="aiditem6" ColumnName="aiditem6" />
+                <ScalarProperty Name="borritem1" ColumnName="borritem1" />
+                <ScalarProperty Name="borritem2" ColumnName="borritem2" />
+                <ScalarProperty Name="borritem3" ColumnName="borritem3" />
+                <ScalarProperty Name="borritem4" ColumnName="borritem4" />
+                <ScalarProperty Name="borritem5" ColumnName="borritem5" />
+                <ScalarProperty Name="borritem6" ColumnName="borritem6" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studentln_borr">
+            <EntityTypeMapping TypeName="DPACModel.studentln_borr">
+              <MappingFragment StoreEntitySet="studentln_borr">
+                <ScalarProperty Name="idnum" ColumnName="idnum" />
+                <ScalarProperty Name="appnumber" ColumnName="appnumber" />
+                <ScalarProperty Name="itemval" ColumnName="itemval" />
+                <ScalarProperty Name="aiditem" ColumnName="aiditem" />
+                <ScalarProperty Name="borritem" ColumnName="borritem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fxrefbors">
+            <EntityTypeMapping TypeName="DPACModel.fxrefbor">
+              <MappingFragment StoreEntitySet="fxrefbor">
+                <ScalarProperty Name="fbonumbr" ColumnName="fbonumbr" />
+                <ScalarProperty Name="fxrbtype" ColumnName="fxrbtype" />
+                <ScalarProperty Name="fxrmodid" ColumnName="fxrmodid" />
+                <ScalarProperty Name="fxrmoddt" ColumnName="fxrmoddt" />
+                <ScalarProperty Name="idnum" ColumnName="idnum" />
+                <ScalarProperty Name="flarchive" ColumnName="flarchive" />
+                <ScalarProperty Name="appnumber" ColumnName="appnumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FMS_InsertIntoFxrefbor" FunctionName="DPACModel.Store.FMS_InsertIntoFxrefbor" />
+          <FunctionImportMapping FunctionImportName="FMS_UpdateAppNumberNext" FunctionName="DPACModel.Store.FMS_UpdateAppNumberNext" />
+          <FunctionImportMapping FunctionImportName="GetIvorPixabajCustomerCode" FunctionName="DPACModel.Store.GetIvorPixabajCustomerCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DPACModel.GetIvorPixabajCustomerCode_Result">
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="NextID" ColumnName="NextID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="updateCustCode" FunctionName="DPACModel.Store.updateCustCode" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

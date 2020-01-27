@@ -11,7 +11,11 @@
     <div class="form-group col-md-12" id="applicantIdBox" hidden>
         <p><i>Ensure a valid user ID is provided. Should an invalid id be provided the entire operation will be discarded. Also by submitting a valid id, the data in the current section of the form, save for the provided id, will be disregarded.</i></p>
         @Html.LabelFor(m => m.ApplicantId, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.ApplicantId, new { @class = "form-control" })
+        <div class="form-inline">
+            @Html.TextBoxFor(m => m.ApplicantId, new { @class = "form-control app-id" })
+            <button type="button" class="btn btn-sm btn-outline-primary validateBtn"><i class="fa fa-exclamation-circle"></i> Validate</button>
+        </div>        
+        <p><span class="emssg hidden">you have exceeded the required amount</span></p>
     </div>
 </div>
     <div class="form-row">

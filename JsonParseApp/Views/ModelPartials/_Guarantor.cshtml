@@ -18,12 +18,14 @@
                 <p>Exclude from Import</p>
             </div>
         </div>
-        <div class="form-group col-md-3" id="applicantIdBox@(i)" hidden>
+        <div class="form-group" id="applicantIdBox@(i)" hidden>
             <p><i>Ensure a valid user ID is provided.</i></p>
-            @Html.LabelFor(m => Model[j].ApplicantId, new {@class = "control-label"})
-            @Html.TextBoxFor(m => Model[j].ApplicantId, new {@class = "form-control app-id"})
-            @Html.ValidationMessageFor(m=>m[j].ApplicantId, null)
-            <span>Will hold the validation message</span>
+            @Html.LabelFor(m => Model[j].ApplicantId, new { @class = "control-label" })
+            <div class="form-inline">
+                @Html.TextBoxFor(m => Model[j].ApplicantId, new { @class = "form-control app-id" })
+                <button type="button" class="btn btn-sm btn-outline-primary validateBtn"><i class="fa fa-exclamation-circle"></i> Validate</button>
+            </div>
+            <p><span class="emssg hidden">you have exceeded the required amount</span></p>
         </div>
     </div>
     

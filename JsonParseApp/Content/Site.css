@@ -75,3 +75,9 @@ th {
     opacity: 1;
     visibility: visible;
 }
+.emssg{
+    color: red;
+}
+.hidden {
+    visibility:hidden;
+}

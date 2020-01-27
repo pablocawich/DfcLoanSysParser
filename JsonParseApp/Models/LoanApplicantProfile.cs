@@ -13,7 +13,7 @@ namespace JsonParseApp.Models
     {
         // public int Id { get; set; }
         [StringLength(10)]
-        [DisplayName("Loan Applicant Id")]
+        [DisplayName("DPAC Customer ID")]
        public string ApplicantId { get; set; }
 
        [JsonProperty("customers.sex")]

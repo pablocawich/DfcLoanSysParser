@@ -12,7 +12,7 @@ namespace JsonParseApp.Models
     public class MinorProfile
     {
         [StringLength(10)]
-        [DisplayName("Minor ID")]
+        [DisplayName("DPAC Customer ID")]
         public string MinorId { get; set; }
 
         [JsonProperty("customers.sex")]

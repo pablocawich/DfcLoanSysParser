@@ -2,14 +2,14 @@
 @model JsonParseApp.Models.StudentLoan
 
 <h3>Student Loan Data</h3>
-   
+
 <div class="col-md-12">
     <div class="alert alert-secondary" role="alert">
         Thoroughly read through the provided information to determine whether certain customer entities are even necessary for importation to DPAC.
     </div>
 </div>
 <div class="card" style="width: 100%">
-    <div class="card-header" >
+    <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" role="tab" href="#eduProgram" aria-selected="false" aria-controls="form">Education</a>
@@ -27,21 +27,21 @@
                 <a class="nav-link" id="loanConfig-tab" data-toggle="tab" href="#loanConfig" role="tab" aria-controls="loanConfig" aria-selected="false">Loan Configuration</a>
             </li>
             <li class="nav-item ml-auto">
-                <a class="nav-link" id="save-tab" data-toggle="tab" href="#saveLink"  role="tab" aria-controls="saveRef" aria-selected="False"><i class="fa fa-save"></i> Save</a>
+                <a class="nav-link" id="save-tab" data-toggle="tab" href="#saveLink" role="tab" aria-controls="saveRef" aria-selected="False"><i class="fa fa-save"></i> Save</a>
             </li>
         </ul>
     </div>
-@using (Html.BeginForm("SaveLoanValues", "Home",  FormMethod.Post, new {@id="loanDataForm"}))
-{
-    
+    @using (Html.BeginForm("SaveLoanValues", "Home", FormMethod.Post, new { @id = "loanDataForm" }))
+    {
+
         <div class="card-body">
             <div class="tab-content" id="myTabContent">
 
                 <!--.---------------------------------------------------------------------------------------------------------.-->
 
-                <div class="tab-pane fade show active" id="eduProgram" role="tabpanel" aria-labelledby="home-tab">                
-                        <h4 style="text-align: center"><i class="fa fa-book"></i> Education Program Data</h4><hr />
-                        @Html.Partial("~/Views/ModelPartials/_EducationProgramData.cshtml", Model.EducationProgramData, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "EducationProgramData" } })
+                <div class="tab-pane fade show active" id="eduProgram" role="tabpanel" aria-labelledby="home-tab">
+                    <h4 style="text-align: center"><i class="fa fa-book"></i> Education Program Data</h4><hr />
+                    @Html.Partial("~/Views/ModelPartials/_EducationProgramData.cshtml", Model.EducationProgramData, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "EducationProgramData" } })
                 </div>
 
 
@@ -55,8 +55,8 @@
                     else
                     {
                         <h4 style="text-align: center"><i class="fa fa-id-card"></i> Minor Profile</h4>
-                        <hr/>
-                            @Html.Partial("~/Views/ModelPartials/_MinorProfile.cshtml", Model.MinorProfile, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "MinorProfile" } })          
+                        <hr />
+                        @Html.Partial("~/Views/ModelPartials/_MinorProfile.cshtml", Model.MinorProfile, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "MinorProfile" } })
 
                     }
 
@@ -66,7 +66,7 @@
 
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <h4 style="text-align: center"><i class="fa fa-address-card"></i> Loan Applicant</h4>
-                    <hr/>
+                    <hr />
 
                     @Html.Partial("~/Views/ModelPartials/_LoanApplicantProfile.cshtml", Model.LoanApplicantProfile, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "LoanApplicantProfile" } })
 
@@ -76,7 +76,7 @@
 
                 <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
                     <h4 style="text-align: center"><i class="fa fa-users"></i> Guarantor(/s)</h4>
-                    <hr/>
+                    <hr />
                     @{
                         string name = Html.NameFor(m => Model.Guarantors).ToString();
                         string prefix = Html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
@@ -93,10 +93,10 @@
 
                 <div class="tab-pane fade" id="loanConfig" role="tabpanel" aria-labelledby="loanConfig-tab">
                     <h4 style="text-align: center"><i class="fa fa-cog"></i> Loan Config</h4>
-                    <hr/>  
+                    <hr />
                     @Html.Partial("~/Views/ModelPartials/_LoanConfig.cshtml", Model.LoanConfig, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "LoanConfig" } })
-                  
-               </div>
+
+                </div>
 
                 <!--.---------------------------------------------------------------------------------------------------------.-->
                 <div class="tab-pane fade" id="saveLink" role="tabpanel" aria-labelledby="save-tab">
@@ -104,7 +104,15 @@
                 </div>
             </div>
         </div>
-}
+    }
 </div>
 
 <p> Student loan object contained anomalies. Data may have been retrieved but were determined to not be properly structured in the manner to which the DPAC DB accepts such information and thus were discarded to keep the integrity of database.</p>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            console.log("sdfdsfdsfdsf");
+        });
+    </script>
+}
