@@ -186,7 +186,6 @@
     <Compile Include="Models\SelfEmployed.cs" />
     <Compile Include="Models\StudentlnBorr.cs" />
     <Compile Include="Models\StudentLoan.cs" />
-    <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\LoanItemsViewModel.cs" />
     <Compile Include="ViewModel\StudentLoanViewModel.cs" />

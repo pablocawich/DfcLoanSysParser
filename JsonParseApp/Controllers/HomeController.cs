@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -101,13 +102,40 @@ namespace JsonParseApp.Controllers
             return;
         }
 
-        public ActionResult IsCustomerIdInDpac(string id)
+        public JsonResult CheckForCustomerInDpac(string id)
         {
             //call the stored procedure that will look for the id in dpac 
-            using (var newCont = new DPACEntities())
+            if (String.IsNullOrEmpty(id))
+                return Json(new { success = false, message = $"string value is empty or null" }, JsonRequestBehavior.AllowGet);
+
+            if (id.Length > 10)
             {
-                var customer = newCont.customers.Where(c => c.fbonumbr == id);
-                return Content("should return ");
+                return Json(new { success = false, message = $"string {id} length has exceeded the DPAC customer Id threshold" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                string idMod = id.ToUpper();
+
+                using (var newCont = new DPACEntities())
+                {
+                    var execGetCustomerName = newCont.GetCustomerName(idMod).SingleOrDefault();
+
+                    if (execGetCustomerName == null)
+                        return Json(new { success = false, message = $"{idMod} could not be located in DPAC" }, JsonRequestBehavior.AllowGet);
+
+                   
+                    if (execGetCustomerName.Count() != 0)
+                    {
+                        return Json(new { success = true, message = $"{execGetCustomerName}" }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = $"Unfortunately, the id: {id} could not be located in DPAC" }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                //return Json(new { success = true, message = $"string: {id} In terms of length, looks okay" }, JsonRequestBehavior.AllowGet);
+
             }
         }
     }

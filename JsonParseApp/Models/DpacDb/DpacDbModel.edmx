@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DPACModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DPACModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="customers">
           <Key>
             <PropertyRef Name="fbonumbr" />
@@ -497,6 +497,9 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
         <Function Name="FMS_UpdateAppNumberNext" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AppId" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetCustomerName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="applicantId" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetIvorPixabajCustomerCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Cust" Type="varchar" Mode="In" />
         </Function>
@@ -550,8 +553,7 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
             <End Role="studentln_borr" EntitySet="studentln_borr" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DPACModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1093,13 +1095,16 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
             <Parameter Name="appnumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FMS_UpdateAppNumberNext" ReturnType="Collection(Int32)">
-            <Parameter Name="AppId" Mode="In" Type="String" />
+          <Parameter Name="AppId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetIvorPixabajCustomerCode" ReturnType="Collection(DPACModel.GetIvorPixabajCustomerCode_Result)">
-            <Parameter Name="Cust" Mode="In" Type="String" />
+          <Parameter Name="Cust" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="updateCustCode">
-            <Parameter Name="Cust" Mode="In" Type="String" />
+          <Parameter Name="Cust" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCustomerName" ReturnType="Collection(String)">
+            <Parameter Name="applicantId" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetIvorPixabajCustomerCode_Result">
@@ -1518,6 +1523,7 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="updateCustCode" FunctionName="DPACModel.Store.updateCustCode" />
+          <FunctionImportMapping FunctionImportName="GetCustomerName" FunctionName="DPACModel.Store.GetCustomerName" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

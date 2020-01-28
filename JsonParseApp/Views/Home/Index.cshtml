@@ -118,8 +118,8 @@
                             //events must be instantiated subsequent to the html response otherwise will not trigger events due to the targets not loaded
                             addCheckBoxListener();
                             importLoanDataButton();
-                            importIdValidateBtn();
                             importValidateListener();
+                            validateApplicantIdOnServer();
                         });
                     }
                 });
@@ -128,37 +128,6 @@
                 function() {
                     location.reload();
                 });
-
-            
-
-          
-
-            function validateApplicantId() {
-                var hasErr = false;
-                /*$(".app-id").each(function () {
-                    console.log($(this).val());
-                });*/
-
-                $(".app-id").each(function() {
-                    // alert($(this).val());
-                    let inputSize = $(this).val().length;
-
-                    if (inputSize > 10) {
-
-                        alert($(this).val() + " is of length" + $(this).val().length + " is greater than 10");
-
-                        hasErr = true;
-                    }
-
-                });
-                // alert(hasErr);
-                return hasErr;
-            }
-
-            
-
-            //application Validation
-            
 
         });
     </script>

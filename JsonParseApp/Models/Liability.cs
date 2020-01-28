@@ -18,6 +18,10 @@ namespace JsonParseApp.Models
         public GuarantorFinancial GuarantorFinancial { get; set; }
         public int? GuarantorFinancialId { get; set; }
 
+        [Display(Name = "Code")]
+        [JsonProperty("individual_financials.code")] //this object property was added without actually being present in the file sent by the subject application
+        public string IndividualFinancialsCode { get; set; }
+
         [Display(Name = "Amount")]
         [JsonProperty("individual_financials.amount")]
         public string IndividualFinancialsAmount { get; set; }

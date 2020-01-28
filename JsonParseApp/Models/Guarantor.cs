@@ -12,7 +12,7 @@ namespace JsonParseApp.Models
     public class Guarantor
     {
        // public int Id { get; set; }
-
+       
         [JsonProperty("guarantor_personal")]
         public GuarantorPersonal GuarantorPersonal { get; set; }
         public int GuarantorPersonalId { get; set; }

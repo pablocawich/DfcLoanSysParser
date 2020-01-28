@@ -17,10 +17,10 @@
             {
                 <tr>
 
-                    <td>@Html.TextBoxFor(m=>Model[g].CustomersFinancialIncome2, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(m=> Model[g].CustomersFinancialIncome3, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(m=> Model[g].CustomersFinancialIncome4, new { @class = "form-control" })</td>
-                    <td>@Html.TextBoxFor(m=> Model[g].CustomerSecondoccupation, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m=>Model[g].CustomersFinancialIncome2, new { @readonly = "readonly",@class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m=> Model[g].CustomersFinancialIncome3, new { @readonly = "readonly", @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m=> Model[g].CustomersFinancialIncome4, new {  @readonly = "readonly",@class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m=> Model[g].CustomerSecondoccupation, new {  @readonly = "readonly",@class = "form-control" })</td>
                     @Html.HiddenFor(m=> Model[g].CustomersFinancialIncome1)
                     @Html.HiddenFor(m=> Model[g].CustomerSecondoccupation)
                     @Html.HiddenFor(m=> Model[g].GuarantorFinancialId)

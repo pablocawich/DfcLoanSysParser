@@ -82,5 +82,14 @@ namespace JsonParseApp.Models.DpacDb
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateCustCode", custParameter);
         }
+    
+        public virtual ObjectResult<string> GetCustomerName(string applicantId)
+        {
+            var applicantIdParameter = applicantId != null ?
+                new ObjectParameter("applicantId", applicantId) :
+                new ObjectParameter("applicantId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetCustomerName", applicantIdParameter);
+        }
     }
 }

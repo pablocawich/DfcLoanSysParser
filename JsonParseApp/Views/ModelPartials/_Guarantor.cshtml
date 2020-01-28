@@ -24,8 +24,9 @@
             <div class="form-inline">
                 @Html.TextBoxFor(m => Model[j].ApplicantId, new { @class = "form-control app-id" })
                 <button type="button" class="btn btn-sm btn-outline-primary validateBtn"><i class="fa fa-exclamation-circle"></i> Validate</button>
+               <span id="serverValidationMssg" style="left: 305px;position: absolute;"></span>
             </div>
-            <p><span class="emssg hidden">you have exceeded the required amount</span></p>
+            <span class="emssg hidden">you have exceeded the required amount</span>
         </div>
     </div>
     
@@ -34,84 +35,84 @@
 
         <div class="form-row">
             <div class="form-group col-md-3">
-                @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersFirstname, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersFirstname, new { @class = "form-control" })
+                @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersFirstname, new {  @class = "control-label" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersFirstname, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersMiddlename, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMiddlename, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMiddlename, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersLastname, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersLastname, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersLastname, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersSex, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersSex, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersSex, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersNationality, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersNationality, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersNationality, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersBirthdate, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersBirthdate, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersBirthdate, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersMailingAddress1, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingAddress1, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingAddress1, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersMailingAddress2, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingAddress2, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingAddress2, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersMailingcountry, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingcountry, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingcountry, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersMailingtown, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingtown, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMailingtown, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersTypeofid, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersTypeofid, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersTypeofid, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersIdnumber, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersIdnumber, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersIdnumber, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersMarriedstatus, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMarriedstatus, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMarriedstatus, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersNextKin, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersNextKin, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersNextKin, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersRelationshipkin, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersRelationshipkin, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersRelationshipkin, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersEmailname, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersEmailname, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersEmailname, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersHomephone, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersHomephone, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersHomephone, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersOtherphone, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersOtherphone, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersOtherphone, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersWorkphone, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersWorkphone, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersWorkphone, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorPersonal.CustomersMobilphone, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMobilphone, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorPersonal.CustomersMobilphone, new {@readonly = "readonly", @class = "form-control" })
             </div>
         </div>
 
@@ -121,35 +122,35 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersBusinessplace, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersBusinessplace, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersBusinessplace, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersEmpstatus, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersEmpstatus, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersEmpstatus, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersEmployfrom, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersEmployfrom, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersEmployfrom, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersOccupation, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersOccupation, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersOccupation, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersDepends, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersDepends, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersDepends, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersHomeStatus, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersHomeStatus, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersHomeStatus, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersNumInhouse, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersNumInhouse, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersNumInhouse, new {@readonly = "readonly", @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 @Html.LabelFor(m => Model[j].GuarantorFinancial.CustomersYearsaddr, new { @class = "control-label" })
-                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersYearsaddr, new { @class = "form-control" })
+                @Html.TextBoxFor(m => Model[j].GuarantorFinancial.CustomersYearsaddr, new {@readonly = "readonly", @class = "form-control" })
             </div>
 
             @if (Model[j].GuarantorFinancial.Asset != null)

@@ -140,18 +140,6 @@ function importLoanDataButton() {
             else {
                 alert("Something occured that has rendered the form submission ineligible. Kindly Fix");
             }
-
-
-        });
-}
-
-function importIdValidateBtn() {
-    $("#guarantor").on('click',
-        '.validateBtn',
-        function (e) {
-            alert("dsfdsfds");
-            //e.preventDefault();
-
         });
 }
 
@@ -159,12 +147,70 @@ function importValidateListener() {
     $('.app-id').on('keypress keydown keyup', function () {
         if ($(this).val().length > 10) {
             // there is a mismatch, hence show the error message
-            $('.emssg').removeClass('hidden');
-            $('.emssg').show();
+            //$('.emssg').removeClass('hidden');
+            $(this).parent().next().removeClass('hidden');
+            //$(this).parent().next().css({ "color": "blue", "border": "2px solid red","background-color":"yellow" });
+            $(this).parent().next().show();          
         }
         else {
             // else, do not display message
-            $('.emssg').addClass('hidden');
+            $(this).parent().next().addClass('hidden');
         }
     });
+}
+
+function validateApplicantId() {
+    var hasErr = false;
+    /*$(".app-id").each(function () {
+        console.log($(this).val());
+    });*/
+
+    $(".app-id").each(function () {
+        // alert($(this).val());
+        let inputSize = $(this).val().length;
+
+        if (inputSize > 10) {
+
+            alert($(this).val() + " is of length" + $(this).val().length + " is greater than 10");
+
+            hasErr = true;
+        }
+
+    });
+    // alert(hasErr);
+    return hasErr;
+}
+
+function validateApplicantIdOnServer() {
+    $(".validateBtn").on('click',
+        function (e) {
+            var $btn = $(this);
+            //alert($btn.prev().val());
+            var stringId = $btn.prev().val();
+          $.ajax({
+                type: 'GET',
+                url: `/Home/CheckForCustomerInDpac?id=${stringId}`,
+                //data: formData,
+                dataType: 'json',
+                cache: false,
+                //enctype: "multipart/form-data",
+               // beforeSend: function () {},
+                contentType: false,
+                processData: false
+
+            }).done(function (response) {
+                if (response.success) {
+                    $btn.next().html('');
+                    $btn.next().append(`<p style="color: green"><i class="fa fa-thumbs-up"></i> Awesome! ID was located. Please ensure <strong>(${response.message})</strong> matches the information below. Once approved, this portion of the loan is eligible for a submit</p>`);
+                  //alert(response.message);
+                } else {
+                    $btn.next().html('');
+                    $btn.next().append(`
+                       <p><i class="fa fa-exclamation-triangle"></i> ${response.message}</p>`);
+                  //alert(response.message);
+              }
+
+          });
+
+        });
 }
