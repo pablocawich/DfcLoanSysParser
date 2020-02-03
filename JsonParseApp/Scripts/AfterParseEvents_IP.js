@@ -201,7 +201,7 @@ function validateApplicantIdOnServer() {
             }).done(function (response) {
                 if (response.success) {
                     $btn.next().html('');
-                    $btn.next().append(`<p style="color: green"><i class="fa fa-thumbs-up"></i> Awesome! ID was located. Please ensure <strong>(${response.message})</strong> matches the information below. Once approved, this portion of the loan is eligible for a submit</p>`);
+                    $btn.next().append(`<p style="color: green"><i class="fa fa-thumbs-up"></i> Awesome! ID was located. Please ensure <strong>(${response.fullname} - ${response.bday})</strong> matches the information below. Once approved, this portion of the loan is eligible for a submit</p>`);
                   //alert(response.message);
                 } else {
                     $btn.next().html('');

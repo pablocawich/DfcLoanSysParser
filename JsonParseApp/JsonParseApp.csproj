@@ -134,7 +134,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Application.cs" />
     <Compile Include="Models\Asset.cs" />
+    <Compile Include="Models\CustomerEntityValidator.cs" />
     <Compile Include="Models\DpacDb\customer.cs">
       <DependentUpon>DpacDbModel.tt</DependentUpon>
     </Compile>
@@ -157,6 +159,9 @@
       <DependentUpon>DpacDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DpacDb\fxrefbor.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DpacDb\GetCustomerName_Result.cs">
       <DependentUpon>DpacDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DpacDb\GetIvorPixabajCustomerCode_Result.cs">
@@ -182,6 +187,7 @@
     <Compile Include="Models\Liability.cs" />
     <Compile Include="Models\LoanApplicantProfile.cs" />
     <Compile Include="Models\LoanConfig.cs" />
+    <Compile Include="Models\CustomerDbHandler.cs" />
     <Compile Include="Models\MinorProfile.cs" />
     <Compile Include="Models\SelfEmployed.cs" />
     <Compile Include="Models\StudentlnBorr.cs" />
@@ -619,7 +625,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51080/</IISUrl>
+          <IISUrl>http://localhost:51081/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

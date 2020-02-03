@@ -74,6 +74,15 @@ namespace JsonParseApp.Models.DpacDb
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetIvorPixabajCustomerCode_Result>("GetIvorPixabajCustomerCode", custParameter);
         }
     
+        public virtual ObjectResult<GetCustomerName_Result> GetCustomerName(string applicantId)
+        {
+            var applicantIdParameter = applicantId != null ?
+                new ObjectParameter("applicantId", applicantId) :
+                new ObjectParameter("applicantId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCustomerName_Result>("GetCustomerName", applicantIdParameter);
+        }
+    
         public virtual int updateCustCode(string cust)
         {
             var custParameter = cust != null ?
@@ -81,15 +90,6 @@ namespace JsonParseApp.Models.DpacDb
                 new ObjectParameter("Cust", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateCustCode", custParameter);
-        }
-    
-        public virtual ObjectResult<string> GetCustomerName(string applicantId)
-        {
-            var applicantIdParameter = applicantId != null ?
-                new ObjectParameter("applicantId", applicantId) :
-                new ObjectParameter("applicantId", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetCustomerName", applicantIdParameter);
         }
     }
 }

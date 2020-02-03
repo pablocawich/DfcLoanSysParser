@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="form-group col-md-12" id="applicantIdBox" hidden>
-        <p><i>Ensure a valid user ID is provided. Should an invalid id be provided the entire operation will be discarded. Also by submitting a valid id, the data in the current section of the form, save for the provided id, will be disregarded.</i></p>
+        <p style="color: blueviolet">Enter valid DPAC customer ID. Once the ID exists, the information from this section will be disregarded since a record for the customer is already stored in DPAC</p>
         @Html.LabelFor(m => m.ApplicantId, new { @class = "control-label" })
         <div class="form-inline">
             @Html.TextBoxFor(m => m.ApplicantId, new { @class = "form-control app-id" })

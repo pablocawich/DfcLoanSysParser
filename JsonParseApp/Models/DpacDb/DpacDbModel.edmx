@@ -1100,16 +1100,21 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <FunctionImport Name="GetIvorPixabajCustomerCode" ReturnType="Collection(DPACModel.GetIvorPixabajCustomerCode_Result)">
           <Parameter Name="Cust" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="updateCustCode">
-          <Parameter Name="Cust" Mode="In" Type="String" />
+          <FunctionImport Name="GetCustomerName" ReturnType="Collection(DPACModel.GetCustomerName_Result)">
+          <Parameter Name="applicantId" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetCustomerName" ReturnType="Collection(String)">
-            <Parameter Name="applicantId" Mode="In" Type="String" />
+          <FunctionImport Name="updateCustCode">
+            <Parameter Name="Cust" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetIvorPixabajCustomerCode_Result">
           <Property Type="String" Name="person" Nullable="true" MaxLength="5" />
           <Property Type="String" Name="NextID" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="GetCustomerName_Result">
+          <Property Type="String" Name="fbonumbr" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="fbobname" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="birthdate" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1522,8 +1527,16 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCustomerName" FunctionName="DPACModel.Store.GetCustomerName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DPACModel.GetCustomerName_Result">
+                <ScalarProperty Name="fbonumbr" ColumnName="fbonumbr" />
+                <ScalarProperty Name="fbobname" ColumnName="fbobname" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="updateCustCode" FunctionName="DPACModel.Store.updateCustCode" />
-          <FunctionImportMapping FunctionImportName="GetCustomerName" FunctionName="DPACModel.Store.GetCustomerName" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
