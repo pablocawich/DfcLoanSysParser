@@ -12,6 +12,19 @@ namespace JsonParseApp.Models
         public string ApplicationId { get; set; }
 
         public string ErrorMessage { get; set; }
+
+        public bool ApplicationSuccess { get;set;}
+
+        public string SaveErrMessage { get; set; }
+
+        public bool StudentDataSuccess { get; set; }
+
+        public string SaveEducationErrMessage { get; set; }
+
+        public bool StudentLnBorr { get; set; }
+
+        public string StudentLnBorrErrMessage { get; set; }
+
         public Application()
         {
                 
@@ -23,7 +36,8 @@ namespace JsonParseApp.Models
             {
                 string endFormat = "00000";
                 DateTime moment = DateTime.Now;
-                string appLoanIdFormat = "AN" + moment.Year + "-";
+                //string appLoanIdFormat = "AN" + moment.Year + "-";
+                string appLoanIdFormat = "AN2019-";
                 try
                 {
                     var num = newCont.FMS_UpdateAppNumberNext(appLoanIdFormat);

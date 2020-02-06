@@ -34,6 +34,7 @@ namespace JsonParseApp.Models.DpacDb
         public virtual DbSet<studentln> studentlns { get; set; }
         public virtual DbSet<studentln_borr> studentln_borr { get; set; }
         public virtual DbSet<fxrefbor> fxrefbors { get; set; }
+        public virtual DbSet<fuserid> fuserids { get; set; }
     
         public virtual int FMS_InsertIntoFxrefbor(string fbonumber, string fxrbtype, Nullable<System.DateTime> fxrmoddt, string appnumber)
         {

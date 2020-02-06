@@ -398,6 +398,63 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <Property Name="aiditem" Type="numeric" Precision="20" Scale="2" />
           <Property Name="borritem" Type="numeric" Precision="20" Scale="2" />
         </EntityType>
+        <EntityType Name="fuserids">
+          <Key>
+            <PropertyRef Name="officerid" />
+          </Key>
+          <Property Name="usr_id" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="usr_passw" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="officerid" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="firstname" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="lastname" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="departid" Type="char" MaxLength="10" />
+          <Property Name="accs_code" Type="char" MaxLength="15" />
+          <Property Name="access" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="approvalgroup" Type="char" MaxLength="10" />
+          <Property Name="enabled" Type="bit" />
+          <Property Name="accountlockedout" Type="bit" />
+          <Property Name="act_startdate" Type="date" />
+          <Property Name="act_enddate" Type="date" />
+          <Property Name="logon_ind" Type="bit" />
+          <Property Name="logon_date" Type="datetime" />
+          <Property Name="logtime_in" Type="char" MaxLength="8" />
+          <Property Name="logtimeout" Type="char" MaxLength="8" />
+          <Property Name="logout_in" Type="datetime" />
+          <Property Name="passw_5" Type="char" MaxLength="20" />
+          <Property Name="passw_4" Type="char" MaxLength="20" />
+          <Property Name="passw_3" Type="char" MaxLength="20" />
+          <Property Name="passw_2" Type="char" MaxLength="20" />
+          <Property Name="passw_1" Type="char" MaxLength="20" />
+          <Property Name="passw_exp" Type="datetime" />
+          <Property Name="maxapproval" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="unrestrict_acc" Type="bit" />
+          <Property Name="sunday_acc" Type="bit" />
+          <Property Name="monday_acc" Type="bit" />
+          <Property Name="tuesday_acc" Type="bit" />
+          <Property Name="wednesday_acc" Type="bit" />
+          <Property Name="thursday_acc" Type="bit" />
+          <Property Name="friday_acc" Type="bit" />
+          <Property Name="saturday_acc" Type="bit" />
+          <Property Name="sunday_s" Type="time" Precision="7" />
+          <Property Name="sunday_e" Type="time" Precision="7" />
+          <Property Name="monday_s" Type="time" Precision="7" />
+          <Property Name="monday_e" Type="time" Precision="7" />
+          <Property Name="tuesday_s" Type="time" Precision="7" />
+          <Property Name="tuesday_e" Type="time" Precision="7" />
+          <Property Name="wednesday_s" Type="time" Precision="7" />
+          <Property Name="wednesday_e" Type="time" Precision="7" />
+          <Property Name="thursday_s" Type="time" Precision="7" />
+          <Property Name="thursday_e" Type="time" Precision="7" />
+          <Property Name="friday_s" Type="time" Precision="7" />
+          <Property Name="friday_e" Type="time" Precision="7" />
+          <Property Name="saturday_s" Type="time" Precision="7" />
+          <Property Name="saturday_e" Type="time" Precision="7" />
+          <Property Name="frerpseq" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="adminacc" Type="bit" />
+          <Property Name="pos_code" Type="char" MaxLength="5" />
+          <Property Name="branch" Type="char" MaxLength="5" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
         <Association Name="FK_cus_fbonumbr">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="fxrefbor" Type="Self.fxrefbor" Multiplicity="*" />
@@ -407,6 +464,30 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
             </Principal>
             <Dependent Role="fxrefbor">
               <PropertyRef Name="fbonumbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cust_finance_officerid">
+          <End Role="fuserids" Type="Self.fuserids" Multiplicity="0..1" />
+          <End Role="customers_financial" Type="Self.customers_financial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuserids">
+              <PropertyRef Name="officerid" />
+            </Principal>
+            <Dependent Role="customers_financial">
+              <PropertyRef Name="officerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cust_officerid">
+          <End Role="fuserids" Type="Self.fuserids" Multiplicity="0..1" />
+          <End Role="customers" Type="Self.customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuserids">
+              <PropertyRef Name="officerid" />
+            </Principal>
+            <Dependent Role="customers">
+              <PropertyRef Name="officerid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -513,6 +594,7 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <EntitySet Name="loans" EntityType="Self.loans" Schema="Loan_app" store:Type="Tables" />
           <EntitySet Name="studentln" EntityType="Self.studentln" Schema="Loan_app" store:Type="Tables" />
           <EntitySet Name="studentln_borr" EntityType="Self.studentln_borr" Schema="Loan_app" store:Type="Tables" />
+          <EntitySet Name="fuserids" EntityType="Self.fuserids" Schema="User_access" store:Type="Tables" />
           <EntitySet Name="fxrefbor" EntityType="Self.fxrefbor" store:Type="Tables" store:Schema="Loan_app">
             <DefiningQuery>SELECT 
     [fxrefbor].[fbonumbr] AS [fbonumbr], 
@@ -527,6 +609,14 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <AssociationSet Name="FK_cus_fbonumbr" Association="Self.FK_cus_fbonumbr">
             <End Role="customers" EntitySet="customers" />
             <End Role="fxrefbor" EntitySet="fxrefbor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cust_finance_officerid" Association="Self.FK_cust_finance_officerid">
+            <End Role="fuserids" EntitySet="fuserids" />
+            <End Role="customers_financial" EntitySet="customers_financial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cust_officerid" Association="Self.FK_cust_officerid">
+            <End Role="fuserids" EntitySet="fuserids" />
+            <End Role="customers" EntitySet="customers" />
           </AssociationSet>
           <AssociationSet Name="FK_customers_financial_fbonumbr" Association="Self.FK_customers_financial_fbonumbr">
             <End Role="customers" EntitySet="customers" />
@@ -680,6 +770,7 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <NavigationProperty Name="customers_financial" Relationship="Self.FK_customers_financial_fbonumbr" FromRole="customers" ToRole="customers_financial" />
           <NavigationProperty Name="individual_financials" Relationship="Self.FK_indivcustomer_financials_fbonumbr" FromRole="customers" ToRole="individual_financials" />
           <NavigationProperty Name="loans" Relationship="Self.FK_loans_customers" FromRole="customers" ToRole="loans" />
+          <NavigationProperty Name="fuserid" Relationship="DPACModel.FK_cust_officerid" FromRole="customer" ToRole="fuserid" />
         </EntityType>
         <EntityType Name="customers_financial">
           <Key>
@@ -697,6 +788,7 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <Property Name="risk_level" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="declarationdate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="customer" Relationship="Self.FK_customers_financial_fbonumbr" FromRole="customers_financial" ToRole="customers" />
+          <NavigationProperty Name="fuserid" Relationship="DPACModel.FK_cust_finance_officerid" FromRole="customers_financial" ToRole="fuserid" />
         </EntityType>
         <EntityType Name="individual_financials">
           <Key>
@@ -1104,8 +1196,17 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <Parameter Name="applicantId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="updateCustCode">
-            <Parameter Name="Cust" Mode="In" Type="String" />
+          <Parameter Name="Cust" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="fuserids" EntityType="DPACModel.fuserid" />
+          <AssociationSet Name="FK_cust_officerid" Association="DPACModel.FK_cust_officerid">
+            <End Role="fuserid" EntitySet="fuserids" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cust_finance_officerid" Association="DPACModel.FK_cust_finance_officerid">
+            <End Role="fuserid" EntitySet="fuserids" />
+            <End Role="customers_financial" EntitySet="customers_financial" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetIvorPixabajCustomerCode_Result">
           <Property Type="String" Name="person" Nullable="true" MaxLength="5" />
@@ -1116,6 +1217,89 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
           <Property Type="String" Name="fbobname" Nullable="false" MaxLength="200" />
           <Property Type="DateTime" Name="birthdate" Nullable="true" Precision="23" />
         </ComplexType>
+        <EntityType Name="fuserid">
+          <Key>
+            <PropertyRef Name="officerid" />
+          </Key>
+          <Property Name="usr_id" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="usr_passw" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="officerid" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="firstname" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="lastname" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="departid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="accs_code" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="access" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="approvalgroup" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="enabled" Type="Boolean" />
+          <Property Name="accountlockedout" Type="Boolean" />
+          <Property Name="act_startdate" Type="DateTime" Precision="0" />
+          <Property Name="act_enddate" Type="DateTime" Precision="0" />
+          <Property Name="logon_ind" Type="Boolean" />
+          <Property Name="logon_date" Type="DateTime" Precision="3" />
+          <Property Name="logtime_in" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="logtimeout" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="logout_in" Type="DateTime" Precision="3" />
+          <Property Name="passw_5" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="passw_4" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="passw_3" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="passw_2" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="passw_1" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="passw_exp" Type="DateTime" Precision="3" />
+          <Property Name="maxapproval" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="unrestrict_acc" Type="Boolean" />
+          <Property Name="sunday_acc" Type="Boolean" />
+          <Property Name="monday_acc" Type="Boolean" />
+          <Property Name="tuesday_acc" Type="Boolean" />
+          <Property Name="wednesday_acc" Type="Boolean" />
+          <Property Name="thursday_acc" Type="Boolean" />
+          <Property Name="friday_acc" Type="Boolean" />
+          <Property Name="saturday_acc" Type="Boolean" />
+          <Property Name="sunday_s" Type="Time" Precision="7" />
+          <Property Name="sunday_e" Type="Time" Precision="7" />
+          <Property Name="monday_s" Type="Time" Precision="7" />
+          <Property Name="monday_e" Type="Time" Precision="7" />
+          <Property Name="tuesday_s" Type="Time" Precision="7" />
+          <Property Name="tuesday_e" Type="Time" Precision="7" />
+          <Property Name="wednesday_s" Type="Time" Precision="7" />
+          <Property Name="wednesday_e" Type="Time" Precision="7" />
+          <Property Name="thursday_s" Type="Time" Precision="7" />
+          <Property Name="thursday_e" Type="Time" Precision="7" />
+          <Property Name="friday_s" Type="Time" Precision="7" />
+          <Property Name="friday_e" Type="Time" Precision="7" />
+          <Property Name="saturday_s" Type="Time" Precision="7" />
+          <Property Name="saturday_e" Type="Time" Precision="7" />
+          <Property Name="frerpseq" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="adminacc" Type="Boolean" />
+          <Property Name="pos_code" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="branch" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <NavigationProperty Name="customers" Relationship="DPACModel.FK_cust_officerid" FromRole="fuserid" ToRole="customer" />
+          <NavigationProperty Name="customers_financial" Relationship="DPACModel.FK_cust_finance_officerid" FromRole="fuserid" ToRole="customers_financial" />
+        </EntityType>
+        <Association Name="FK_cust_officerid">
+          <End Type="DPACModel.fuserid" Role="fuserid" Multiplicity="0..1" />
+          <End Type="DPACModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuserid">
+              <PropertyRef Name="officerid" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="officerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cust_finance_officerid">
+          <End Type="DPACModel.fuserid" Role="fuserid" Multiplicity="0..1" />
+          <End Type="DPACModel.customers_financial" Role="customers_financial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuserid">
+              <PropertyRef Name="officerid" />
+            </Principal>
+            <Dependent Role="customers_financial">
+              <PropertyRef Name="officerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1537,6 +1721,64 @@ warning 6002: The table/view 'DPAC.Loan_app.fxrefbor' does not have a primary ke
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="updateCustCode" FunctionName="DPACModel.Store.updateCustCode" />
+          <EntitySetMapping Name="fuserids">
+            <EntityTypeMapping TypeName="DPACModel.fuserid">
+              <MappingFragment StoreEntitySet="fuserids">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="pos_code" ColumnName="pos_code" />
+                <ScalarProperty Name="adminacc" ColumnName="adminacc" />
+                <ScalarProperty Name="frerpseq" ColumnName="frerpseq" />
+                <ScalarProperty Name="saturday_e" ColumnName="saturday_e" />
+                <ScalarProperty Name="saturday_s" ColumnName="saturday_s" />
+                <ScalarProperty Name="friday_e" ColumnName="friday_e" />
+                <ScalarProperty Name="friday_s" ColumnName="friday_s" />
+                <ScalarProperty Name="thursday_e" ColumnName="thursday_e" />
+                <ScalarProperty Name="thursday_s" ColumnName="thursday_s" />
+                <ScalarProperty Name="wednesday_e" ColumnName="wednesday_e" />
+                <ScalarProperty Name="wednesday_s" ColumnName="wednesday_s" />
+                <ScalarProperty Name="tuesday_e" ColumnName="tuesday_e" />
+                <ScalarProperty Name="tuesday_s" ColumnName="tuesday_s" />
+                <ScalarProperty Name="monday_e" ColumnName="monday_e" />
+                <ScalarProperty Name="monday_s" ColumnName="monday_s" />
+                <ScalarProperty Name="sunday_e" ColumnName="sunday_e" />
+                <ScalarProperty Name="sunday_s" ColumnName="sunday_s" />
+                <ScalarProperty Name="saturday_acc" ColumnName="saturday_acc" />
+                <ScalarProperty Name="friday_acc" ColumnName="friday_acc" />
+                <ScalarProperty Name="thursday_acc" ColumnName="thursday_acc" />
+                <ScalarProperty Name="wednesday_acc" ColumnName="wednesday_acc" />
+                <ScalarProperty Name="tuesday_acc" ColumnName="tuesday_acc" />
+                <ScalarProperty Name="monday_acc" ColumnName="monday_acc" />
+                <ScalarProperty Name="sunday_acc" ColumnName="sunday_acc" />
+                <ScalarProperty Name="unrestrict_acc" ColumnName="unrestrict_acc" />
+                <ScalarProperty Name="maxapproval" ColumnName="maxapproval" />
+                <ScalarProperty Name="passw_exp" ColumnName="passw_exp" />
+                <ScalarProperty Name="passw_1" ColumnName="passw_1" />
+                <ScalarProperty Name="passw_2" ColumnName="passw_2" />
+                <ScalarProperty Name="passw_3" ColumnName="passw_3" />
+                <ScalarProperty Name="passw_4" ColumnName="passw_4" />
+                <ScalarProperty Name="passw_5" ColumnName="passw_5" />
+                <ScalarProperty Name="logout_in" ColumnName="logout_in" />
+                <ScalarProperty Name="logtimeout" ColumnName="logtimeout" />
+                <ScalarProperty Name="logtime_in" ColumnName="logtime_in" />
+                <ScalarProperty Name="logon_date" ColumnName="logon_date" />
+                <ScalarProperty Name="logon_ind" ColumnName="logon_ind" />
+                <ScalarProperty Name="act_enddate" ColumnName="act_enddate" />
+                <ScalarProperty Name="act_startdate" ColumnName="act_startdate" />
+                <ScalarProperty Name="accountlockedout" ColumnName="accountlockedout" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="approvalgroup" ColumnName="approvalgroup" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="accs_code" ColumnName="accs_code" />
+                <ScalarProperty Name="departid" ColumnName="departid" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="officerid" ColumnName="officerid" />
+                <ScalarProperty Name="usr_passw" ColumnName="usr_passw" />
+                <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

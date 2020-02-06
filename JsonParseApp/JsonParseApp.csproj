@@ -158,6 +158,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DpacDbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DpacDb\fuserid.cs">
+      <DependentUpon>DpacDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DpacDb\fxrefbor.cs">
       <DependentUpon>DpacDbModel.tt</DependentUpon>
     </Compile>
@@ -188,6 +191,7 @@
     <Compile Include="Models\LoanApplicantProfile.cs" />
     <Compile Include="Models\LoanConfig.cs" />
     <Compile Include="Models\CustomerDbHandler.cs" />
+    <Compile Include="Models\LoanInsertionResult.cs" />
     <Compile Include="Models\MinorProfile.cs" />
     <Compile Include="Models\SelfEmployed.cs" />
     <Compile Include="Models\StudentlnBorr.cs" />
@@ -589,6 +593,7 @@
     <Content Include="Views\ModelPartials\_GuaranFamilyIncome.cshtml" />
     <Content Include="Views\ModelPartials\_LoanConfig.cshtml" />
     <Content Include="Views\ModelPartials\_GuaranSelfEmployed.cshtml" />
+    <Content Include="Views\Home\SuccessPageReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -33,6 +33,7 @@
     </div>
     @using (Html.BeginForm("SaveLoanValues", "Home", FormMethod.Post, new { @id = "loanDataForm" }))
     {
+        @Html.ValidationSummary( true,"Ensure the following errors are resolved:");
 
         <div class="card-body">
             <div class="tab-content" id="myTabContent">
@@ -48,15 +49,16 @@
                 <!--.---------------------------------------------------------------------------------------------------------.-->
 
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h4 style="text-align: center"><i class="fa fa-id-card"></i> Minor Profile</h4>
+                    <hr />
                     @if (Model.MinorProfile == null)
                     {
                         <p> Does not contain any data</p>
                     }
                     else
                     {
-                        <h4 style="text-align: center"><i class="fa fa-id-card"></i> Minor Profile</h4>
-                        <hr />
-                        @Html.Partial("~/Views/ModelPartials/_MinorProfile.cshtml", Model.MinorProfile, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "MinorProfile" } })
+
+                        @Html.Partial("~/Views/ModelPartials/_MinorProfile.cshtml", Model.MinorProfile, new ViewDataDictionary {TemplateInfo = new TemplateInfo {HtmlFieldPrefix = "MinorProfile"}})
 
                     }
 
@@ -77,15 +79,23 @@
                 <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
                     <h4 style="text-align: center"><i class="fa fa-users"></i> Guarantor(/s)</h4>
                     <hr />
-                    @{
+                    @if (Model.Guarantors != null)
+                    {
+
                         string name = Html.NameFor(m => Model.Guarantors).ToString();
                         string prefix = Html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
                         ViewDataDictionary viewGuarantorData = new ViewDataDictionary(Html.ViewData)
                         {
                             TemplateInfo = new TemplateInfo { HtmlFieldPrefix = prefix }
                         };
+
+                        @Html.Partial("~/Views/ModelPartials/_Guarantor.cshtml", Model.Guarantors, viewGuarantorData);
                     }
-                    @Html.Partial("~/Views/ModelPartials/_Guarantor.cshtml", Model.Guarantors, viewGuarantorData)
+                    else
+                    {
+                    <p> Does not contain any data</p>
+                    }
+
 
                 </div>
 
@@ -107,12 +117,3 @@
     }
 </div>
 
-<p> Student loan object contained anomalies. Data may have been retrieved but were determined to not be properly structured in the manner to which the DPAC DB accepts such information and thus were discarded to keep the integrity of database.</p>
-@section scripts
-{
-    <script>
-        $(document).ready(function() {
-            console.log("sdfdsfdsfdsf");
-        });
-    </script>
-}

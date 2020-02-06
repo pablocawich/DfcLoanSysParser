@@ -27,5 +27,6 @@ namespace JsonParseApp.Models.DpacDb
         public Nullable<System.DateTime> declarationdate { get; set; }
     
         public virtual customer customer { get; set; }
+        public virtual fuserid fuserid { get; set; }
     }
 }

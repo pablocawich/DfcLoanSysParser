@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using JsonParseApp.Models.DpacDb;
 using Newtonsoft.Json;
 
 namespace JsonParseApp.Models
@@ -97,5 +100,12 @@ namespace JsonParseApp.Models
 
         [JsonProperty("loans.principal_interest")]
         public string LoansPrincipalInterest { get; set; }
+
+        //select list for officers
+        [Required]
+        [DisplayName("Officer Id")]
+        public string OfficerId { get; set; }
+
+        public ICollection<fuserid> UserIds { get; set; }
     }
 }

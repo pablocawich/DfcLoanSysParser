@@ -1,0 +1,32 @@
+﻿@model JsonParseApp.Models.LoanInsertionResult
+
+@{
+    ViewBag.Title = "SuccessPageReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="jumbotron text-center">
+    <h1 class="display-3">Import Results</h1>
+    <p class="lead"><strong>The following entities were inserted into DPAC</strong> For further assurance, kindly verify on the DPAC system as some data may have been ommitted due to conflict with the values sent by the student loan system</p>
+    <p> Information can always be edited on the DPAC system should inaccurate data be submitted</p>
+    <hr>
+    <ul class="list-group">
+        @if (Model.Applicant != null && Model.Applicant.Customer)
+        {
+            <li>A customer was added with customer ID: @Model.Applicant.CustomerId</li>
+        }
+       
+        <li>V</li>
+        <li>O</li>
+        <li>R</li>
+    </ul>
+    <p class="lead">
+        <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" role="button">Continue to homepage</a>
+    </p>
+    <p> Its is possible that the student loan object contained anomalies. Data may have been retrieved 
+        but were ultimately considered not properly structured due to the manner to which the DPAC Database handles information based on its set rules, constraints and architecture.
+        As a result of that certain information were discarded to keep the integrity of database in tact.</p>
+</div>
+

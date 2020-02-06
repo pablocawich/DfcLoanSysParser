@@ -1,6 +1,14 @@
 ﻿@model JsonParseApp.Models.LoanConfig
 
+<p><i>Officer must represent the user in this session</i></p>
 <div class="form-row">
+    <div class="form-group col-md-4">
+        @Html.LabelFor(m => m.OfficerId, new {@class = "control-label"})
+        @Html.DropDownListFor(m => m.OfficerId, new SelectList(Model.UserIds, "officerid", "firstname"), "Select Credit Officer", new {@class = "form-control"})
+    </div>
+    @Html.ValidationMessageFor(m=>m.OfficerId)
+</div>
+<div class="form-row">   
     <div class="form-group col-md-4">
         @Html.LabelFor(m => m.LoansAppType, new { @class = "control-label" })
         @Html.TextBoxFor(m => m.LoansAppType, new { @readonly = "readonly", @class = "form-control" })

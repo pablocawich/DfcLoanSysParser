@@ -44,6 +44,7 @@ namespace JsonParseApp.Models
         public string CustomersNumInhouse { get; set; }
 
         [Display(Name = "Years in Address")]
+        [StringLength(3)]
         [JsonProperty("customers.yearsaddr")]
         public string CustomersYearsaddr { get; set; }
 

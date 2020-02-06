@@ -145,5 +145,6 @@ namespace JsonParseApp.Models.DpacDb
         public virtual ICollection<individual_financials> individual_financials { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<loan> loans { get; set; }
+        public virtual fuserid fuserid { get; set; }
     }
 }

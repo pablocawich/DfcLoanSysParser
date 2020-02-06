@@ -35,69 +35,9 @@ namespace JsonParseApp.Controllers
             return View();
         }
 
-        //this should be modal/partial
-        [HttpPost]
-        public ActionResult JsonFileData(HttpPostedFileBase myFile)
+        public ActionResult SuccessPage()
         {
-            //return this.Json(new { data = 21, success = true, message = $"" }, JsonRequestBehavior.AllowGet);
-            var loan = new StudentLoan();
-
-            
-            //file type should be 'application/json'
-            string fileName = myFile.FileName;
-            if (myFile != null && myFile.ContentLength > 0)
-            {
-                // get contents to string
-                string str = (new StreamReader(myFile.InputStream)).ReadToEnd();
-
-                // deserializes string into object
-                try
-                {
-                    loan = JsonConvert.DeserializeObject<StudentLoan>(str);                  
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    //return Json(new { success = false, message = $"Error thrown in DB: {e.Message}" });
-                    //Console.WriteLine(e);
-                }
-
-            }
-
-            /*var viewModel = new StudentLoanViewModel()
-            {
-                StudentLoan = loan
-            };*/
-            //return Json(new { success = true, partialStuff = PartialView("_JsonLoanData", loan), message = $"Edsf" });
-            return PartialView("_JsonLoanData", loan);
-        }
-        [HttpPost]
-        public ActionResult SaveLoanValues(StudentLoan studentLoan)
-        {
-            //capturing posted data from client (controller/server)
-            /*var education = studentLoan.EducationProgramData;
-            var minorProfile = studentLoan.MinorProfile;
-            var guarantors = studentLoan.Guarantors;
-            var applicant = studentLoan.LoanApplicantProfile;
-            var loanConfig = studentLoan.LoanConfig;*/
-
-            ProcessStudentLoanForDbEntry(studentLoan);
-
-            //Determine whether posted customers are sent with id. Further eliminate the information since the customer already exists
-            
-            //validate values with respect to constraints on the mapped DPAC fields
-            //As discussed prior to development, validation should not be thorough as this was to supposedly be done by the student portal development team 
-          
-            //Throw an exception should validation fail and alert client
-
-            //commence mapping should validity not be compromised
-
-            //save data via db context
-
-            //Notify client of successful operation
-
-
-            return Content("Your values have been received by the server where processing will take place and have your data readily inserted into DPAC");
+            return View("SuccessPageReport");
         }
 
         public JsonResult CheckForCustomerInDpac(string id)
@@ -120,7 +60,7 @@ namespace JsonParseApp.Controllers
                     if (execGetCustomerName == null)
                         return Json(new { success = false, message = $"{idMod} could not be located in DPAC" }, JsonRequestBehavior.AllowGet);
 
-                   
+
                     if (execGetCustomerName.fbonumbr != null)
                     {
                         return Json(new { success = true, fullname = execGetCustomerName.fbobname, bday = execGetCustomerName.birthdate.ToString() }, JsonRequestBehavior.AllowGet);
@@ -136,7 +76,84 @@ namespace JsonParseApp.Controllers
             }
         }
 
-        public void ProcessStudentLoanForDbEntry(StudentLoan loan)
+        //this should be modal/partial
+        [HttpPost]
+        public ActionResult JsonFileData(HttpPostedFileBase myFile)
+        {
+            //return this.Json(new { data = 21, success = true, message = $"" }, JsonRequestBehavior.AllowGet);
+            var loan = new StudentLoan();
+
+            
+            //file type should be 'application/json'
+            string fileName = myFile.FileName;
+            if (myFile != null && myFile.ContentLength > 0)
+            {
+                var userList = new List<fuserid>();
+                // get contents to string
+                string str = (new StreamReader(myFile.InputStream)).ReadToEnd();
+                using (var dpac = new DPACEntities())
+                {
+                     userList = dpac.fuserids.Where(u => u.accs_code == "CDST" || u.accs_code == "EUCO" && u.enabled == true).ToList();
+                    // deserializes string into object
+                   
+                }
+
+                try
+                {
+                    loan = JsonConvert.DeserializeObject<StudentLoan>(str);
+                    loan.LoanConfig.UserIds = userList;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    //return Json(new { success = false, message = $"Error thrown in DB: {e.Message}" });
+                    //Console.WriteLine(e);
+                }
+
+            }
+
+            /*var viewModel = new StudentLoanViewModel()
+            {
+                StudentLoan = loan
+            };*/
+            //return Json(new { success = true, partialStuff = PartialView("_JsonLoanData", loan), message = $"Edsf" });
+            return PartialView("_JsonLoanData", loan);
+        }
+
+        [HttpPost]
+        public ActionResult SaveLoanValues(StudentLoan studentLoan)
+        {
+            //capturing posted data from client (controller/server)
+            /*var education = studentLoan.EducationProgramData;
+            var minorProfile = studentLoan.MinorProfile;
+            var guarantors = studentLoan.Guarantors;
+            var applicant = studentLoan.LoanApplicantProfile;
+            var loanConfig = studentLoan.LoanConfig;*/
+            if (!ModelState.IsValid)
+            {                
+                return PartialView("_JsonLoanData", studentLoan);
+            }
+
+            var resultViewModel = ProcessStudentLoanForDbEntry(studentLoan);
+
+            //Determine whether posted customers are sent with id. Further eliminate the information since the customer already exists
+            
+            //validate values with respect to constraints on the mapped DPAC fields
+            //As discussed prior to development, validation should not be thorough as this was to supposedly be done by the student portal development team 
+          
+            //Throw an exception should validation fail and alert client
+
+            //commence mapping should validity not be compromised
+
+            //save data via db context
+
+            //Notify client of successful operation
+
+
+            return View("SuccessPageReport", resultViewModel);
+        }
+
+        public LoanInsertionResult ProcessStudentLoanForDbEntry(StudentLoan loan)
         {
             string minorId;
             string applicantId;
@@ -144,13 +161,24 @@ namespace JsonParseApp.Controllers
 
             string LoanApplicationId;
 
+            //result container
+            CustomerEntityValidator loanApplicantResult = new CustomerEntityValidator();
+            CustomerEntityValidator minorProfileResult = new CustomerEntityValidator();
+            List<CustomerEntityValidator> guarantorResults = new List<CustomerEntityValidator>();
+          
+
+            var loanConfigResult = new Application();
+            var studentDataResult = new Application();
+            bool crossReferenceMinorResult = false;
+
+            IList<bool> crossReferenceGuarantorResults = new List<bool>();
             //Loan applicant Operations
-           /* if (loan.LoanApplicantProfile.ApplicantId == null)
+            if (loan.LoanApplicantProfile.ApplicantId == null)
             {
                 var appId = new CustomerDbHandler(loan.LoanApplicantProfile.CustomersFirstname, loan.LoanApplicantProfile.CustomersLastname, loan.LoanApplicantProfile.CustomersMiddlename);
                 appId.CreateCustomerId();
                // string id = appId.CustomerId;
-                SaveLoanApplicant(loan.LoanApplicantProfile, appId.CustomerId, appId.ParsedName);
+                loanApplicantResult = SaveLoanApplicant(loan.LoanApplicantProfile, appId.CustomerId, appId.ParsedName);
 
                 applicantId = appId.CustomerId;
             }
@@ -158,60 +186,95 @@ namespace JsonParseApp.Controllers
             {
                 applicantId = loan.LoanApplicantProfile.ApplicantId;
                 //simply discards the posted info and retains the given ID, also run further validation on Id
-            }*/
+            }
 
             //Minor profile operations
-            /*if (loan.MinorProfile.MinorId == null)
+            if (loan.MinorProfile != null)
             {
-                var minorCustomer = new CustomerDbHandler(loan.MinorProfile.CustomersFirstname, loan.MinorProfile.CustomersLastname, loan.MinorProfile.CustomersMiddlename);
-                minorCustomer.CreateCustomerId();
+                if (loan.MinorProfile.MinorId == null)
+                {
+                    var minorCustomer = new CustomerDbHandler(loan.MinorProfile.CustomersFirstname, loan.MinorProfile.CustomersLastname, loan.MinorProfile.CustomersMiddlename);
+                    minorCustomer.CreateCustomerId();
 
-                SaveMinorProfile(loan.MinorProfile, minorCustomer.CustomerId, minorCustomer.ParsedName);
+                    minorProfileResult = SaveMinorProfile(loan.MinorProfile, minorCustomer.CustomerId, minorCustomer.ParsedName);
+                }
+                else
+                {
+                    minorId = loan.MinorProfile.MinorId;
+                }
             }
-            else
-            {
-                minorId = loan.MinorProfile.MinorId;
-            }*/
 
+        
             //Guarantor Operations 
-            /*if (loan.Guarantors.Any())
+            if (loan.Guarantors != null)
             {
-                List<CustomerEntityValidator> saveTrackValidator = new List<CustomerEntityValidator>();
+               
                 foreach (var guarantor in loan.Guarantors)
                 {
                     var g = new CustomerDbHandler(guarantor.GuarantorPersonal.CustomersFirstname, guarantor.GuarantorPersonal.CustomersLastname, guarantor.GuarantorPersonal.CustomersMiddlename);
                     g.CreateCustomerId();
 
-                    saveTrackValidator.Add(SaveGuarantor(guarantor, g.CustomerId, g.ParsedName));
+                    guarantorResults.Add(SaveGuarantor(guarantor, g.CustomerId, g.ParsedName));
                 }
             }
             else {
                 //place in loop to add to array
-            }*/
+            }
 
             //Loan configuration operations
-            /*if (loan.LoanConfig != null) 
+            if (loan.LoanConfig != null) 
             {
                 var application = new Application();
-
+               
                 if (application.CreateApplicationId()) {
 
                     LoanApplicationId = application.ApplicationId;
 
-                    SaveLoanConfiguration(loan.LoanConfig, LoanApplicationId, applicantId);
+                    loanConfigResult = SaveLoanConfiguration(loan.LoanConfig, LoanApplicationId, applicantId, loan.LoanConfig.OfficerId);
                 }
                 else
                 {
                     LoanApplicationId = null;
                 }
 
-            }*/
+                //Education Program Data operations
+                if (loan.EducationProgramData != null && loanConfigResult.ApplicationSuccess)
+                {
+                   studentDataResult = SaveEducationProgramData(loan.EducationProgramData, LoanApplicationId, applicantId);
+                }               
 
-            //Education Program Data operations
-            if (loan.EducationProgramData != null)
-            {
-                //SaveEducationProgramData(loan.EducationProgramData, LoanApplicationId, applicantId);
             }
+
+            //Finally, linking the entities into a relational model
+            if (minorProfileResult.Customer && loanConfigResult.ApplicationSuccess)
+            {
+               crossReferenceMinorResult =  CrossReferenceEntity(minorProfileResult.CustomerId, "S", loanConfigResult.ApplicationId);
+            }
+
+            if (loanConfigResult.ApplicationSuccess)
+            {
+                foreach (var guarantorRes in guarantorResults)
+                {
+                    if (guarantorRes.Customer)
+                    {
+                       crossReferenceGuarantorResults.Add(CrossReferenceEntity(guarantorRes.CustomerId, "G", loanConfigResult.ApplicationId));
+                    }
+                    
+                }
+                
+            }
+            return new LoanInsertionResult()
+            {
+                Applicant = loanApplicantResult,
+                Minor = minorProfileResult,
+                Guarantors = guarantorResults,
+
+                LoanApplication = loanConfigResult,
+                StudentInformation = studentDataResult,
+
+                CrossReferenceOperation = crossReferenceMinorResult,
+                CrossRefGuarantorOperation = crossReferenceGuarantorResults
+            };
         }
 
         public CustomerEntityValidator SaveLoanApplicant(LoanApplicantProfile applicant, string applicantId, string parsedName)
@@ -222,6 +285,7 @@ namespace JsonParseApp.Controllers
             customers_financial grossFamilyIncome = new customers_financial();
 
             var saveOrderTrack = new CustomerEntityValidator();
+
 
             //definitions
             var loanApplicant = new customer()
@@ -245,7 +309,8 @@ namespace JsonParseApp.Controllers
                 idnumber = applicant.CustomersIdnumber,
                 nationality = applicant.CustomersNationality,
                 businessplace = applicant.CustomersBusinessplace,
-                employfrom = DateTime.Parse(applicant.CustomersEmployfrom),//Format: 1/07/2019
+                employfrom = (DateTime.TryParse(applicant.CustomersEmployfrom, out DateTime date)) ? date: (DateTime?)null,
+                //Format: 1/07/2019 ---(string.IsNullOrWhiteSpace(applicant.CustomersEmployfrom))? null: applicant.CustomersEmployfrom
                 occupation = applicant.CustomersOccupation,
                 //customer_financial.income1
                 depends = Convert.ToDecimal(applicant.CustomersDepends),
@@ -371,7 +436,8 @@ namespace JsonParseApp.Controllers
                 {
                     if (!grossFamilyIncome.fbonumbr.IsNullOrWhiteSpace() && saveOrderTrack.Customer)
                     {
-                        ctx.customers_financial.Add(grossFamilyIncome);                       
+                        ctx.customers_financial.Add(grossFamilyIncome);      
+                                         
                     }
 
                     if (ctx.SaveChanges() > 0)
@@ -427,6 +493,7 @@ namespace JsonParseApp.Controllers
                     if (dpac.SaveChanges() > 0)
                     {
                         saveTrackOrder.Customer = true;
+                        saveTrackOrder.CustomerId = minorId;
                         dpac.updateCustCode(parsedName);
                         //dpac.FMS_InsertIntoFxrefbor(minorId, "S", DateTime.Now, "AN2019-00120");
                     }
@@ -537,6 +604,7 @@ namespace JsonParseApp.Controllers
                     if (dpac.SaveChanges() > 0)
                     {
                         saveOrderTrack.Customer = true;
+                        saveOrderTrack.CustomerId = guarantorId;
                         dpac.updateCustCode(parsedName);
                     }
                 }
@@ -612,14 +680,16 @@ namespace JsonParseApp.Controllers
             return saveOrderTrack;
         }
 
-        public void SaveLoanConfiguration(LoanConfig loan, string ApplicationId, string CustomerId) 
+        public Application SaveLoanConfiguration(LoanConfig loan, string applicationId, string customerId, string officerId)
         {
+            var applicationInfo = new Application();
+
             var loanConfig = new loan()
             {
                 //a generate loan number function  must be called generated based  
-                fbonumbr = CustomerId,
-                appnumber = ApplicationId,//must be autogenerated
-                officerid = "CAWIP001",//pablo's id 
+                fbonumbr = customerId,
+                appnumber = applicationId,//must be autogenerated
+                officerid = loan.OfficerId, 
                 app_type = "NL",
                 appldate = DateTime.Parse(loan.LoansAppldate),
                 branchid = loan.LoansBranchid,
@@ -655,24 +725,31 @@ namespace JsonParseApp.Controllers
                 try
                 {
                     dpac.loans.Add(loanConfig);
-                    dpac.SaveChanges();
+                    if (dpac.SaveChanges() > 0)
+                    {
+                        applicationInfo.ApplicationSuccess = true;
+                        applicationInfo.ApplicationId = applicationId;
+                    }
                 }
-                catch (Exception e)
+                catch (DbEntityValidationException e)
                 {
-                    Console.WriteLine(e);
-                    throw;
+                    applicationInfo.ApplicationSuccess = false;
+                    applicationInfo.ErrorMessage = e.Message;
                 }
             }
-                
+
+            return applicationInfo;
+
         }
 
-        public void SaveEducationProgramData(EducationProgramData edu, string ApplicationNumber, string applicantId) 
+        public Application SaveEducationProgramData(EducationProgramData edu, string applicationNumber, string applicantId) 
         {
             List<studentln_borr> studentlnBorrs = new List<studentln_borr>();
+            var educationDataResult = new Application();
 
             var studentLn = new studentln()
             {
-                appnumber = ApplicationNumber,
+                appnumber = applicationNumber,
                 qual1 = edu.StudentlnQual1,
                 duration = Convert.ToDecimal(edu.StudentlnDuration),
                 level = edu.StudentlnLevel,
@@ -689,7 +766,7 @@ namespace JsonParseApp.Controllers
                     studentlnBorrs.Add(new studentln_borr()
                     {
                         //idnum => PK, will be automatically incremented upon creation
-                        appnumber = ApplicationNumber,
+                        appnumber = applicationNumber,
                         itemval = lnBorr.StudentlnBorrItemval,//books and supplies
                         aiditem = Convert.ToDecimal(lnBorr.StudentlnBorrAiditem)
                     });
@@ -700,26 +777,63 @@ namespace JsonParseApp.Controllers
             {
                 try
                 {
-                    dpac.studentlns.Add(studentLn);            
-                }
-                catch (DbEntityValidationException e)
-                {
-                    return;
-                }
-
-                try
-                {
-                    foreach (var lnBorr in studentlnBorrs)
+                    dpac.studentlns.Add(studentLn);
+                    if (dpac.SaveChanges() > 0)
                     {
-                        dpac.studentln_borr.Add(lnBorr);
+                        educationDataResult.StudentDataSuccess = true;
+                        educationDataResult.ApplicationId = applicationNumber;
                     }
                 }
                 catch (DbEntityValidationException e)
                 {
-                    
+                    educationDataResult.StudentDataSuccess = false;
+                    educationDataResult.SaveEducationErrMessage = e.Message;
+                }
+
+                try
+                {
+                    if (studentlnBorrs.Any() && educationDataResult.StudentDataSuccess)
+                    {
+                        foreach (var lnBorr in studentlnBorrs)
+                        {
+                            dpac.studentln_borr.Add(lnBorr);
+                        }
+                    }
+
+                    if (dpac.SaveChanges() > 0)
+                        educationDataResult.StudentLnBorr = true;
+
+
+                }
+                catch (DbEntityValidationException e)
+                {
+                    educationDataResult.StudentLnBorr = false;
+                    educationDataResult.StudentLnBorrErrMessage = e.Message;
                 }
             }
+
+            return educationDataResult;
         }
 
+        public bool CrossReferenceEntity(string customerId, string customerType,string applicationNum)
+        {
+            bool success = false;
+
+            using (var dpac = new DPACEntities())
+            {
+                try
+                {
+                    dpac.FMS_InsertIntoFxrefbor(customerId,customerType, DateTime.Now,  applicationNum);
+                    if (dpac.SaveChanges() > 0)
+                        success = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+                   
+                }
+            }
+
+            return success;
+        }
     }
 }

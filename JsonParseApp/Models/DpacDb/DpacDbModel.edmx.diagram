@@ -8,8 +8,8 @@
         <EntityTypeShape EntityType="DPACModel.customer" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DPACModel.customers_financial" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DPACModel.individual_financials" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DPACModel.loan" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DPACModel.studentln" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.loan" Width="1.5" PointX="4.625" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DPACModel.studentln" Width="1.5" PointX="6.375" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DPACModel.studentln_borr" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DPACModel.fxrefbor" Width="1.5" PointX="8.25" PointY="24" IsExpanded="true" />
         <AssociationConnector Association="DPACModel.FK_cus_fbonumbr" ManuallyRouted="false" />
@@ -19,6 +19,9 @@
         <AssociationConnector Association="DPACModel.FK_fxrefbor" ManuallyRouted="false" />
         <AssociationConnector Association="DPACModel.FK_student_appnumbr" ManuallyRouted="false" />
         <AssociationConnector Association="DPACModel.FK_studentbo_appnumbr" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DPACModel.fuserid" Width="1.5" PointX="2.75" PointY="15.875" />
+        <AssociationConnector Association="DPACModel.FK_cust_officerid" />
+        <AssociationConnector Association="DPACModel.FK_cust_finance_officerid" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

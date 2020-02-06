@@ -7,6 +7,8 @@ namespace JsonParseApp.Models
 {
     public class CustomerEntityValidator
     {
+        public string CustomerId { get; set; }
+
         public bool Customer { get; set; }
         public string CustomerErrMessage { get; set; }
 
