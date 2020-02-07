@@ -76,6 +76,27 @@ namespace JsonParseApp.Controllers
             }
         }
 
+        public bool ValidateCustomerPostId(string id)
+        {
+            bool exists = false;
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                id = id.ToUpper();
+                using (var newCont = new DPACEntities())
+                {
+                    var execGetCustomerName = newCont.GetCustomerName(id).FirstOrDefault();
+                    if (execGetCustomerName == null)
+                        return false;
+
+                    exists = (execGetCustomerName.fbonumbr != null) ? true : false;
+                 
+                }
+            }         
+
+            return exists;
+        }
+
         //this should be modal/partial
         [HttpPost]
         public ActionResult JsonFileData(HttpPostedFileBase myFile)
@@ -155,9 +176,9 @@ namespace JsonParseApp.Controllers
 
         public LoanInsertionResult ProcessStudentLoanForDbEntry(StudentLoan loan)
         {
-            string minorId;
+            string minorId = null;
             string applicantId;
-            string[] guarantorIds;
+            List<string> guarantorIds =  new List<string>();
 
             string LoanApplicationId;
 
@@ -180,7 +201,7 @@ namespace JsonParseApp.Controllers
                // string id = appId.CustomerId;
                 loanApplicantResult = SaveLoanApplicant(loan.LoanApplicantProfile, appId.CustomerId, appId.ParsedName);
 
-                applicantId = appId.CustomerId;
+                applicantId = null;
             }
             else
             {
@@ -200,7 +221,8 @@ namespace JsonParseApp.Controllers
                 }
                 else
                 {
-                    minorId = loan.MinorProfile.MinorId;
+                    minorId = (ValidateCustomerPostId(loan.MinorProfile.MinorId)) ? loan.MinorProfile.MinorId.ToUpper() : null;
+                    minorProfileResult = null;
                 }
             }
 
@@ -211,44 +233,64 @@ namespace JsonParseApp.Controllers
                
                 foreach (var guarantor in loan.Guarantors)
                 {
-                    var g = new CustomerDbHandler(guarantor.GuarantorPersonal.CustomersFirstname, guarantor.GuarantorPersonal.CustomersLastname, guarantor.GuarantorPersonal.CustomersMiddlename);
-                    g.CreateCustomerId();
+                    if (guarantor.ApplicantId == null)
+                    {
+                        var g = new CustomerDbHandler(guarantor.GuarantorPersonal.CustomersFirstname, guarantor.GuarantorPersonal.CustomersLastname, guarantor.GuarantorPersonal.CustomersMiddlename);
+                        g.CreateCustomerId();
 
-                    guarantorResults.Add(SaveGuarantor(guarantor, g.CustomerId, g.ParsedName));
+                        guarantorResults.Add(SaveGuarantor(guarantor, g.CustomerId, g.ParsedName));
+                    }
+                    else
+                    {
+                       if(ValidateCustomerPostId(guarantor.ApplicantId))
+                            guarantorIds.Add(guarantor.ApplicantId);
+                    }
+
+
                 }
             }
-            else {
-                //place in loop to add to array
-            }
+          
 
             //Loan configuration operations
-            if (loan.LoanConfig != null) 
+            if (loan.LoanConfig != null)
             {
+                string globAppId;
                 var application = new Application();
-               
-                if (application.CreateApplicationId()) {
-
-                    LoanApplicationId = application.ApplicationId;
-
-                    loanConfigResult = SaveLoanConfiguration(loan.LoanConfig, LoanApplicationId, applicantId, loan.LoanConfig.OfficerId);
-                }
-                else
+                if (application.CreateApplicationId())
                 {
-                    LoanApplicationId = null;
+                    if (string.IsNullOrEmpty(applicantId)) {
+
+                        LoanApplicationId = application.ApplicationId;
+
+                        loanConfigResult = SaveLoanConfiguration(loan.LoanConfig, LoanApplicationId, applicantId, loan.LoanConfig.OfficerId);
+                    }
+                    else
+                    {
+                        loanConfigResult = SaveLoanConfiguration(loan.LoanConfig, application.ApplicationId, applicantId, loan.LoanConfig.OfficerId);
+                      //  globAppId = loanConfigResult.ApplicationId;
+                    }
                 }
+
+                
 
                 //Education Program Data operations
                 if (loan.EducationProgramData != null && loanConfigResult.ApplicationSuccess)
                 {
-                   studentDataResult = SaveEducationProgramData(loan.EducationProgramData, LoanApplicationId, applicantId);
+                   studentDataResult = SaveEducationProgramData(loan.EducationProgramData, loanConfigResult.ApplicationId, applicantId);
                 }               
 
             }
 
             //Finally, linking the entities into a relational model
-            if (minorProfileResult.Customer && loanConfigResult.ApplicationSuccess)
+            if (minorProfileResult != null)
             {
-               crossReferenceMinorResult =  CrossReferenceEntity(minorProfileResult.CustomerId, "S", loanConfigResult.ApplicationId);
+                if (minorProfileResult.Customer && loanConfigResult.ApplicationSuccess)
+                    crossReferenceMinorResult =  CrossReferenceEntity(minorProfileResult.CustomerId, "S", loanConfigResult.ApplicationId);
+            }
+            else if(loanConfigResult.ApplicationSuccess && minorId != null)
+            {
+                crossReferenceMinorResult = CrossReferenceEntity(minorId, "S", loanConfigResult.ApplicationId);
+
             }
 
             if (loanConfigResult.ApplicationSuccess)
@@ -261,8 +303,18 @@ namespace JsonParseApp.Controllers
                     }
                     
                 }
-                
+
+                if (guarantorIds.Any())
+                {
+                    foreach(var g in guarantorIds)
+                    {
+                        crossReferenceGuarantorResults.Add(CrossReferenceEntity(g, "G", loanConfigResult.ApplicationId));
+
+                    }
+                }
+
             }
+
             return new LoanInsertionResult()
             {
                 Applicant = loanApplicantResult,
@@ -382,6 +434,7 @@ namespace JsonParseApp.Controllers
                         ctx.SaveChanges();
                         ctx.updateCustCode(parsedName);
                         saveOrderTrack.Customer = true;
+                        saveOrderTrack.CustomerId = applicantId;
                     }
 
                     
