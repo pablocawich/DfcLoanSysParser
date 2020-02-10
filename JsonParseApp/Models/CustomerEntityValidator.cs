@@ -20,5 +20,7 @@ namespace JsonParseApp.Models
 
         public bool GrossFamilyIncome { get; set; }
         public string GrossFamilyErrMessage { get; set; }
+
+        public bool IsExistingGuarantor { get; set; }
     }
 }

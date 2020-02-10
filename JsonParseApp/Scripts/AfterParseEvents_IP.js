@@ -114,32 +114,42 @@ function importLoanDataButton() {
     $("#importBtn").on('click',
         function (e) {
             e.preventDefault();
-
-            if (!validateApplicantId())
-                bootbox.confirm({
-                    backdrop: true,
-                    title: 'Confirm Form Submission',
-                    message:
-                        "The form will be submitted with the data in the given tab. The only exception would be if you have provided an ID for customers, only then will the the data for that section be omitted.",
-                    buttons: {
-                        confirm: {
-                            label: 'Accept and Continue',
-                            className: 'btn-success'
+            var counter = 0;
+            var btn = $(this);
+            //alert($("#officerList").val());
+            if ($("#officerList").val() !== "") {
+                if (!validateApplicantId())
+                    bootbox.confirm({
+                        backdrop: true,
+                        title: 'Confirm Form Submission',
+                        message:
+                            "The form will be submitted with the data in the given tab. The only exception would be if you have provided an ID for customers, only then will the the data for that section be omitted.",
+                        buttons: {
+                            confirm: {
+                                label: 'Accept and Continue',
+                                className: 'btn-success'
+                            },
+                            cancel: {
+                                label: 'Cancel',
+                                className: 'btn-danger'
+                            }
                         },
-                        cancel: {
-                            label: 'Cancel',
-                            className: 'btn-danger'
+                        callback: function(result) {
+                            if (result) {
+                                btn.attr("disabled", true);
+                                $("#loanDataForm").submit();
+                            }
                         }
-                    },
-                    callback: function (result) {
-                        if (result) {
-                            $("#loanDataForm").submit();
-                        }
-                    }
-                });
-            else {
-                alert("Something occured that has rendered the form submission ineligible. Kindly Fix");
+                    });
+                else {
+                    alert("Something occured that has rendered the form submission ineligible. Kindly Fix");      
+             }
+          } else {
+                alert("You have NOT selected an officer. Please select one in the loan configuration's tab to proceed with the process.");
+              // $("#saveLink").tab("hide");
+                //$("#loanConfig").tab("show");             
             }
+
         });
 }
 

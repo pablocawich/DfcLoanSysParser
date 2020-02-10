@@ -4,7 +4,7 @@
 <div class="form-row">
     <div class="form-group col-md-4">
         @Html.LabelFor(m => m.OfficerId, new {@class = "control-label"})
-        @Html.DropDownListFor(m => m.OfficerId, new SelectList(Model.UserIds, "officerid", "firstname"), "Select Credit Officer", new {@class = "form-control"})
+        @Html.DropDownListFor(m => m.OfficerId, new SelectList(Model.UserIds, "officerid", "firstname"), "Select Credit Officer", new {@id="officerList",@class = "form-control", @required = "required" })
     </div>
     @Html.ValidationMessageFor(m=>m.OfficerId)
 </div>

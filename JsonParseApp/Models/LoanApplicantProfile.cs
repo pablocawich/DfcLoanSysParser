@@ -20,6 +20,10 @@ namespace JsonParseApp.Models
         [JsonProperty("customers.sex")]
         public string CustomersSex { get; set; }
 
+       /* [DisplayName("date of birth")]
+        [JsonProperty("customers.dateofbirth")]
+        public DateTime? DOB { get; set; }*/
+
         [DisplayName("Mailing Address 2")]
         [JsonProperty("customers.mailing_address2")]
         public string CustomersMailingAddress2 { get; set; }

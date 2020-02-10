@@ -15,18 +15,85 @@
     <ul class="list-group">
         @if (Model.Applicant != null && Model.Applicant.Customer)
         {
-            <li class="list-group-item">Loan Applicant was added with customer ID: @Model.Applicant.CustomerId</li>
+            <li class="list-group-item list-group-item-primary">
+                Loan Applicant was added with customer ID:<strong> @Model.Applicant.CustomerId </strong>
+
+                @if (Model.Applicant.Asset)
+                {
+                    <hr />
+                    <p>Assets for applicant was added</p>
+                }
+
+                @if (Model.Applicant.Liability)
+                {
+                    <hr />
+                    <p>Liabilities for applicant were added</p>
+                }
+                @if (Model.Applicant.GrossFamilyIncome)
+                {
+                    <hr />
+                    <p>Gross family income was added</p>
+                }
+            </li>
         }
-       
-        <li>V</li>
-        <li>O</li>
-        <li>R</li>
+        @if (Model.Minor != null && Model.Minor.Customer)
+        {
+            <li class="list-group-item">Minor Profile data was added with Customer ID:<strong> @Model.Minor.CustomerId </strong></li>
+        }
+        @if (Model.Guarantors.Any())
+        {
+            foreach (var g in Model.Guarantors)
+            {
+                if (g.Customer)
+                {
+                    <li class="list-group-item">Guarantor was added with Customer ID:<strong> @g.CustomerId </strong></li>
+                }
+
+            }
+        }
+        @if (Model.LoanApplication != null)
+        {
+            if (Model.LoanApplication.ApplicationSuccess)
+            {
+                <li class="list-group-item">Loan Application was successful:<strong> @Model.LoanApplication.ApplicationId </strong></li>
+            }
+
+        }
+        @if (Model.StudentInformation != null)
+        {
+            if (Model.StudentInformation.StudentDataSuccess)
+            {
+                <li class="list-group-item">Student education data was added to loan with ID: <strong> @Model.StudentInformation.ApplicationId </strong></li>
+            }
+
+        }
+        @if (Model.CrossReferenceOperation)
+        {
+           <li class="list-group-item">Cross reference operation for minor information was successful</li>
+
+        }
+        @if (Model.CrossRefGuarantorOperation.Any())
+        {
+            foreach (var res in Model.CrossRefGuarantorOperation)
+            {
+                if (res)
+                {
+                    <li class="list-group-item">Cross reference successful</li>
+                }
+                else
+                {
+                    <li class="list-group-item">A cross reference failed</li>
+                }
+
+            }
+
+        }
     </ul>
     <p class="lead">
-        <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" role="button">Continue to homepage</a>
+        <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Home")" role="button">Continue to homepage</a>
     </p>
     <p> Its is possible that the student loan object contained anomalies. Data may have been retrieved 
-        but were ultimately considered not properly structured due to the manner to which the DPAC Database handles information based on its set rules, constraints and architecture.
-        As a result of that certain information were discarded to keep the integrity of database in tact.</p>
+        but were ultimately considered not properly structured in accordance to the manner to which the DPAC Database handles information based on its set rules, constraints and architecture.
+        As a result of that certain information were discarded to keep the integrity of database.</p>
 </div>
 

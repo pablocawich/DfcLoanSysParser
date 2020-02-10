@@ -151,8 +151,10 @@ namespace JsonParseApp.Controllers
             var applicant = studentLoan.LoanApplicantProfile;
             var loanConfig = studentLoan.LoanConfig;*/
             if (!ModelState.IsValid)
-            {                
-                return PartialView("_JsonLoanData", studentLoan);
+            {
+                String messages = String.Join(Environment.NewLine, ModelState.Values.SelectMany(v => v.Errors)
+                    .Select(v => v.ErrorMessage + " " + v.Exception));
+                return Content(messages);
             }
 
             var resultViewModel = ProcessStudentLoanForDbEntry(studentLoan);
@@ -205,7 +207,9 @@ namespace JsonParseApp.Controllers
             }
             else
             {
-                applicantId = loan.LoanApplicantProfile.ApplicantId;
+                applicantId = (ValidateCustomerPostId(loan.LoanApplicantProfile.ApplicantId))? loan.LoanApplicantProfile.ApplicantId.ToUpper() : null;
+                loanApplicantResult.CustomerId = (applicantId != null) ? applicantId : null;
+                loanApplicantResult.Customer = (applicantId != null) ? true : false;
                 //simply discards the posted info and retains the given ID, also run further validation on Id
             }
 
@@ -222,15 +226,15 @@ namespace JsonParseApp.Controllers
                 else
                 {
                     minorId = (ValidateCustomerPostId(loan.MinorProfile.MinorId)) ? loan.MinorProfile.MinorId.ToUpper() : null;
-                    minorProfileResult = null;
+                    minorProfileResult.CustomerId = (minorId != null)? minorId : null;
+                    minorProfileResult.Customer = (minorId != null) ? true : false;
                 }
             }
 
         
             //Guarantor Operations 
             if (loan.Guarantors != null)
-            {
-               
+            {              
                 foreach (var guarantor in loan.Guarantors)
                 {
                     if (guarantor.ApplicantId == null)
@@ -242,15 +246,21 @@ namespace JsonParseApp.Controllers
                     }
                     else
                     {
-                       if(ValidateCustomerPostId(guarantor.ApplicantId))
-                            guarantorIds.Add(guarantor.ApplicantId);
+                        if (ValidateCustomerPostId(guarantor.ApplicantId.ToUpper()))
+                        {
+                            guarantorIds.Add(guarantor.ApplicantId.ToUpper());
+                            guarantorResults.Add(new CustomerEntityValidator()
+                            {
+                                CustomerId = guarantor.ApplicantId.ToUpper(),
+                                Customer = true,
+                                IsExistingGuarantor = true,
+                            });
+                        }
+                        
                     }
-
-
                 }
             }
           
-
             //Loan configuration operations
             if (loan.LoanConfig != null)
             {
@@ -262,7 +272,7 @@ namespace JsonParseApp.Controllers
 
                         LoanApplicationId = application.ApplicationId;
 
-                        loanConfigResult = SaveLoanConfiguration(loan.LoanConfig, LoanApplicationId, applicantId, loan.LoanConfig.OfficerId);
+                        loanConfigResult = SaveLoanConfiguration(loan.LoanConfig, LoanApplicationId, loanApplicantResult.CustomerId, loan.LoanConfig.OfficerId);
                     }
                     else
                     {
@@ -282,12 +292,12 @@ namespace JsonParseApp.Controllers
             }
 
             //Finally, linking the entities into a relational model
-            if (minorProfileResult != null)
+            if (minorId == null && loanConfigResult.ApplicationSuccess)
             {
                 if (minorProfileResult.Customer && loanConfigResult.ApplicationSuccess)
                     crossReferenceMinorResult =  CrossReferenceEntity(minorProfileResult.CustomerId, "S", loanConfigResult.ApplicationId);
             }
-            else if(loanConfigResult.ApplicationSuccess && minorId != null)
+            else
             {
                 crossReferenceMinorResult = CrossReferenceEntity(minorId, "S", loanConfigResult.ApplicationId);
 
@@ -297,7 +307,7 @@ namespace JsonParseApp.Controllers
             {
                 foreach (var guarantorRes in guarantorResults)
                 {
-                    if (guarantorRes.Customer)
+                    if (guarantorRes.Customer && !(guarantorRes.IsExistingGuarantor))
                     {
                        crossReferenceGuarantorResults.Add(CrossReferenceEntity(guarantorRes.CustomerId, "G", loanConfigResult.ApplicationId));
                     }
@@ -517,6 +527,7 @@ namespace JsonParseApp.Controllers
                 ctype = "IL",
                 fbobkind = "IL",
                 fbonumbr = minorId,
+                appldate = DateTime.Now,
                 firstname = minorProfile.CustomersFirstname,
                 middlename = minorProfile.CustomersMiddlename,
                 lastname = minorProfile.CustomersLastname,
@@ -877,8 +888,7 @@ namespace JsonParseApp.Controllers
                 try
                 {
                     dpac.FMS_InsertIntoFxrefbor(customerId,customerType, DateTime.Now,  applicationNum);
-                    if (dpac.SaveChanges() > 0)
-                        success = true;
+                    success = true;
                 }
                 catch (DbEntityValidationException e)
                 {
